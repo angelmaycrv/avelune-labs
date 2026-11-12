@@ -1,0 +1,19 @@
+{
+  "name": "avelune-smm",
+  "version": "1.0.0",
+  "description": "SMM для Telegram, VK, Дзена, Rutube и других площадок: контент-план, инфоповоды, аудит, комьюнити, негатив, блогеры, посевы, короткие видео, эфиры.",
+  "author": {
+    "name": "Avelune Labs"
+  },
+  "license": "MIT",
+  "keywords": [
+    "smm",
+    "telegram",
+    "vk",
+    "content",
+    "influencers",
+    "russian"
+  ],
+  "homepage": "https://github.com/angelmaycrv/avelune-labs",
+  "repository": "https://github.com/angelmaycrv/avelune-labs"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "avelune-ceo",
+  "version": "1.0.0",
+  "description": "Руководитель: стратегия, деньги, цены, найм, переговоры, совет директоров из 12 агентов, надзор за агентами и дирижёр всех плагинов Avelune Labs.",
+  "author": {
+    "name": "Avelune Labs"
+  },
+  "license": "MIT",
+  "keywords": [
+    "strategy",
+    "okr",
+    "unit-economics",
+    "pricing",
+    "board",
+    "management",
+    "russian"
+  ],
+  "homepage": "https://github.com/angelmaycrv/avelune-labs",
+  "repository": "https://github.com/angelmaycrv/avelune-labs"
+}

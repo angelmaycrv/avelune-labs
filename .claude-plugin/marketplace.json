@@ -1,0 +1,103 @@
+{
+  "name": "avelune-labs",
+  "owner": {
+    "name": "Avelune Labs"
+  },
+  "metadata": {
+    "description": "Avelune Labs: шесть плагинов Claude для маркетинга и управления бизнесом в любой нише. 101 скилл, совет из 12 агентов, надзор за агентами.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "avelune-ceo",
+      "source": "./plugins/avelune-ceo",
+      "description": "Руководитель: стратегия, деньги, цены, найм, переговоры, совет директоров из 12 агентов, надзор за агентами и дирижёр всех плагинов Avelune Labs.",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": [
+        "strategy",
+        "okr",
+        "unit-economics",
+        "pricing",
+        "board",
+        "management",
+        "russian"
+      ]
+    },
+    {
+      "name": "avelune-creative",
+      "source": "./plugins/avelune-creative",
+      "description": "Креатив и тексты на уровне сильного агентства: идеи кампаний, офферы, хуки, заголовки, лендинги, сценарии, нейминг, слоганы, голос бренда, редактура без штампов.",
+      "version": "1.0.0",
+      "category": "marketing",
+      "keywords": [
+        "copywriting",
+        "creative",
+        "advertising",
+        "storytelling",
+        "naming",
+        "russian"
+      ]
+    },
+    {
+      "name": "avelune-smm",
+      "source": "./plugins/avelune-smm",
+      "description": "SMM для Telegram, VK, Дзена, Rutube и других площадок: контент-план, инфоповоды, аудит, комьюнити, негатив, блогеры, посевы, короткие видео, эфиры.",
+      "version": "1.0.0",
+      "category": "marketing",
+      "keywords": [
+        "smm",
+        "telegram",
+        "vk",
+        "content",
+        "influencers",
+        "russian"
+      ]
+    },
+    {
+      "name": "avelune-growth",
+      "source": "./plugins/avelune-growth",
+      "description": "Рост и продажи: исследование рынка, позиционирование, VK Реклама, Яндекс Директ, воронки, боты, прогрев, запуски, скрипты, возражения, удержание, отзывы, акции, офлайн.",
+      "version": "1.0.0",
+      "category": "marketing",
+      "keywords": [
+        "growth",
+        "performance",
+        "sales",
+        "funnels",
+        "cro",
+        "russian"
+      ]
+    },
+    {
+      "name": "avelune-insight",
+      "source": "./plugins/avelune-insight",
+      "description": "Аналитика и SEO: метрики, отчёты, прогнозы, опросы, тренды, упоминания, SEO-аудит, семантика, статьи и видео в поиске с учётом нейроответов, карты.",
+      "version": "1.0.0",
+      "category": "marketing",
+      "keywords": [
+        "analytics",
+        "seo",
+        "yandex",
+        "metrics",
+        "research",
+        "russian"
+      ]
+    },
+    {
+      "name": "avelune-shield",
+      "source": "./plugins/avelune-shield",
+      "description": "Защита: маркировка рекламы, закон о рекламе и русский язык, правила площадок, оферта и договоры, персональные данные, антикризис, база знаний бизнеса.",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": [
+        "legal",
+        "compliance",
+        "ad-marking",
+        "personal-data",
+        "crisis",
+        "russian"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "description": "Avelune supervisor: напоминания координатору проверять результаты агентов",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/session-start.sh\"", "timeout": 10 }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Agent|Task",
+        "hooks": [
+          { "type": "command", "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/post-agent.sh\"", "timeout": 10 }
+        ]
+      }
+    ]
+  }
+}

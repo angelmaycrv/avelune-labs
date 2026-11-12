@@ -1,0 +1,19 @@
+{
+  "name": "avelune-growth",
+  "version": "1.0.0",
+  "description": "Рост и продажи: исследование рынка, позиционирование, VK Реклама, Яндекс Директ, воронки, боты, прогрев, запуски, скрипты, возражения, удержание, отзывы, акции, офлайн.",
+  "author": {
+    "name": "Avelune Labs"
+  },
+  "license": "MIT",
+  "keywords": [
+    "growth",
+    "performance",
+    "sales",
+    "funnels",
+    "cro",
+    "russian"
+  ],
+  "homepage": "https://github.com/angelmaycrv/avelune-labs",
+  "repository": "https://github.com/angelmaycrv/avelune-labs"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "avelune-shield",
+  "version": "1.0.0",
+  "description": "Защита: маркировка рекламы, закон о рекламе и русский язык, правила площадок, оферта и договоры, персональные данные, антикризис, база знаний бизнеса.",
+  "author": {
+    "name": "Avelune Labs"
+  },
+  "license": "MIT",
+  "keywords": [
+    "legal",
+    "compliance",
+    "ad-marking",
+    "personal-data",
+    "crisis",
+    "russian"
+  ],
+  "homepage": "https://github.com/angelmaycrv/avelune-labs",
+  "repository": "https://github.com/angelmaycrv/avelune-labs"
+}

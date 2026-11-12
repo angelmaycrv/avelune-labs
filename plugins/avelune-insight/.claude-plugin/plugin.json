@@ -1,0 +1,19 @@
+{
+  "name": "avelune-insight",
+  "version": "1.0.0",
+  "description": "Аналитика и SEO: метрики, отчёты, прогнозы, опросы, тренды, упоминания, SEO-аудит, семантика, статьи и видео в поиске с учётом нейроответов, карты.",
+  "author": {
+    "name": "Avelune Labs"
+  },
+  "license": "MIT",
+  "keywords": [
+    "analytics",
+    "seo",
+    "yandex",
+    "metrics",
+    "research",
+    "russian"
+  ],
+  "homepage": "https://github.com/angelmaycrv/avelune-labs",
+  "repository": "https://github.com/angelmaycrv/avelune-labs"
+}

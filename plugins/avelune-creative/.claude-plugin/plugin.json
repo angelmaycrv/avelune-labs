@@ -1,0 +1,19 @@
+{
+  "name": "avelune-creative",
+  "version": "1.0.0",
+  "description": "Креатив и тексты на уровне сильного агентства: идеи кампаний, офферы, хуки, заголовки, лендинги, сценарии, нейминг, слоганы, голос бренда, редактура без штампов.",
+  "author": {
+    "name": "Avelune Labs"
+  },
+  "license": "MIT",
+  "keywords": [
+    "copywriting",
+    "creative",
+    "advertising",
+    "storytelling",
+    "naming",
+    "russian"
+  ],
+  "homepage": "https://github.com/angelmaycrv/avelune-labs",
+  "repository": "https://github.com/angelmaycrv/avelune-labs"
+}
