@@ -86,154 +86,7 @@ The `avelune-ceo:avelune` conductor splits it into steps: metrics, maps, reviews
 
 ## Full skill catalog
 
-<details>
-<summary><b>CEO</b> · <code>avelune-ceo</code> · 22</summary>
-
-| Skill | What it does (in Russian) |
-|---|---|
-| [`avelune-ceo:avelune`](plugins/avelune-ceo/skills/avelune/SKILL.md) | Дирижёр всех плагинов Avelune Labs. Принимает большую задачу одной фразой («запусти продвижение на месяц», «нет заявок», «открываем вторую точку», «запускаем курс»), разбивает её на шаги, выбирает нужные скиллы из шести плагинов, задаёт порядок, передаёт… |
-| [`avelune-ceo:board`](plugins/avelune-ceo/skills/board/SKILL.md) | Совет директоров из 12 агентов. Решение или идея рассматривается независимо финансами, маркетингом, продуктом, технологиями, продажами, юристом, операциями, данными, брендом, голосом клиента, риск-менеджером и инвестором-стратегом. |
-| [`avelune-ceo:brainstorm`](plugins/avelune-ceo/skills/brainstorm/SKILL.md) | Мозговой штурм по любой задаче: 30–50 идей разными техниками (SCAMPER, обратный штурм, морфологический ящик, аналогии, ограничения) и отбор лучших по ICE. |
-| [`avelune-ceo:delegation`](plugins/avelune-ceo/skills/delegation/SKILL.md) | Превращает задачу в понятное техническое задание для сотрудника, подрядчика, фрилансера или ИИ-агента: цель, результат, критерии приёмки, сроки, бюджет, примеры. |
-| [`avelune-ceo:finmodel`](plugins/avelune-ceo/skills/finmodel/SKILL.md) | Финансовая модель на 12 месяцев: выручка, расходы, прибыль, движение денег, точка безубыточности, три сценария и предупреждение о кассовом разрыве. |
-| [`avelune-ceo:focus-week`](plugins/avelune-ceo/skills/focus-week/SKILL.md) | Планирование недели руководителя: разбор всех дел, приоритеты по важности и влиянию, что делегировать, что выбросить, блоки глубокой работы в календаре. |
-| [`avelune-ceo:grants`](plugins/avelune-ceo/skills/grants/SKILL.md) | Поиск и подготовка заявок на гранты, субсидии, акселераторы и конкурсы для малого бизнеса, IT-проектов, социальных и культурных проектов в России. |
-| [`avelune-ceo:hiring`](plugins/avelune-ceo/skills/hiring/SKILL.md) | Найм сотрудника или подрядчика: карта роли с результатами, текст вакансии, структурированное интервью, тестовое задание, проверка рекомендаций, шкала оценки. |
-| [`avelune-ceo:meeting-notes`](plugins/avelune-ceo/skills/meeting-notes/SKILL.md) | Протокол встречи из заметок, расшифровки или записи: решения, задачи с владельцами и сроками, открытые вопросы, письмо участникам. |
-| [`avelune-ceo:negotiation`](plugins/avelune-ceo/skills/negotiation/SKILL.md) | Подготовка к переговорам и ведение их: цели, лучшая альтернатива (BATNA), зона согласия, якорь, уступки, калиброванные вопросы, фразы для трудных моментов. |
-| [`avelune-ceo:onboarding`](plugins/avelune-ceo/skills/onboarding/SKILL.md) | План ввода нового сотрудника или подрядчика в работу: первый день, первая неделя, 30-60-90 дней, доступы, наставник, первая победа. |
-| [`avelune-ceo:partner-letters`](plugins/avelune-ceo/skills/partner-letters/SKILL.md) | Письма и сообщения партнёрам, блогерам, СМИ, поставщикам и клиентам: холодное письмо, предложение о сотрудничестве, напоминание без ответа, ответ на предложение, отказ, благодарность. |
-| [`avelune-ceo:pitch`](plugins/avelune-ceo/skills/pitch/SKILL.md) | Питч и презентация для инвестора, акселератора, конкурса, партнёра или крупного клиента: структура из 10–12 слайдов, текст каждого слайда, ключевые цифры, речь на 3 и 10 минут, ответы на трудные вопросы. |
-| [`avelune-ceo:playbooks`](plugins/avelune-ceo/skills/playbooks/SKILL.md) | Регламенты, инструкции и чек-листы, чтобы работа шла одинаково хорошо без постоянного участия руководителя. |
-| [`avelune-ceo:postmortem`](plugins/avelune-ceo/skills/postmortem/SKILL.md) | Разбор неудачи без поиска виноватых: что случилось, почему, что меняем, чтобы не повторилось. |
-| [`avelune-ceo:pricing`](plugins/avelune-ceo/skills/pricing/SKILL.md) | Цены и тарифы. Определяет цену через ценность для клиента, строит линейку тарифов, планирует повышение цены без потери клиентов, пишет текст анонса. |
-| [`avelune-ceo:proposal`](plugins/avelune-ceo/skills/proposal/SKILL.md) | Коммерческое предложение под конкретного клиента: проблема клиента, решение, результат в цифрах, пакеты и цены, доказательства, следующий шаг. |
-| [`avelune-ceo:risk-map`](plugins/avelune-ceo/skills/risk-map/SKILL.md) | Карта рисков бизнеса или проекта: что может пойти не так, вероятность и ущерб, ранние сигналы, план Б и страховка. |
-| [`avelune-ceo:strategy-okr`](plugins/avelune-ceo/skills/strategy-okr/SKILL.md) | Стратегия и цели на квартал или год. Ставит диагноз, выбирает главное направление, превращает его в OKR и дорожную карту, отсекает лишнее. |
-| [`avelune-ceo:supervisor`](plugins/avelune-ceo/skills/supervisor/SKILL.md) | Режим надзора координатора за агентами. Координатор ставит агентам задачи с критериями приёмки, следит за всеми работающими агентами, проверяет каждый результат по брифу и сразу поправляет агента, если он ушёл в сторону, выдумал факт или сделал не по формату. |
-| [`avelune-ceo:unit-economics`](plugins/avelune-ceo/skills/unit-economics/SKILL.md) | Юнит-экономика бизнеса и каналов. Считает CAC, LTV, маржу, срок окупаемости клиента, отток, вклад каналов и показывает, какой рычаг исправит экономику. |
-| [`avelune-ceo:weekly-brief`](plugins/avelune-ceo/skills/weekly-brief/SKILL.md) | Еженедельная сводка для руководителя на одну страницу: цифры против плана, победы, пожары, решения, которые нужны от руководителя. |
-
-</details>
-
-<details>
-<summary><b>Creative</b> · <code>avelune-creative</code> · 20</summary>
-
-| Skill | What it does (in Russian) |
-|---|---|
-| [`avelune-creative:brand-story`](plugins/avelune-creative/skills/brand-story/SKILL.md) | История бренда и основателя. Находит правдивый сюжет компании и упаковывает его для страницы «О нас», выступления, интервью, питча, серии постов. |
-| [`avelune-creative:brand-voice`](plugins/avelune-creative/skills/brand-voice/SKILL.md) | Голос бренда. Создаёт гайд по тону: характер бренда, шкалы тона, тон по ситуациям, словарь «говорим / не говорим», правила обращения, эмодзи и пунктуации, примеры «было / стало». |
-| [`avelune-creative:case-studies`](plugins/avelune-creative/skills/case-studies/SKILL.md) | Кейсы клиентов. Готовит вопросы для интервью с клиентом, вытаскивает историю «было → сделали → стало» с цифрами и цитатами, пишет кейс в нужном формате: статья, пост, карусель, видео, слайд для продаж. |
-| [`avelune-creative:cover-text`](plugins/avelune-creative/skills/cover-text/SKILL.md) | Тексты и идеи обложек (превью) для YouTube, Rutube, VK Видео, Дзена, Reels, Shorts, TikTok и каруселей. |
-| [`avelune-creative:creative-director`](plugins/avelune-creative/skills/creative-director/SKILL.md) | Креативный директор. Ищет инсайт и большую идею для кампании или запуска, чтобы о бренде заговорили, разворачивает её в ролик, наружку, соцсети, PR и спецпроект. |
-| [`avelune-creative:creative-review`](plugins/avelune-creative/skills/creative-review/SKILL.md) | Проверка креатива перед публикацией. Оценивает пост, ролик, баннер, сценарий или рекламу по 12 критериям (заметность, понятность, одна мысль, неожиданность, доверие, эмоция, связь с брендом, призыв, площадка, закон, желание поделиться), ставит баллы, называет… |
-| [`avelune-creative:director`](plugins/avelune-creative/skills/director/SKILL.md) | Режиссёр и оператор. Превращает идею в ролик, который можно снять: концепция, раскадровка по секундам, планы, ракурсы, движение камеры, свет, звук, монтаж, съёмка на телефон, промпты для ИИ-видео. |
-| [`avelune-creative:editor`](plugins/avelune-creative/skills/editor/SKILL.md) | Редактор. Сокращает, упрощает и оживляет текст: убирает канцелярит, штампы, воду, признаки текста от ИИ, выстраивает структуру, проверяет факты, орфографию и типографику. |
-| [`avelune-creative:headlines`](plugins/avelune-creative/skills/headlines/SKILL.md) | Заголовки для статей, лендингов, писем, рекламы, превью и постов. |
-| [`avelune-creative:hooks`](plugins/avelune-creative/skills/hooks/SKILL.md) | Хуки, то есть первые 1–3 секунды ролика или первая строка текста, которые останавливают прокрутку. |
-| [`avelune-creative:landing-copy`](plugins/avelune-creative/skills/landing-copy/SKILL.md) | Текст продающего лендинга или страницы продукта по блокам: первый экран, проблема, решение, как работает, доказательства, цены, возражения, призыв. |
-| [`avelune-creative:memes-trends`](plugins/avelune-creative/skills/memes-trends/SKILL.md) | Мемы, тренды и ситуативный маркетинг. Оценивает, стоит ли бренду подхватывать мем, тренд или новость, находит связь с продуктом, пишет 3–5 вариантов поста или ролика, проверяет риски (стоп-темы, права на картинки, закон). |
-| [`avelune-creative:naming`](plugins/avelune-creative/skills/naming/SKILL.md) | Нейминг. Придумывает названия для компании, продукта, тарифа, рубрики, акции, события: 50–100 вариантов разных типов, отбор по тестам SMILE и SCRATCH, проверка домена, товарного знака в ФИПС, звучания на других языках. |
-| [`avelune-creative:offer`](plugins/avelune-creative/skills/offer/SKILL.md) | Оффер, то есть предложение, от которого трудно отказаться: что получает клиент, за сколько, почему сейчас, почему без риска. |
-| [`avelune-creative:platform-copy`](plugins/avelune-creative/skills/platform-copy/SKILL.md) | Копирайтер под площадки. Один смысл превращается в готовые тексты для VK, Telegram, Дзена, YouTube, Rutube, VK Видео, TikTok, Reels, Shorts, Max, сайта и рассылки с учётом лимитов, культуры и кликабельности ссылок каждой площадки. |
-| [`avelune-creative:reels-script`](plugins/avelune-creative/skills/reels-script/SKILL.md) | Сценарий короткого вертикального ролика (Reels, Shorts, TikTok, VK Клипы) на 7–60 секунд. |
-| [`avelune-creative:repurpose`](plugins/avelune-creative/skills/repurpose/SKILL.md) | Перепаковка контента. Из одного большого материала (подкаст, эфир, вебинар, интервью, статья, выступление) делает 20+ единиц контента для разных площадок: клипы, карусели, посты, цитаты, статью, рассылку, чек-лист, и раскладывает их по календарю. |
-| [`avelune-creative:rubrics`](plugins/avelune-creative/skills/rubrics/SKILL.md) | Рубрики для блога, канала или аккаунта бренда. |
-| [`avelune-creative:slogans`](plugins/avelune-creative/skills/slogans/SKILL.md) | Слоганы и девизы бренда, подписи к логотипу, слоганы кампаний. |
-| [`avelune-creative:storyteller`](plugins/avelune-creative/skills/storyteller/SKILL.md) | Сценарист. Придумывает свежие сюжеты, премисы и повороты, строит историю по битам и сценам, пишет диалоги, планирует серии роликов с героями. |
-
-</details>
-
-<details>
-<summary><b>SMM</b> · <code>avelune-smm</code> · 20</summary>
-
-| Skill | What it does (in Russian) |
-|---|---|
-| [`avelune-smm:account-audit`](plugins/avelune-smm/skills/account-audit/SKILL.md) | Аудит аккаунта или канала в Telegram, VK, YouTube, Rutube, Дзене, TikTok или Reels. |
-| [`avelune-smm:collabs`](plugins/avelune-smm/skills/collabs/SKILL.md) | Коллаборации и кросс-маркетинг. Находит бренды-партнёры с той же аудиторией, придумывает формат (совместный продукт, событие, розыгрыш, контент, набор, взаимные рекомендации), пишет предложение партнёру и чек-лист договорённостей. |
-| [`avelune-smm:community`](plugins/avelune-smm/skills/community/SKILL.md) | Комьюнити-менеджер. Отвечает на комментарии и сообщения в голосе бренда, разбирает поток из сотен комментариев по приоритетам, пишет шаблоны ответов на 15 типовых ситуаций, правила сообщества, матрицу эскалации и стандарты скорости ответа. |
-| [`avelune-smm:content-plan`](plugins/avelune-smm/skills/content-plan/SKILL.md) | Контент-план на неделю, месяц или квартал под несколько площадок (Telegram, VK, Дзен, YouTube, Rutube, Reels, Shorts, TikTok, VK Клипы, сторис). |
-| [`avelune-smm:crosspost`](plugins/avelune-smm/skills/crosspost/SKILL.md) | Адаптация одного контента под разные площадки (Telegram, VK, Дзен, YouTube, Rutube, VK Клипы, Shorts, Reels, TikTok, Одноклассники, сайт, рассылка): длина, формат, тон, обложки, подписи, хэштеги, призывы, время, ссылки с UTM, без водяных знаков чужих площадок. |
-| [`avelune-smm:dzen`](plugins/avelune-smm/skills/dzen/SKILL.md) | Дзен для бизнеса и авторов. Как устроены рекомендации (охват не зависит от числа подписчиков), какие форматы сейчас получают просмотры (статьи, посты, ролики), темы, заголовки и обложки под ленту, перепаковка статей сайта, монетизация, план публикаций. |
-| [`avelune-smm:faq-bot`](plugins/avelune-smm/skills/faq-bot/SKILL.md) | FAQ и чат-бот для ответов клиентам в Telegram, VK, на сайте или в мессенджере. |
-| [`avelune-smm:giveaways`](plugins/avelune-smm/skills/giveaways/SKILL.md) | Конкурсы и розыгрыши в соцсетях. Подбирает механику под цель (охват, контент от клиентов, продажи, подписчики, которые останутся), пишет пост-анонс, официальные правила, тексты итогов, проверяет закон (конкурс или стимулирующая лотерея, НДФЛ с призов… |
-| [`avelune-smm:influencers`](plugins/avelune-smm/skills/influencers/SKILL.md) | Работа с блогерами. Помогает найти и проверить блогеров (накрутки, аудитория, реестр РКН), посчитать CPM и цену результата, написать предложение о сотрудничестве, ТЗ на интеграцию, чек-лист договора и маркировки, оценить результат. |
-| [`avelune-smm:live`](plugins/avelune-smm/skills/live/SKILL.md) | Прямые эфиры в VK, Telegram, YouTube, Rutube и других площадках. |
-| [`avelune-smm:negativity`](plugins/avelune-smm/skills/negativity/SKILL.md) | Работа с негативом. Разбирает злой отзыв, жалобу, хейт, троллинг или фейк по дереву решений «отвечать или нет, где и как», пишет ответ, который успокаивает автора и убеждает читателей, подсказывает, когда эскалировать, оспаривать фейковый отзыв или звать… |
-| [`avelune-smm:newsjacking-calendar`](plugins/avelune-smm/skills/newsjacking-calendar/SKILL.md) | Календарь инфоповодов. Подбирает праздники, профессиональные дни, сезонные и торговые события (Чёрная пятница, 11.11), памятные даты под нишу бизнеса на месяц, квартал или год, оценивает уместность, предлагает идеи постов и акций и сроки подготовки. |
-| [`avelune-smm:profile-setup`](plugins/avelune-smm/skills/profile-setup/SKILL.md) | Оформление профиля, канала или сообщества в Telegram, VK, YouTube, Rutube, Дзене, TikTok и других площадках. |
-| [`avelune-smm:short-video`](plugins/avelune-smm/skills/short-video/SKILL.md) | Стратегия коротких вертикальных видео (VK Клипы, YouTube Shorts, Reels, TikTok, Rutube Shorts, ролики Дзена). |
-| [`avelune-smm:stories`](plugins/avelune-smm/skills/stories/SKILL.md) | Сторис (истории) в VK, Telegram и других площадках. |
-| [`avelune-smm:telegram-growth`](plugins/avelune-smm/skills/telegram-growth/SKILL.md) | Рост и развитие Telegram-канала. Стратегия на 90 дней от позиционирования до продаж: ядро постов, оформление, источники подписчиков (свои клиенты, взаимопиар, папки, посевы, Telegram Ads, комментарии, кросс-промо), функции каналов (сторис и бусты, личные… |
-| [`avelune-smm:tg-seeding`](plugins/avelune-smm/skills/tg-seeding/SKILL.md) | Посевы в Telegram и Telegram Ads. Подбирает и проверяет каналы для рекламы (накрутка, охват, реестр РКН), считает бюджет, CPM и цену подписчика, пишет 10 вариантов рекламных постов, готовит пригласительные ссылки для учёта, план теста и разбор результата. |
-| [`avelune-smm:ugc`](plugins/avelune-smm/skills/ugc/SKILL.md) | Контент от клиентов (UGC). Как получать фото, видео, отзывы и истории клиентов: момент и форма просьбы, механики (хэштег, упаковка, конкурс, рубрика), работа с UGC-креаторами для рекламы, права и согласия на использование, где публиковать. |
-| [`avelune-smm:video-platforms`](plugins/avelune-smm/skills/video-platforms/SKILL.md) | Длинные видео на Rutube, VK Видео и YouTube. |
-| [`avelune-smm:vk-community`](plugins/avelune-smm/skills/vk-community/SKILL.md) | Сообщество ВКонтакте для бизнеса. Настройка (разделы, товары и услуги, кнопки, запись, отзывы, подтверждение бизнеса, виджеты, рассылки, чат-бот), контент под рекомендации (VK Клипы, VK Видео, посты, истории, эфиры), продажи прямо из сообщества, статистика. |
-
-</details>
-
-<details>
-<summary><b>Growth & Sales</b> · <code>avelune-growth</code> · 20</summary>
-
-| Skill | What it does (in Russian) |
-|---|---|
-| [`avelune-growth:ab-tests`](plugins/avelune-growth/skills/ab-tests/SKILL.md) | A/B-тесты лендингов, рекламы, писем, цен, офферов и креативов. |
-| [`avelune-growth:competitor-intel`](plugins/avelune-growth/skills/competitor-intel/SKILL.md) | Разведка конкурентов. Находит прямых и косвенных конкурентов и альтернативы, собирает их офферы, цены, позиционирование, каналы, рекламу, контент, отзывы клиентов, проводит «тайного покупателя», составляет карту «где мы выигрываем и проигрываем» и карточки… |
-| [`avelune-growth:cro`](plugins/avelune-growth/skills/cro/SKILL.md) | Рост конверсии сайта и лендинга (CRO). Аудит страницы по модели LIFT и эвристикам юзабилити: первый экран, соответствие рекламе, ясность оффера, доверие, тревоги, отвлечения, форма, мобильная версия, скорость. |
-| [`avelune-growth:email`](plugins/avelune-growth/skills/email/SKILL.md) | Email-рассылки и цепочки писем. Приветственная серия, онбординг, прогрев, продажа, брошенная корзина, повторная покупка, возврат «уснувших», просьба об отзыве. |
-| [`avelune-growth:launch`](plugins/avelune-growth/skills/launch/SKILL.md) | Запуск продукта, услуги, точки или новой версии. |
-| [`avelune-growth:lead-magnets`](plugins/avelune-growth/skills/lead-magnets/SKILL.md) | Лид-магниты. Придумывает и пишет бесплатные полезности, за которые человек оставляет контакт или запускает бота: чек-листы, гайды, шаблоны, калькуляторы, квизы, мини-курсы, подборки, пробники, аудиты. |
-| [`avelune-growth:market-research`](plugins/avelune-growth/skills/market-research/SKILL.md) | Исследование рынка и клиентов. План исследования, интервью с клиентами по методу The Mom Test и Jobs to be Done, разбор отзывов и форумов, оценка спроса по Яндекс Wordstat и открытым данным, расчёт объёма рынка снизу вверх, сегменты, боли и гипотезы. |
-| [`avelune-growth:objections`](plugins/avelune-growth/skills/objections/SKILL.md) | Работа с возражениями: «дорого», «я подумаю», «у конкурентов дешевле», «нет времени», «надо посоветоваться», «не верю, что сработает», «сейчас не время» и другие. |
-| [`avelune-growth:offline`](plugins/avelune-growth/skills/offline/SKILL.md) | Офлайн-продвижение и локальный маркетинг: вывеска и витрина, листовки и наружная реклама с QR и UTM, партнёрства с соседями, мероприятия, открытие точки, карты (Яндекс, 2ГИС), измерение офлайна промокодами и вопросом «откуда узнали». |
-| [`avelune-growth:positioning`](plugins/avelune-growth/skills/positioning/SKILL.md) | Позиционирование продукта или компании по методу April Dunford и Ries & Trout. |
-| [`avelune-growth:promos`](plugins/avelune-growth/skills/promos/SKILL.md) | Акции, скидки и спецпредложения без потери прибыли. |
-| [`avelune-growth:referral`](plugins/avelune-growth/skills/referral/SKILL.md) | Реферальная программа и сарафанное радио: «приведи друга», бонусы обеим сторонам, механики для продукта и услуги, предзапуск с приглашениями, защита от накруток, расчёт экономики и виральности, тексты приглашений. |
-| [`avelune-growth:retention`](plugins/avelune-growth/skills/retention/SKILL.md) | Удержание и повторные продажи. Находит, где и почему уходят клиенты, строит путь после покупки (онбординг, первый результат, привычка), программу лояльности, реактивацию «уснувших», NPS и работу с ответами, когортный и RFM-анализ. |
-| [`avelune-growth:reviews`](plugins/avelune-growth/skills/reviews/SKILL.md) | Отзывы и репутация: как честно собирать больше отзывов, где они важнее всего (Яндекс Карты, 2ГИС, маркетплейсы, сайт), как отвечать на хорошие и плохие, что делать с фейками и заказными атаками, как использовать отзывы в рекламе и на лендинге. |
-| [`avelune-growth:sales-funnel`](plugins/avelune-growth/skills/sales-funnel/SKILL.md) | Воронка продаж и путь клиента. Строит воронку от первого касания до повторной покупки (AARRR, лестница ценности), считает конверсии и деньги на каждом шаге, находит место, где теряется больше всего, предлагает продукты-ступени (бесплатное, недорогое… |
-| [`avelune-growth:sales-scripts`](plugins/avelune-growth/skills/sales-scripts/SKILL.md) | Скрипты продаж для звонков, переписки в мессенджерах и встреч: входящие и исходящие заявки, B2B, дорогие услуги, повторные продажи. |
-| [`avelune-growth:tg-bot-funnel`](plugins/avelune-growth/skills/tg-bot-funnel/SKILL.md) | Воронка в Telegram-боте или боте VK. Проектирует путь от входа (реклама, пост, QR, лид-магнит) до оплаты и повторной покупки: приветствие, сегментация вопросами, выдача лид-магнита, серия прогревающих сообщений, оффер, оплата, напоминания, догонки, теги и… |
-| [`avelune-growth:vk-ads`](plugins/avelune-growth/skills/vk-ads/SKILL.md) | VK Реклама (ads.vk.com). Планирует и проверяет кампании: цель под задачу бизнеса, структура «кампания → группа → объявление», аудитории (интересы, ретаргетинг, похожие, база клиентов), пиксель и передача конверсий, креативы для клипов, ленты и лид-форм… |
-| [`avelune-growth:warmup`](plugins/avelune-growth/skills/warmup/SKILL.md) | Прогрев аудитории перед продажей. Строит сценарий на 5–21 день в соцсетях, Telegram, сторис, рассылке или боте: осознание проблемы, доверие, кейсы, закулисье, снятие возражений, открытие продаж, честный дедлайн и дожим. |
-| [`avelune-growth:yandex-direct`](plugins/avelune-growth/skills/yandex-direct/SKILL.md) | Яндекс Директ. Планирует и проверяет кампании: единая перфоманс-кампания (Поиск, РСЯ, Карты, Товарная галерея, Telegram-каналы), семантика и минус-слова, комбинаторные объявления, цели Метрики и передача дохода, стратегии (максимум конверсий, максимум… |
-
-</details>
-
-<details>
-<summary><b>Insight & SEO</b> · <code>avelune-insight</code> · 12</summary>
-
-| Skill | What it does (in Russian) |
-|---|---|
-| [`avelune-insight:forecast`](plugins/avelune-insight/skills/forecast/SKILL.md) | Прогноз продаж, заявок, трафика, бюджета или результата кампании. |
-| [`avelune-insight:local-seo`](plugins/avelune-insight/skills/local-seo/SKILL.md) | Продвижение на картах: Яндекс Карты (Яндекс Бизнес), 2ГИС, Google Maps и другие справочники. |
-| [`avelune-insight:mentions`](plugins/avelune-insight/skills/mentions/SKILL.md) | Мониторинг упоминаний бренда, руководителя, продуктов и конкурентов в соцсетях, Telegram, СМИ, отзовиках и на картах. |
-| [`avelune-insight:metrics`](plugins/avelune-insight/skills/metrics/SKILL.md) | Цели и метрики бизнеса и маркетинга. Выбирает главную метрику (North Star, одна метрика, которая важна сейчас), строит дерево метрик от денег до действий команды, отделяет метрики тщеславия от полезных, задаёт формулы, источники данных, пороги и частоту… |
-| [`avelune-insight:post-autopsy`](plugins/avelune-insight/skills/post-autopsy/SKILL.md) | Разбор поста, ролика или рассылки: почему выстрелил или провалился. |
-| [`avelune-insight:report`](plugins/avelune-insight/skills/report/SKILL.md) | Отчёт по цифрам маркетинга и продаж за неделю, месяц, квартал или по кампании. |
-| [`avelune-insight:semantics`](plugins/avelune-insight/skills/semantics/SKILL.md) | Семантическое ядро: сбор запросов (Wordstat, подсказки, конкуренты, свои данные), чистка, определение намерения, кластеризация по выдаче, распределение по страницам сайта, приоритеты и минус-слова для рекламы. |
-| [`avelune-insight:seo-articles`](plugins/avelune-insight/skills/seo-articles/SKILL.md) | SEO-статьи, которые приводят трафик и клиентов в эпоху нейроответов: выбор темы по запросам, разбор выдачи, структура с ответом в начале, опыт и данные, которые ИИ не перескажет, автор и дата, мета-теги, перелинковка и обновление. |
-| [`avelune-insight:seo-audit`](plugins/avelune-insight/skills/seo-audit/SKILL.md) | SEO-аудит сайта под Яндекс и Google с учётом нейроответов (Алиса AI, AI Overviews): индексация, скорость и Core Web Vitals, мобильная версия, структура, мета-теги, соответствие страниц запросам, коммерческие факторы, доверие, микроразметка, региональность. |
-| [`avelune-insight:surveys`](plugins/avelune-insight/skills/surveys/SKILL.md) | Опросы и интервью с клиентами: зачем пришли, почему ушли, что мешает купить, как оценивают сервис. |
-| [`avelune-insight:trends`](plugins/avelune-insight/skills/trends/SKILL.md) | Тренды недели и месяца для бизнеса: что растёт в поиске, соцсетях, на маркетплейсах и в новостях, что из этого подходит аудитории и бренду, что успеть сделать (контент, продукт, реклама) и когда тренд выдохнется. |
-| [`avelune-insight:video-seo`](plugins/avelune-insight/skills/video-seo/SKILL.md) | Продвижение видео в поиске и рекомендациях: VK Видео, Rutube, Дзен, видеоблоки Яндекса и Google, видео на своём сайте. |
-
-</details>
-
-<details>
-<summary><b>Shield</b> · <code>avelune-shield</code> · 7</summary>
-
-| Skill | What it does (in Russian) |
-|---|---|
-| [`avelune-shield:ad-law`](plugins/avelune-shield/skills/ad-law/SKILL.md) | Проверка рекламы и маркетинговых текстов на соответствие закону о рекламе (38-ФЗ) и смежным законам: достоверность, «лучший» и «№1», сравнение с конкурентами, скидки и акции, розыгрыши, рассылки и звонки, дистанционная продажа, особые ниши (медицина, БАДы… |
-| [`avelune-shield:ad-marking`](plugins/avelune-shield/skills/ad-marking/SKILL.md) | Маркировка интернет-рекламы в России: что считается рекламой, кто регистрирует креатив в ОРД и получает erid, как оформить пометку «Реклама» и данные рекламодателя, отчёты в ЕРИР, сбор 3%, реклама у блогеров и реестр блогеров, запрет рекламы на ресурсах… |
-| [`avelune-shield:contracts`](plugins/avelune-shield/skills/contracts/SKILL.md) | Оферта и договоры для маркетинга и малого бизнеса: публичная оферта для сайта и онлайн-школы, договор с блогером, агентством, фрилансером, подрядчиком, самозанятым; права на тексты, дизайн и видео; маркировка рекламы и персональные данные в договоре; возвраты… |
-| [`avelune-shield:crisis`](plugins/avelune-shield/skills/crisis/SKILL.md) | Антикризисные коммуникации: волна негатива, ошибка компании, утечка данных, отравление или травма клиента, скандал с сотрудником, фейк о компании, проверка или блокировка. |
-| [`avelune-shield:knowledge-base`](plugins/avelune-shield/skills/knowledge-base/SKILL.md) | База знаний бизнеса для команды и ИИ-агентов: единый источник правды о компании, продуктах, ценах, правилах, тоне, решениях и шаблонах. |
-| [`avelune-shield:personal-data`](plugins/avelune-shield/skills/personal-data/SKILL.md) | Персональные данные по 152-ФЗ для маркетинга и продаж: формы на сайте и в ботах, отдельное согласие с 1 сентября 2025 года, согласие на рассылки, политика обработки, уведомление Роскомнадзора, локализация, cookies и аналитика, передача подрядчикам, утечки и… |
-| [`avelune-shield:platform-rules`](plugins/avelune-shield/skills/platform-rules/SKILL.md) | Правила площадок, чтобы не получить бан, страйк, отклонённую рекламу или блокировку карточки: VK, Telegram и Telegram Ads, Дзен, Rutube, Яндекс Директ, VK Реклама, маркетплейсы (с учётом закона о платформенной экономике с 1 октября 2026 года), карты. |
-
-</details>
+All 101 skills, with what each one is for and an example request, are in the [skill guide at the very bottom](#skill-guide).
 
 ## Limits
 
@@ -243,3 +96,158 @@ The `avelune-ceo:avelune` conductor splits it into steps: metrics, maps, reviews
 ## License
 
 [MIT](LICENSE).
+
+## Skill guide
+
+All 101 skills: what each one is for and an example request. The skills themselves are written in Russian, but you can talk to them in English.
+
+**How to call a skill.** There are three ways.
+
+1. **You don't know which one you need.** Describe the task to the conductor: `/avelune-ceo:avelune No leads from the site, budget 100,000 rubles`. It picks the skills and walks you through the steps.
+2. **You know the one you need.** Type the command from the table, a space and your request: `/avelune-ceo:board Open a second coffee shop or launch delivery?`
+3. **No command at all.** Just describe the task in plain words; Claude usually picks the right skill by itself.
+
+The more detail you give (niche, city, budget, numbers), the more precise the result.
+
+### CEO · `avelune-ceo`
+
+Decisions, money and people. Also home to the conductor that builds plans across all plugins.
+
+| Skill | What it's for | Example request |
+|---|---|---|
+| [`/avelune-ceo:avelune`](plugins/avelune-ceo/skills/avelune/SKILL.md) | The main entry point. If you don't know which skill you need, describe the task in one line: the conductor builds a plan from skills across all plugins and walks you through it. | “No leads from the site, budget 100,000 rubles” |
+| [`/avelune-ceo:board`](plugins/avelune-ceo/skills/board/SKILL.md) | For big decisions you can't afford to get wrong. 12 agents (finance, marketing, legal, risk, the customer's voice and others) judge the idea independently; the result shows who objects and why. | “Open a second coffee shop or launch delivery?” |
+| [`/avelune-ceo:brainstorm`](plugins/avelune-ceo/skills/brainstorm/SKILL.md) | When you need ideas and have none. Produces 30–50 ideas with different techniques and picks the best by impact, confidence and ease (ICE). | “Promo ideas for a beauty salon for March 8” |
+| [`/avelune-ceo:delegation`](plugins/avelune-ceo/skills/delegation/SKILL.md) | To hand off work and get what you meant the first time. Turns a task into a brief: goal, deliverable, acceptance criteria, deadline, budget. | “A brief for a designer: 5 banners for VK Ads” |
+| [`/avelune-ceo:finmodel`](plugins/avelune-ceo/skills/finmodel/SKILL.md) | To see whether the money lasts and when you break even. A 12-month model with three scenarios and a cash-gap warning. | “Coffee shop: rent 150,000, average check 400 rubles, 120 guests a day” |
+| [`/avelune-ceo:focus-week`](plugins/avelune-ceo/skills/focus-week/SKILL.md) | When everything is urgent and nothing gets done. Sorts your tasks, sets priorities, shows what to delegate or drop and lays the week out in your calendar. | “Here are 23 tasks for the week, help me sort them out” |
+| [`/avelune-ceo:grants`](plugins/avelune-ceo/skills/grants/SKILL.md) | To find money without giving up equity: grants, subsidies, accelerators and competitions in Russia. Picks programs, checks requirements and writes the application with a budget. | “A grant for a kids' coding school in Kazan” |
+| [`/avelune-ceo:hiring`](plugins/avelune-ceo/skills/hiring/SKILL.md) | To hire the right person. Role scorecard, job ad, interview questions, a test task and a rating scale for candidates. | “We're hiring a remote SMM manager” |
+| [`/avelune-ceo:meeting-notes`](plugins/avelune-ceo/skills/meeting-notes/SKILL.md) | So agreements don't get lost. Turns notes or a transcript into minutes: decisions, tasks with owners and deadlines, a follow-up email. Before a meeting it drafts the agenda. | “Here's the transcript of the call with our contractor, write the minutes” |
+| [`/avelune-ceo:negotiation`](plugins/avelune-ceo/skills/negotiation/SKILL.md) | To prepare for a negotiation and not give away too much. Goals, walk-away option, opening anchor, concessions and lines for hard moments. | “The landlord wants to raise the rent by 30%” |
+| [`/avelune-ceo:onboarding`](plugins/avelune-ceo/skills/onboarding/SKILL.md) | So a new hire becomes useful fast and doesn't quit in month one. A plan for day one, week one and 30-60-90 days. | “A new salon receptionist starts on Monday” |
+| [`/avelune-ceo:partner-letters`](plugins/avelune-ceo/skills/partner-letters/SKILL.md) | To write to strangers and actually get a reply: bloggers, media, partners, suppliers. Cold email, follow-up, decline, thank-you note. | “Propose a collab to the bakery next door” |
+| [`/avelune-ceo:pitch`](plugins/avelune-ceo/skills/pitch/SKILL.md) | Before meeting an investor, accelerator or big client. A 10–12 slide outline, slide copy, a 3- and 10-minute talk and answers to hard questions. | “Pitch for an accelerator, asking for 5 million rubles” |
+| [`/avelune-ceo:playbooks`](plugins/avelune-ceo/skills/playbooks/SKILL.md) | So the work runs without you. Writes procedures, instructions and checklists for everything you keep explaining. | “Procedure: how the receptionist answers leads from VK” |
+| [`/avelune-ceo:postmortem`](plugins/avelune-ceo/skills/postmortem/SKILL.md) | To review a failure or a win without blame: what happened, why, and what changes so it doesn't happen again. | “We spent 200,000 on ads and got almost no leads” |
+| [`/avelune-ceo:pricing`](plugins/avelune-ceo/skills/pricing/SKILL.md) | To set or raise prices without losing customers. Value-based pricing, a tier lineup and the announcement text. | “Raise the gym membership from 3,000 to 3,500 rubles” |
+| [`/avelune-ceo:proposal`](plugins/avelune-ceo/skills/proposal/SKILL.md) | When a client asks for a proposal. A tailored proposal: their problem, your solution, results in numbers, packages and the next step. | “A proposal for a clinic chain to run their social media” |
+| [`/avelune-ceo:risk-map`](plugins/avelune-ceo/skills/risk-map/SKILL.md) | Before a launch or a big deal. Shows what can go wrong, how likely and how painful it is, and the plan B. | “We're opening a location in a shopping mall” |
+| [`/avelune-ceo:strategy-okr`](plugins/avelune-ceo/skills/strategy-okr/SKILL.md) | To decide what to do next when there are too many ideas. Diagnoses the situation, picks the main direction and turns it into goals and a plan for the quarter or year. | “Quarter: an online school's sales are falling” |
+| [`/avelune-ceo:supervisor`](plugins/avelune-ceo/skills/supervisor/SKILL.md) | Makes sure agents stick to the brief and don't make up facts. Turns on by itself whenever agents are running. | No need to call it |
+| [`/avelune-ceo:unit-economics`](plugins/avelune-ceo/skills/unit-economics/SKILL.md) | To see whether ads pay off and how much you can pay per customer. Calculates acquisition cost, lifetime value, margin and payback. | “A customer costs 2,000 rubles, average check 3,500, they buy 3 times a year” |
+| [`/avelune-ceo:weekly-brief`](plugins/avelune-ceo/skills/weekly-brief/SKILL.md) | To see how the week went at a glance. A one-page summary: numbers vs plan, wins, fires and the decisions you need to make. | “Here are this week's numbers from the CRM and Metrica” |
+
+### Creative · `avelune-creative`
+
+Ideas and copy: from a big campaign idea to a headline and the final edit.
+
+| Skill | What it's for | Example request |
+|---|---|---|
+| [`/avelune-creative:brand-story`](plugins/avelune-creative/skills/brand-story/SKILL.md) | When it feels like there's nothing to say about you. Finds the true story of the company or founder and shapes it for the website, a talk or a post series. | “A family bakery's story for the About page” |
+| [`/avelune-creative:brand-voice`](plugins/avelune-creative/skills/brand-voice/SKILL.md) | When several people write and all sound different. A brand tone guide with a word list and before/after examples, plus checks of finished copy. | “Brand voice for a coffee shop chain, here are our posts” |
+| [`/avelune-creative:case-studies`](plugins/avelune-creative/skills/case-studies/SKILL.md) | To tell a client's result in a way that sells. Interview questions, a before/after story with numbers and a finished case for the site, a post or a proposal. | “Case: we grew a gym's revenue 40% in 3 months” |
+| [`/avelune-creative:cover-text`](plugins/avelune-creative/skills/cover-text/SKILL.md) | So people click your videos and carousels. 3–5 words of cover text, an image description and variants for an A/B test. | “Thumbnail for a YouTube video '5 mistakes when buying a laptop'” |
+| [`/avelune-creative:creative-director`](plugins/avelune-creative/skills/creative-director/SKILL.md) | When you need a big idea that gets people talking. Finds the insight and spreads the idea across video, outdoor, social and PR, drawing on 33 famous campaigns. | “A campaign idea for a bakery's 10th anniversary, budget 500,000 rubles” |
+| [`/avelune-creative:creative-review`](plugins/avelune-creative/skills/creative-review/SKILL.md) | To check creative before posting or launching ads. Scores it on 12 criteria, names the top 3 problems and gives a fixed version. | “Check this banner before launch” |
+| [`/avelune-creative:director`](plugins/avelune-creative/skills/director/SKILL.md) | To turn an idea into a video you can actually shoot. Second-by-second storyboard, shots, light, sound, editing, phone filming and prompts for AI video. | “A 30-second ad for a flower shop” |
+| [`/avelune-creative:editor`](plugins/avelune-creative/skills/editor/SKILL.md) | When copy is long, dull or sounds like AI. Cuts it, removes jargon and clichés, checks facts and shows every edit with a reason. | “Edit this post, it sounds too formal” |
+| [`/avelune-creative:headlines`](plugins/avelune-creative/skills/headlines/SKILL.md) | When you need a headline, an email subject or a one-line offer. 15–25 options built on proven formulas, with a note on which is strongest. | “A headline for an article on choosing a kids' dentist” |
+| [`/avelune-creative:hooks`](plugins/avelune-creative/skills/hooks/SKILL.md) | So people don't scroll past your video or post. 20+ options for the first 1–3 seconds or the first line, each one rated. | “Hooks for a video about a 5-day bathroom remodel” |
+| [`/avelune-creative:landing-copy`](plugins/avelune-creative/skills/landing-copy/SKILL.md) | Sales page copy block by block: hero, problem, solution, proof, pricing, objections, call to action. It also rewrites a page that doesn't convert. | “A landing page for a manicure course” |
+| [`/avelune-creative:memes-trends`](plugins/avelune-creative/skills/memes-trends/SKILL.md) | When a meme or a news story goes viral and you want to react. Says whether it's worth it, ties it to the product and drafts posts after checking the risks. | “Should we jump on this meme?” |
+| [`/avelune-creative:naming`](plugins/avelune-creative/skills/naming/SKILL.md) | To name a company, product, plan or promo. 50–100 options, a shortlist, and domain and trademark checks. | “A name for a seaside yoga studio” |
+| [`/avelune-creative:offer`](plugins/avelune-creative/skills/offer/SKILL.md) | When the product is good but few people buy. Builds an offer that's hard to refuse: value, price, guarantee, bonuses, a reason to buy now. | “An English course for 15,000 rubles, sales are weak” |
+| [`/avelune-creative:platform-copy`](plugins/avelune-creative/skills/platform-copy/SKILL.md) | Ready-to-post copy for each platform. Rewrites one message for VK, Telegram, Dzen, YouTube, Reels and more, following each one's limits and habits. | “A coffee shop opening announcement for VK and Telegram” |
+| [`/avelune-creative:reels-script`](plugins/avelune-creative/skills/reels-script/SKILL.md) | A script for a 7–60 second vertical video: hook, second-by-second shots, on-screen text, voiceover and a looping ending. | “A Reel showing how we make a bouquet in one minute” |
+| [`/avelune-creative:repurpose`](plugins/avelune-creative/skills/repurpose/SKILL.md) | To get the most out of one recording. Turns a live stream, podcast, webinar or article into 20+ pieces of content and spreads them over a calendar. | “Here's the transcript of an hour-long webinar, cut it into content” |
+| [`/avelune-creative:rubrics`](plugins/avelune-creative/skills/rubrics/SKILL.md) | So you stop asking 'what do we post today'. Invents recurring post series, each with a name, template, example and frequency. | “Post series for a car repair shop's Telegram channel, 4 posts a week” |
+| [`/avelune-creative:slogans`](plugins/avelune-creative/skills/slogans/SKILL.md) | A slogan, tagline or closing line for a video. 30+ options judged on truth, rhythm and difference from competitors, checked against advertising law. | “A slogan for a family dental clinic” |
+| [`/avelune-creative:storyteller`](plugins/avelune-creative/skills/storyteller/SKILL.md) | When you need a story, not a list of features. Comes up with plots, twists, dialogue and video series with recurring characters. | “A 5-video series about daily life at a car repair shop” |
+
+### SMM · `avelune-smm`
+
+Social media: what to post, how to grow and how to talk to people.
+
+| Skill | What it's for | Example request |
+|---|---|---|
+| [`/avelune-smm:account-audit`](plugins/avelune-smm/skills/account-audit/SKILL.md) | When an account isn't growing or reach has dropped. A 48-point check, metrics, the top 5 problems and a 30-day plan. | “Audit our Telegram channel, reach has halved” |
+| [`/avelune-smm:collabs`](plugins/avelune-smm/skills/collabs/SKILL.md) | To grow on a small budget through partners with the same audience. Finds partners, designs the format and writes the pitch. | “A collab for a stretching studio” |
+| [`/avelune-smm:community`](plugins/avelune-smm/skills/community/SKILL.md) | When comments and messages pile up. Replies in the brand voice, templates for common cases, community rules and when to escalate. | “Sort these 50 comments and draft replies” |
+| [`/avelune-smm:content-plan`](plugins/avelune-smm/skills/content-plan/SKILL.md) | When you don't know what to post. A posting plan for a week, month or quarter across platforms, with series and occasions, plus a CSV for your scheduler. | “A December content plan for Telegram and VK, I'm doing it alone” |
+| [`/avelune-smm:crosspost`](plugins/avelune-smm/skills/crosspost/SKILL.md) | To publish one post or video everywhere without looking copy-pasted. Adapts length, format, captions, hashtags and links for each platform. | “Here's a video, adapt it for VK, Telegram, Dzen and Shorts” |
+| [`/avelune-smm:dzen`](plugins/avelune-smm/skills/dzen/SKILL.md) | Free reach with articles and video. How to get into Dzen recommendations, which formats and topics work, how to repackage your site's articles. | “A Dzen channel for a family lawyer” |
+| [`/avelune-smm:faq-bot`](plugins/avelune-smm/skills/faq-bot/SKILL.md) | When the same questions come in dozens of times a day. An answer base and a chatbot script with buttons, booking and handoff to a human. | “An FAQ bot for a car service's Telegram, here are the common questions” |
+| [`/avelune-smm:giveaways`](plugins/avelune-smm/skills/giveaways/SKILL.md) | To run a giveaway that doesn't lose followers afterwards. Mechanics for your goal, rules, copy and a legal check. | “A New Year giveaway, the prize is a 5,000-ruble gift card” |
+| [`/avelune-smm:influencers`](plugins/avelune-smm/skills/influencers/SKILL.md) | Influencer ads without wasted budget. Finding bloggers and checking them for fake followers, pricing, the pitch, the brief and ad labeling. | “Bloggers for a kids' online course, budget 100,000 rubles” |
+| [`/avelune-smm:live`](plugins/avelune-smm/skills/live/SKILL.md) | To run a live stream people watch to the end. Topic, minute-by-minute plan, announcements, interaction, selling on air and cutting up the recording. | “A 40-minute Q&A live on apartment renovation” |
+| [`/avelune-smm:negativity`](plugins/avelune-smm/skills/negativity/SKILL.md) | When an angry review or hate comes in. Says whether to reply and writes a response that calms the author and convinces everyone else reading. | “A customer says on Maps they were treated rudely, here's what actually happened” |
+| [`/avelune-smm:newsjacking-calendar`](plugins/avelune-smm/skills/newsjacking-calendar/SKILL.md) | What to tie posts and promos to. Picks holidays, professional days and seasonal sales for your niche and says when to start preparing. | “Occasions for Q1 for a pet store” |
+| [`/avelune-smm:profile-setup`](plugins/avelune-smm/skills/profile-setup/SKILL.md) | So a newcomer gets why to follow you within 3 seconds. Name, bio, pinned post, buttons and a brief for the avatar and cover. | “Set up a VK community for a barbershop” |
+| [`/avelune-smm:short-video`](plugins/avelune-smm/skills/short-video/SKILL.md) | To reach new people with short videos. A strategy for Reels, Shorts, TikTok and VK Clips: topics, frequency, hook tests, stats review. For a single script use `reels-script`. | “A clip strategy for a pizzeria, we can shoot 3 a week” |
+| [`/avelune-smm:stories`](plugins/avelune-smm/skills/stories/SKILL.md) | To talk to followers every day and warm them up to buy. A week of story scripts with polls, questions and buttons. | “A week of stories before course enrollment opens” |
+| [`/avelune-smm:telegram-growth`](plugins/avelune-smm/skills/telegram-growth/SKILL.md) | To grow a Telegram channel. A 90-day strategy: setup, posts, subscriber sources, channel features and monetization. | “Our channel is stuck at 800 subscribers” |
+| [`/avelune-smm:tg-seeding`](plugins/avelune-smm/skills/tg-seeding/SKILL.md) | To buy ads in Telegram channels. Picking and checking channels, budget, 10 ad post variants, a test plan and a results review. | “Ads for an investing channel, budget 50,000 rubles” |
+| [`/avelune-smm:ugc`](plugins/avelune-smm/skills/ugc/SKILL.md) | Real content without a photo shoot. How to get photos, videos and reviews from customers, work with UGC creators and respect usage rights. | “How do we get customer photos wearing our sneakers?” |
+| [`/avelune-smm:video-platforms`](plugins/avelune-smm/skills/video-platforms/SKILL.md) | Long-form video on YouTube, Rutube and VK Video. Channel strategy, video structure for retention, titles, thumbnails and descriptions. | “A video channel for a furniture factory” |
+| [`/avelune-smm:vk-community`](plugins/avelune-smm/skills/vk-community/SKILL.md) | So a VK community brings in leads. Sections, products, booking and mailings, content for recommendations and selling right from the community. | “Relaunch a beauty salon's VK community” |
+
+### Growth & Sales · `avelune-growth`
+
+Customers and sales: ads, funnels, launches, scripts and retention.
+
+| Skill | What it's for | Example request |
+|---|---|---|
+| [`/avelune-growth:ab-tests`](plugins/avelune-growth/skills/ab-tests/SKILL.md) | To find what works better by the numbers, not by gut feel. Hypothesis, sample size, duration and an honest verdict. | “Test two landing page headlines, 300 visits a day” |
+| [`/avelune-growth:competitor-intel`](plugins/avelune-growth/skills/competitor-intel/SKILL.md) | To find out what competitors are doing. Their prices, offers, ads, customer reviews and a map of where you win and where you lose. | “Scout the three salons next door” |
+| [`/avelune-growth:cro`](plugins/avelune-growth/skills/cro/SKILL.md) | When there's traffic but few leads. Reviews the page (hero, offer, trust, form, mobile) and gives a prioritized list of fixes. | “Here's the landing page, 0.8% conversion, traffic from Yandex Direct” |
+| [`/avelune-growth:email`](plugins/avelune-growth/skills/email/SKILL.md) | Newsletters and email sequences: welcome, warm-up, abandoned cart, win-back. Plus deliverability and legal consent. | “An abandoned cart email sequence for an online store” |
+| [`/avelune-growth:launch`](plugins/avelune-growth/skills/launch/SKILL.md) | To launch a product, location or new version. A plan from 30 days before to 30 days after, with a go/no-go checklist. | “Launching an online jewelry store on February 1” |
+| [`/avelune-growth:lead-magnets`](plugins/avelune-growth/skills/lead-magnets/SKILL.md) | To collect contacts of future customers. Invents and writes a free resource (checklist, guide, quiz, sample) people trade their contact for. | “A lead magnet for an exam prep school” |
+| [`/avelune-growth:market-research`](plugins/avelune-growth/skills/market-research/SKILL.md) | To learn who your customer is and whether there's demand before you spend money. Customer interviews, review mining, Wordstat demand and market size. | “Is there demand for a kids' climbing gym in Tver?” |
+| [`/avelune-growth:objections`](plugins/avelune-growth/skills/objections/SKILL.md) | What to say to 'too expensive', 'I'll think about it', 'it's cheaper elsewhere'. Finds the real reason and gives answers for calls, chats and the landing page. | “Customers say our 2-million turnkey renovation is too expensive” |
+| [`/avelune-growth:offline`](plugins/avelune-growth/skills/offline/SKILL.md) | Promoting a local business in its neighborhood. Signage, flyers with QR codes, partnerships with neighbors, events and how to track where customers came from. | “How do we bring locals to a new bakery, budget 30,000 rubles?” |
+| [`/avelune-growth:positioning`](plugins/avelune-growth/skills/positioning/SKILL.md) | When you look like everyone else and customers don't see why you're better. Defines what you're compared with, what sets you apart and how to say it on the site and in ads. | “Why is our bookkeeping for sole traders better than the rest?” |
+| [`/avelune-growth:promos`](plugins/avelune-growth/skills/promos/SKILL.md) | A promo that doesn't eat your profit. Picks the mechanic, calculates how much you need to sell, writes the terms and checks them against the law. | “A buy-2-get-1 Black Friday deal, 40% margin” |
+| [`/avelune-growth:referral`](plugins/avelune-growth/skills/referral/SKILL.md) | So customers bring their friends. A refer-a-friend program: rewards for both sides, fraud protection, the math and invite copy. | “A referral program for a gym” |
+| [`/avelune-growth:retention`](plugins/avelune-growth/skills/retention/SKILL.md) | When new customers are expensive and repeat purchases are rare. Finds where customers leave and builds loyalty and win-back. | “Only 20 of 100 new coffee shop guests come back” |
+| [`/avelune-growth:reviews`](plugins/avelune-growth/skills/reviews/SKILL.md) | When reviews are few or the rating is falling. How to honestly collect reviews, reply to them and fight fakes. | “Our Yandex Maps rating is 4.1, how do we raise it?” |
+| [`/avelune-growth:sales-funnel`](plugins/avelune-growth/skills/sales-funnel/SKILL.md) | To find where customers drop off. Builds the funnel from first touch to repeat purchase and calculates conversion and money at each step. | “Ads are running but sales are low, here are the numbers per step” |
+| [`/avelune-growth:sales-scripts`](plugins/avelune-growth/skills/sales-scripts/SKILL.md) | When there are leads but few sales. Scripts for calls, chats and meetings: questions, presentation, price, objections, next step. | “A script for a clinic receptionist on inbound calls” |
+| [`/avelune-growth:tg-bot-funnel`](plugins/avelune-growth/skills/tg-bot-funnel/SKILL.md) | Automated sales in a messenger. A bot script from the first message to payment: questions, lead magnet, warm-up, offer, reminders. | “A bot funnel for a weight-loss challenge” |
+| [`/avelune-growth:vk-ads`](plugins/avelune-growth/skills/vk-ads/SKILL.md) | To run VK ads without wasting budget. Goal, audiences, pixel, creatives, copy that passes moderation, a test budget and a results review. | “VK Ads for sushi delivery in Samara, 60,000 rubles a month” |
+| [`/avelune-growth:warmup`](plugins/avelune-growth/skills/warmup/SKILL.md) | To get the audience ready to buy. A 5–21 day warm-up: problem, trust, cases, objections, sales opening and an honest deadline. | “A warm-up before course sales open on December 1” |
+| [`/avelune-growth:yandex-direct`](plugins/avelune-growth/skills/yandex-direct/SKILL.md) | Search ads in Yandex. Keywords and negative keywords, ads, Metrica goals, bidding strategies and a search query review. | “Yandex Direct for washing machine repair in Moscow” |
+
+### Insight & SEO · `avelune-insight`
+
+Numbers and search: metrics, reports, forecasts, SEO and maps.
+
+| Skill | What it's for | Example request |
+|---|---|---|
+| [`/avelune-insight:forecast`](plugins/avelune-insight/skills/forecast/SKILL.md) | To estimate future sales, leads or traffic. Three scenarios with ranges and stated assumptions. | “How many leads will Yandex Direct bring for 80,000 rubles a month?” |
+| [`/avelune-insight:local-seo`](plugins/avelune-insight/skills/local-seo/SKILL.md) | For businesses with an address. Listings on Yandex Maps, 2GIS and Google Maps: setup, photos, reviews, replies and the link to your site. | “Rank our salon above the neighbors on Yandex Maps” |
+| [`/avelune-insight:mentions`](plugins/avelune-insight/skills/mentions/SKILL.md) | To know what people say online about you and your competitors. Monitoring queries, tools, sorting mentions and a response routine. | “Set up mention monitoring for a clinic chain” |
+| [`/avelune-insight:metrics`](plugins/avelune-insight/skills/metrics/SKILL.md) | To decide what counts as success. Picks the main metric and builds a metric tree from money down to team actions. | “Which metrics should an online school track?” |
+| [`/avelune-insight:post-autopsy`](plugins/avelune-insight/skills/post-autopsy/SKILL.md) | To understand why a post took off or flopped. Compares it with the account's usual numbers and gives one hypothesis for the next piece. | “This video got 10x the usual views, why?” |
+| [`/avelune-insight:report`](plugins/avelune-insight/skills/report/SKILL.md) | A numbers report for a manager, client or team. Compares with the plan and the last period, explains why and ends with decisions. | “October report, here are the exports from Metrica and VK Ads” |
+| [`/avelune-insight:semantics`](plugins/avelune-insight/skills/semantics/SKILL.md) | To learn what your customers search for. Collects and groups search queries and maps them to site pages and ads. | “Keywords for a stretch ceiling company's site in Kazan” |
+| [`/avelune-insight:seo-articles`](plugins/avelune-insight/skills/seo-articles/SKILL.md) | Articles that bring customers from search and AI answers. Topic from real queries, structure, the author's expertise and meta tags. | “Article 'How much does a dental implant cost in 2026'” |
+| [`/avelune-insight:seo-audit`](plugins/avelune-insight/skills/seo-audit/SKILL.md) | When search traffic is low. A site audit for Yandex and Google, AI answers included, with a prioritized list of problems. | “An SEO audit for a dental clinic's site in Yekaterinburg” |
+| [`/avelune-insight:surveys`](plugins/avelune-insight/skills/surveys/SKILL.md) | To get the truth from customers: why they came, why they left, what stops them from buying. Unbiased questions, the survey format and conclusions. | “A survey of members who left the gym” |
+| [`/avelune-insight:trends`](plugins/avelune-insight/skills/trends/SKILL.md) | What's rising right now and whether to act on it. Tells a three-day meme from a multi-year shift and says what to do while there's time. | “This month's trends for a cosmetics store” |
+| [`/avelune-insight:video-seo`](plugins/avelune-insight/skills/video-seo/SKILL.md) | So your videos get found in search and recommendations. A title for the query, description, timestamps, subtitles and thumbnail. | “Optimize a how-to video for VK Video and Rutube” |
+
+### Shield · `avelune-shield`
+
+Law and safety: ad labeling, advertising law, personal data, contracts and crises.
+
+| Skill | What it's for | Example request |
+|---|---|---|
+| [`/avelune-shield:ad-law`](plugins/avelune-shield/skills/ad-law/SKILL.md) | To check ad copy against Russian law. Reviews each phrase ('best', 'No. 1', discounts, comparisons, sensitive niches, Russian-language rules) and gives a safe replacement. | “Check the clinic's ad before launch” |
+| [`/avelune-shield:ad-marking`](plugins/avelune-shield/skills/ad-marking/SKILL.md) | Before any online ad in Russia. How to get an erid, add the 'Реклама' label and avoid fines: channel ads, bloggers, targeting, banners. | “We're placing a post with a blogger, what do we need for labeling?” |
+| [`/avelune-shield:contracts`](plugins/avelune-shield/skills/contracts/SKILL.md) | Contracts and public offers for marketing: with a blogger, agency or freelancer, an offer for an online school. It also checks someone else's contract for risks. | “A contract with a blogger for an integration” |
+| [`/avelune-shield:crisis`](plugins/avelune-shield/skills/crisis/SKILL.md) | When negativity goes beyond a single review. A plan for the first hour and the first day, statements for social media, press and customers. | “A guest got food poisoning at our restaurant and the post spread across city groups” |
+| [`/avelune-shield:knowledge-base`](plugins/avelune-shield/skills/knowledge-base/SKILL.md) | So the team and Claude don't mix up facts about your business. One source of truth: products, prices, rules, tone, decisions, and how to connect it to Claude. | “Build a knowledge base for a beauty salon” |
+| [`/avelune-shield:personal-data`](plugins/avelune-shield/skills/personal-data/SKILL.md) | Before launching a form, bot or mailing. Data processing consents under Russia's 152-FZ, a privacy policy and a checklist to avoid fines. | “We collect phone numbers through a site quiz, what does the law require?” |
+| [`/avelune-shield:platform-rules`](plugins/avelune-shield/skills/platform-rules/SKILL.md) | To avoid bans, strikes and rejected ads. The rules of VK, Telegram, Dzen, Rutube, Yandex Direct, marketplaces and maps, and what to do if you're blocked. | “Our VK ad was blocked, what now?” |
