@@ -6,6 +6,7 @@ P = {
  "avelune-growth":   ("#46E08A","#13B5A6"),
  "avelune-insight":  ("#8F7CFF","#4F8CFF"),
  "avelune-shield":   ("#FF7A59","#FF3D6E"),
+ "avelune-sound":    ("#4FF0D2","#7A5CFF"),
 }
 G = {
  # compass north star
@@ -18,6 +19,8 @@ G = {
  "avelune-growth": '<rect x="280" y="600" width="80" height="140" rx="18" fill="#fff" opacity=".35"/><rect x="400" y="530" width="80" height="210" rx="18" fill="#fff" opacity=".55"/><rect x="520" y="450" width="80" height="290" rx="18" fill="#fff" opacity=".75"/><rect x="640" y="360" width="80" height="380" rx="18" fill="#fff"/><path d="M270 540 L420 420 L520 470 L700 290" stroke="url(#g)" stroke-width="44" fill="none" stroke-linecap="round" stroke-linejoin="round"/><polygon points="760,230 742,370 640,268" fill="url(#g)"/>',
  # lens
  "avelune-insight": '<circle cx="470" cy="470" r="190" fill="none" stroke="url(#g)" stroke-width="56"/><path d="M610 610 L760 760" stroke="url(#g)" stroke-width="72" stroke-linecap="round"/><rect x="390" y="470" width="40" height="80" rx="10" fill="#fff"/><rect x="450" y="420" width="40" height="130" rx="10" fill="#fff"/><rect x="510" y="380" width="40" height="170" rx="10" fill="#fff"/>',
+ # waveform
+ "avelune-sound": '<rect x="166" y="472" width="52" height="80" rx="26" fill="url(#g)"/><rect x="246" y="427" width="52" height="170" rx="26" fill="url(#g)"/><rect x="326" y="367" width="52" height="290" rx="26" fill="url(#g)"/><rect x="406" y="312" width="52" height="400" rx="26" fill="#fff"/><rect x="486" y="262" width="52" height="500" rx="26" fill="#fff"/><rect x="566" y="312" width="52" height="400" rx="26" fill="#fff"/><rect x="646" y="367" width="52" height="290" rx="26" fill="url(#g)"/><rect x="726" y="427" width="52" height="170" rx="26" fill="url(#g)"/><rect x="806" y="472" width="52" height="80" rx="26" fill="url(#g)"/>',
  # shield
  "avelune-shield": '<path d="M512 250 L740 330 L740 520 C740 650 640 740 512 790 C384 740 284 650 284 520 L284 330Z" fill="url(#g)"/><path d="M412 520 L490 598 L630 450" stroke="#fff" stroke-width="52" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
 }

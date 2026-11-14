@@ -6,16 +6,16 @@ def flow(lang):
                 s2='Дирижёр avelune', s2d='разбивает на шаги и выбирает скиллы',
                 s4='Проверки', checks=['creative-review: качество','ad-law и ad-marking: закон','supervisor: агенты по брифу','board: 12 мнений для больших решений'],
                 s5='Результат и отчёт', s5d='тексты, планы, кампании, report через 2 недели',
-                names=['Руководитель','Креатив','SMM','Рост и продажи','Аналитика и SEO','Защита'],
-                counts=['22 скилла','20 скиллов','20 скиллов','20 скиллов','12 скиллов','7 скиллов']),
+                names=['Руководитель','Креатив','SMM','Рост и продажи','Аналитика и SEO','Защита','Звук и саунд-дизайн'],
+                counts=['22 скилла','20 скиллов','20 скиллов','20 скиллов','12 скиллов','7 скиллов','18 скиллов']),
      'en': dict(title='How it works', s1='One-line task', s1d='“Run the clinic’s promotion for November”',
                 s2='avelune conductor', s2d='splits it into steps and picks the skills',
                 s4='Checks', checks=['creative-review: quality','ad-law, ad-marking: legal','supervisor: agents on brief','board: 12 views for big calls'],
                 s5='Result and report', s5d='copy, plans, campaigns, a report two weeks later',
-                names=['CEO','Creative','SMM','Growth & Sales','Insight & SEO','Shield'],
-                counts=['22 skills','20 skills','20 skills','20 skills','12 skills','7 skills']),
+                names=['CEO','Creative','SMM','Growth & Sales','Insight & SEO','Shield','Sound & sound design'],
+                counts=['22 skills','20 skills','20 skills','20 skills','12 skills','7 skills','18 skills']),
     }[lang]
-    keys=['avelune-ceo','avelune-creative','avelune-smm','avelune-growth','avelune-insight','avelune-shield']
+    keys=['avelune-ceo','avelune-creative','avelune-smm','avelune-growth','avelune-insight','avelune-shield','avelune-sound']
     plug=''.join(f'<div class="pl"><img src="out/{k}.png"><div><b>{n}</b><span>{c}</span></div></div>' for k,n,c in zip(keys,T['names'],T['counts']))
     checks=''.join(f'<li>{c}</li>' for c in T['checks'])
     return f'''<!doctype html><html><head><meta charset="utf-8">
@@ -30,9 +30,10 @@ h2{{position:absolute;left:0;right:0;top:30px;text-align:center;margin:0;font:70
 .n{{display:inline-flex;width:28px;height:28px;border-radius:50%;align-items:center;justify-content:center;font:700 14px Inter;background:linear-gradient(135deg,#FFD27A,#FF8AC2);color:#14102E;margin-bottom:10px}}
 .c1{{left:40px;top:110px;width:240px;height:170px}}
 .c2{{left:40px;top:310px;width:240px;height:170px}}
-.mid{{position:absolute;left:340px;top:100px;width:560px;height:400px;display:grid;grid-template-columns:1fr 1fr;gap:14px}}
-.pl{{display:flex;align-items:center;gap:14px;border-radius:18px;background:#ffffff0b;border:1px solid #ffffff1a;padding:12px 14px}}
-.pl img{{width:64px;height:64px;border-radius:16px}}
+.mid{{position:absolute;left:340px;top:100px;width:560px;height:400px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,1fr);gap:12px}}
+.pl:last-child{{grid-column:span 2}}
+.pl{{display:flex;align-items:center;gap:14px;border-radius:18px;background:#ffffff0b;border:1px solid #ffffff1a;padding:8px 14px}}
+.pl img{{width:60px;height:60px;border-radius:15px}}
 .pl b{{display:block;font:700 17px Inter}}
 .pl span{{font:500 14px Inter;color:#A9A3CF}}
 .c4{{left:960px;top:100px;width:280px;height:224px}}
