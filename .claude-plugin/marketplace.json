@@ -4,15 +4,15 @@
     "name": "Avelune Labs"
   },
   "metadata": {
-    "description": "Avelune Labs: шесть плагинов Claude для маркетинга и управления бизнесом в любой нише. 101 скилл, совет из 12 агентов, надзор за агентами.",
-    "version": "1.0.0"
+    "description": "Avelune Labs: семь плагинов Claude для маркетинга, управления бизнесом и звука в любой нише. 124 скиллов, совет из 12 агентов, надзор за агентами.",
+    "version": "1.1.0"
   },
   "plugins": [
     {
       "name": "avelune-ceo",
       "source": "./plugins/avelune-ceo",
       "description": "Руководитель: стратегия, деньги, цены, найм, переговоры, совет директоров из 12 агентов, надзор за агентами и дирижёр всех плагинов Avelune Labs.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "productivity",
       "keywords": [
         "strategy",
@@ -96,6 +96,26 @@
         "ad-marking",
         "personal-data",
         "crisis",
+        "russian"
+      ]
+    },
+    {
+      "name": "avelune-sound",
+      "source": "./plugins/avelune-sound",
+      "description": "Звук и саунд-дизайн: звуковой бренд, звук для роликов и рекламы, голос, эффекты, синтез, игры, сведение, мастеринг и громкость, реверберация, пространство, алгоритмы DAFx, виртуальный аналог, нейросети, аудиоплагины, а также встроенные Openverse, earshot и Real SFX.",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": [
+        "sound-design",
+        "audio",
+        "dsp",
+        "dafx",
+        "mixing",
+        "game-audio",
+        "sonic-branding",
+        "openverse",
+        "earshot",
+        "sfx",
         "russian"
       ]
     }

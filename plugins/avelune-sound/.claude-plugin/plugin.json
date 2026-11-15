@@ -1,0 +1,24 @@
+{
+  "name": "avelune-sound",
+  "version": "1.0.0",
+  "description": "Звук и саунд-дизайн: звуковой бренд, звук для роликов и рекламы, голос, эффекты, синтез, игры, сведение, мастеринг и громкость, реверберация, пространство, алгоритмы DAFx, виртуальный аналог, нейросети, аудиоплагины, а также встроенные Openverse, earshot и Real SFX.",
+  "author": {
+    "name": "Avelune Labs"
+  },
+  "license": "MIT",
+  "keywords": [
+    "sound-design",
+    "audio",
+    "dsp",
+    "dafx",
+    "mixing",
+    "game-audio",
+    "sonic-branding",
+    "openverse",
+    "earshot",
+    "sfx",
+    "russian"
+  ],
+  "homepage": "https://github.com/angelmaycrv/avelune-labs",
+  "repository": "https://github.com/angelmaycrv/avelune-labs"
+}

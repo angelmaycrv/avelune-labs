@@ -127,3 +127,30 @@
 - КонсультантПлюс: следующая запланированная редакция 38-ФЗ вступает 01.03.2027 (содержание не прочитано, сверить).
 - Маркировка (callibri 30.03.2026): пометка именно «Реклама», без синонимов; данные рекламодателя; erid. Статистика: 230 постановлений о штрафах за янв–май 2025 против 96 за тот же период 2024.
 - Утечки ПД: первые дела по новым штрафам (sostav, блог Б-152, 07.10.2026): суды снижают штраф МСП по ст. 4.1.2 КоАП, дают предупреждение при первом нарушении, уведомлении РКН и внутреннем расследовании. Атака хакеров не освобождает от ответственности. Уведомить РКН об утечке в течение 24 часов, о результатах расследования в течение 72 часов (по блогу, сверить со ст. 21 152-ФЗ).
+
+## Звук и саунд-дизайн (проверено 14.11.2026, для плагина avelune-sound)
+
+### Призёры DAFx (сообщения университетов и организаторов)
+- 2018, Авейру: Bogason, Werner, «Modeling Time-Varying Reactances Using Wave Digital Filters» (Queen's University Belfast, pure.qub.ac.uk).
+- 2022, Вена: Vahidi и соавт., «Differentiable Time-Frequency Scattering on GPU» (QMUL AIM); Renault и соавт., «Differentiable Piano Model for MIDI-to-Audio Performance Synthesis», золотая медаль (STMS Lab).
+- 2023, Копенгаген: Dal Santo, Prawda, Schlecht, Välimäki, «Differentiable Feedback Delay Network for Colorless Reverberation» (research.aalto.fi).
+- 2024, Гилфорд: Meier, Schwär, Müller, «A Real-Time Approach for Estimating Pulse Tracking Parameters for Beat-Synchronous Audio Effects» (AudioLabs Erlangen, 22.10.2024).
+- 2025, Анкона: 1-я Risse, Hélie, Bilbao; 2-я (две) Moliner и соавт. и Massi и соавт.; 3-я (две) Zheleznov и соавт. и Välimäki и соавт. «Zero-Phase Sound via Giant FFT» (University of Edinburgh AAG, 12.09.2025; Politecnico di Milano DEIB; Aalto).
+- 2026, MIT: Dal Santo, Pi, Prawda, Schlecht, Välimäki, «Shimmer Reverberation with Nonlinear Feedback Delay Networks» (aalto.fi; статья dafx.de/paper-archive/2026/papers/DAFx26_paper_05.pdf).
+- Призёры 2016, 2017, 2019–2021 не найдены в проверяемом виде (страница ÖAW о DAFx 2019 недоступна).
+
+### Громкость
+- Spotify (официальная справка, без даты): −14 LUFS по ITU 1770; тихие треки поднимаются с запасом 1 дБ до пика; режимы −11 / −14 / −19; true peak −1 dB, для мастеров громче −14 LUFS −2 dB; веб-плеер и сторонние устройства могут не нормализовать.
+- EBU R 128 (редакция 2020): −23 LUFS, −1 dBTP, допуск ±1 LU только где точное попадание невозможно.
+- ATSC A/85:2026-07 (8.07.2026): −24 LKFS, true peak ниже −2 dBTP, добавлено приложение L о стриминге.
+- ITU-R BS.1770-5 (11.2023): гейтинг −70 LKFS и −10 LU, true peak с передискретизацией 4×; для стерео и 5.1 алгоритм тот же, что в −3 и −4.
+- Только по обзорам (forasoft.com, 05.06.2026), сверять: Apple Music −16, YouTube ≈ −14 (только приглушает), Tidal и Amazon −14, AES TD1008 (2021) −18 речь и −16 музыка, Apple Podcasts −16 ±1, Netflix −27 по диалогу. TikTok, Instagram, VK норм не публикуют.
+- Игры: рекомендации PlayStation на февраль 2024 (Audiokinetic, «Mastering a Game with Wwise, Part 1»): консоль −24 LUFS ±2, мобильные −18 ±2, −1 dBTP, LRA до 20, замер 30+ минут на выходе устройства. IESD/GANG (2015): −24 ±2 консоли, мониторинг ≈79 дБ SPL в большой комнате и ≈76 в малой.
+
+### Практика реверберации и нелинейностей
+- Valhalla DSP (блог, AES 2015): входные диффузоры звенят на коротких импульсах; диффузию делать регулируемой; средняя длина линии ≈0,1 с, хвост 30 с ≈300 проходов; Abbey Road: фильтры на возврате ≈600 Гц и 10 кГц; ориентиры RT60 залов 1,7–2,3 с.
+- Vicanek, «Note on Alias Suppression in Digital Distortion»: передискретизация 2× ≈ −6 дБ алиасинга, 4× ≈ −12 дБ для жёсткого шейпера; ADAA + 4× практически убирает алиасинг; шейпер x/√(1+x²).
+- DAFx 2026 (шиммер): устойчивость при ортогональной матрице и |Γ|<1; почти энергосохраняющие нелинейности; блокатор DC R 0,95–0,995 и адаптивная компенсация энергии ≈50 мс.
+
+### Разработка
+- Steinberg перевёл VST 3 SDK на лицензию MIT с версии 3.8 (пресс-релиз 29.10.2025); ASIO получил лицензию, совместимую с GPL.

@@ -1,8 +1,8 @@
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/banner-ru-dark.png"><img src="assets/banner-ru.png" alt="Avelune Labs: маркетинговое агентство внутри Claude. Шесть плагинов, 101 скилл и совет директоров из 12 агентов" width="100%"></picture></p>
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/banner-ru-dark.png"><img src="assets/banner-ru.png" alt="Avelune Labs: маркетинговое агентство внутри Claude. Семь плагинов, 124 скиллов и совет директоров из 12 агентов" width="100%"></picture></p>
 
 <p align="center">
-<img src="https://img.shields.io/badge/%D0%BF%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%D0%BE%D0%B2-6-EDEFF3?style=for-the-badge&labelColor=14161B" alt="плагинов: 6">
-<img src="https://img.shields.io/badge/%D1%81%D0%BA%D0%B8%D0%BB%D0%BB%D0%BE%D0%B2-101-1D3FD8?style=for-the-badge&labelColor=14161B" alt="скиллов: 101">
+<img src="https://img.shields.io/badge/%D0%BF%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%D0%BE%D0%B2-7-EDEFF3?style=for-the-badge&labelColor=14161B" alt="плагинов: 7">
+<img src="https://img.shields.io/badge/%D1%81%D0%BA%D0%B8%D0%BB%D0%BB%D0%BE%D0%B2-124-1D3FD8?style=for-the-badge&labelColor=14161B" alt="скиллов: 124">
 <img src="https://img.shields.io/badge/%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D0%BE%D0%B2%20%D1%81%D0%BE%D0%B2%D0%B5%D1%82%D0%B0-12-EDEFF3?style=for-the-badge&labelColor=14161B" alt="агентов совета: 12">
 <img src="https://img.shields.io/badge/Claude%20Code-plugin-EDEFF3?style=for-the-badge&labelColor=14161B" alt="Claude Code: plugin">
 <img src="https://img.shields.io/badge/license-MIT-EDEFF3?style=for-the-badge&labelColor=14161B" alt="license: MIT">
@@ -16,7 +16,7 @@
 
 ## Что это
 
-**Avelune Labs** это шесть плагинов для Claude Code. Вместе они работают как команда: руководитель, креативный директор, SMM-специалист, маркетолог по росту, аналитик и юрист по рекламе. Внутри 101 скилл, совет директоров из 12 агентов и надзор координатора за агентами.
+**Avelune Labs** это семь плагинов для Claude Code. Вместе они работают как команда: руководитель, креативный директор, SMM-специалист, маркетолог по росту, аналитик, юрист по рекламе и саунд-дизайнер. Внутри 124 скиллов, совет директоров из 12 агентов и надзор координатора за агентами.
 
 Вы пишете задачу обычными словами: «запусти продвижение на ноябрь», «почему заявки есть, а продаж нет», «проверь рекламу клиники». Claude выбирает нужные скиллы, проходит шаги по порядку и проверяет результат.
 
@@ -31,11 +31,11 @@
 | Один взгляд на решение | 12 независимых агентов совета и честный итог: единогласно или нет |
 | Креатив «в среднем по рынку» | 33 разобранные кампании-эталона, от Volkswagen «Think Small» до Т-Банка |
 
-<p align="center"><img src="assets/flow-ru.png" alt="Как это работает: задача, дирижёр, шесть плагинов, проверки, результат и отчёт" width="100%"></p>
+<p align="center"><img src="assets/flow-ru.png" alt="Как это работает: задача, дирижёр, семь плагинов, проверки, результат и отчёт" width="100%"></p>
 
 ## Плагины
 
-<table><tr><td width="50%" valign="top"><img src="plugins/avelune-ceo/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-ceo/README.md"><b>Руководитель</b></a><br>&nbsp;<code>avelune-ceo</code> · 22 скилла<br clear="left"><sub>Стратегия, юнит-экономика, цены, найм, переговоры. Совет из 12 агентов, надзор за агентами и дирижёр всех плагинов.</sub></td><td width="50%" valign="top"><img src="plugins/avelune-creative/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-creative/README.md"><b>Креатив и тексты</b></a><br>&nbsp;<code>avelune-creative</code> · 20 скиллов<br clear="left"><sub>Большие идеи, офферы, хуки, заголовки, лендинги, сценарии, нейминг, слоганы, голос бренда, редактура без штампов.</sub></td></tr><tr><td width="50%" valign="top"><img src="plugins/avelune-smm/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-smm/README.md"><b>SMM</b></a><br>&nbsp;<code>avelune-smm</code> · 20 скиллов<br clear="left"><sub>Контент-план, инфоповоды, аудит, комьюнити, негатив, блогеры, посевы, Telegram, VK, Дзен, видео, эфиры.</sub></td><td width="50%" valign="top"><img src="plugins/avelune-growth/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-growth/README.md"><b>Рост и продажи</b></a><br>&nbsp;<code>avelune-growth</code> · 20 скиллов<br clear="left"><sub>Рынок, позиционирование, VK Реклама, Директ, воронки, боты, запуски, скрипты, возражения, удержание, отзывы, акции.</sub></td></tr><tr><td width="50%" valign="top"><img src="plugins/avelune-insight/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-insight/README.md"><b>Аналитика и SEO</b></a><br>&nbsp;<code>avelune-insight</code> · 12 скиллов<br clear="left"><sub>Метрики, отчёты, прогнозы, опросы, тренды, упоминания, SEO с учётом нейроответов, семантика, карты.</sub></td><td width="50%" valign="top"><img src="plugins/avelune-shield/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-shield/README.md"><b>Защита</b></a><br>&nbsp;<code>avelune-shield</code> · 7 скиллов<br clear="left"><sub>Маркировка рекламы, закон о рекламе и русском языке, правила площадок, договоры, 152-ФЗ, антикризис, база знаний.</sub></td></tr></table>
+<table><tr><td width="50%" valign="top"><img src="plugins/avelune-ceo/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-ceo/README.md"><b>Руководитель</b></a><br>&nbsp;<code>avelune-ceo</code> · 22 скилла<br clear="left"><sub>Стратегия, юнит-экономика, цены, найм, переговоры. Совет из 12 агентов, надзор за агентами и дирижёр всех плагинов.</sub></td><td width="50%" valign="top"><img src="plugins/avelune-creative/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-creative/README.md"><b>Креатив и тексты</b></a><br>&nbsp;<code>avelune-creative</code> · 20 скиллов<br clear="left"><sub>Большие идеи, офферы, хуки, заголовки, лендинги, сценарии, нейминг, слоганы, голос бренда, редактура без штампов.</sub></td></tr><tr><td width="50%" valign="top"><img src="plugins/avelune-smm/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-smm/README.md"><b>SMM</b></a><br>&nbsp;<code>avelune-smm</code> · 20 скиллов<br clear="left"><sub>Контент-план, инфоповоды, аудит, комьюнити, негатив, блогеры, посевы, Telegram, VK, Дзен, видео, эфиры.</sub></td><td width="50%" valign="top"><img src="plugins/avelune-growth/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-growth/README.md"><b>Рост и продажи</b></a><br>&nbsp;<code>avelune-growth</code> · 20 скиллов<br clear="left"><sub>Рынок, позиционирование, VK Реклама, Директ, воронки, боты, запуски, скрипты, возражения, удержание, отзывы, акции.</sub></td></tr><tr><td width="50%" valign="top"><img src="plugins/avelune-insight/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-insight/README.md"><b>Аналитика и SEO</b></a><br>&nbsp;<code>avelune-insight</code> · 12 скиллов<br clear="left"><sub>Метрики, отчёты, прогнозы, опросы, тренды, упоминания, SEO с учётом нейроответов, семантика, карты.</sub></td><td width="50%" valign="top"><img src="plugins/avelune-shield/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-shield/README.md"><b>Защита</b></a><br>&nbsp;<code>avelune-shield</code> · 7 скиллов<br clear="left"><sub>Маркировка рекламы, закон о рекламе и русском языке, правила площадок, договоры, 152-ФЗ, антикризис, база знаний.</sub></td></tr><tr><td width="50%" valign="top"><img src="plugins/avelune-sound/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-sound/README.md"><b>Звук и саунд-дизайн</b></a><br>&nbsp;<code>avelune-sound</code> · 23 скилла<br clear="left"><sub>Звуковой бренд, звук для роликов и игр, голос, эффекты, синтез, сведение, мастеринг, алгоритмы DAFx, аудиоплагины, Openverse, earshot и Real SFX.</sub></td><td width="50%" valign="top"></td></tr></table>
 
 ## Быстрый старт
 
@@ -49,6 +49,7 @@
 /plugin install avelune-growth@avelune-labs
 /plugin install avelune-insight@avelune-labs
 /plugin install avelune-shield@avelune-labs
+/plugin install avelune-sound@avelune-labs
 ```
 
 Можно ставить не всё: например, только «Креатив» и «SMM». Для локальной копии репозитория: `/plugin marketplace add ./avelune-labs`.
@@ -82,6 +83,9 @@ claude plugin install avelune-ceo@avelune-labs
 | Открытие точки | market-research → naming → offline → local-seo → reviews → promos → forecast |
 | Репутационный кризис | crisis → negativity → mentions → reviews → postmortem |
 | Большое решение | brainstorm → risk-map → finmodel → board |
+| Звук для ролика или рекламы | video-sound → voice → sfx-design → mixing → mastering → sound-review |
+| Звуковой бренд | sonic-branding → ui-sounds → mastering → sound-review |
+| Свой аудиоэффект или плагин | dafx → dsp-effects или virtual-analog → plugin-dev → sound-review |
 
 ## Совет директоров и надзор за агентами
 
@@ -92,6 +96,7 @@ claude plugin install avelune-ceo@avelune-labs
 ## На чём основано
 
 - **Книги и исследования:** Rackham «SPIN Selling», Dixon и Adamson «The Challenger Sale», Voss «Never Split the Difference», Cialdini «Influence», Byron Sharp «How Brands Grow», Dunford «Obviously Awesome», Ogilvy, Kahneman, Tetlock, Kaushik, Croll и Yoskovitz «Lean Analytics», Reichheld (NPS), Fitzpatrick «The Mom Test», Coombs (антикризис), Nielsen Norman Group и другие.
+- **Звук:** архив конференции DAFx (призёры 2018–2026), Chowning, Karplus и Strong, Julius O. Smith, Schroeder, Dattorro, Välimäki, Zölzer «DAFX», Murch, Chion, Katz «Mastering Audio», нормы ITU-R BS.1770-5, EBU R 128, ATSC A/85 и площадок. Канон из 68 работ лежит в [`plugins/avelune-sound/skills/dafx/references.md`](plugins/avelune-sound/skills/dafx/references.md).
 - **Кейсы:** 33 кампании с агентством, годом, инсайтом и механикой; российские кейсы помечены для сверки.
 - **Факты о площадках и законах:** с источником и датой проверки (ноябрь 2026). Журнал проверенных фактов лежит в [`docs/research-notes.md`](docs/research-notes.md), план изучения в [`docs/research-plan.md`](docs/research-plan.md).
 
@@ -105,7 +110,7 @@ claude plugin install avelune-ceo@avelune-labs
 
 ## Полный каталог скиллов
 
-Все 101 скилл с объяснением, зачем каждый нужен, и примером запроса собраны в [справочнике в самом низу](#справочник-скиллов).
+Все 124 скиллов с объяснением, зачем каждый нужен, и примером запроса собраны в [справочнике в самом низу](#справочник-скиллов).
 
 ## Ограничения
 
@@ -117,14 +122,15 @@ claude plugin install avelune-ceo@avelune-labs
 
 ```text
 avelune-labs/
-├── .claude-plugin/marketplace.json   каталог из 6 плагинов
+├── .claude-plugin/marketplace.json   каталог из 7 плагинов
 ├── plugins/
 │   ├── avelune-ceo/        22 скилла, 12 агентов совета, хуки надзора
 │   ├── avelune-creative/   20 скиллов, база из 33 кампаний
 │   ├── avelune-smm/        20 скиллов
 │   ├── avelune-growth/     20 скиллов
 │   ├── avelune-insight/    12 скиллов
-│   └── avelune-shield/     7 скиллов
+│   ├── avelune-shield/     7 скиллов
+│   └── avelune-sound/      23 скилла, канон из 68 работ DAFx, Openverse, earshot, Real SFX
 ├── docs/                   план изучения и журнал проверенных фактов
 └── assets/                 баннеры, схема, иконки и их исходники
 ```
@@ -135,7 +141,7 @@ avelune-labs/
 
 ## Справочник скиллов
 
-Все 101 скилл: зачем каждый нужен и пример запроса.
+Все 124 скиллов: зачем каждый нужен и пример запроса.
 
 **Как вызвать скилл.** Есть три способа.
 
@@ -287,3 +293,33 @@ avelune-labs/
 | [`/avelune-shield:knowledge-base`](plugins/avelune-shield/skills/knowledge-base/SKILL.md) | Чтобы команда и Claude не путали факты о бизнесе. Единая база: продукты, цены, правила, тон, решения, и как подключить её к Claude. | «Собрать базу знаний для салона красоты» |
 | [`/avelune-shield:personal-data`](plugins/avelune-shield/skills/personal-data/SKILL.md) | Перед запуском формы, бота или рассылки. Согласия на обработку данных по 152-ФЗ, политика и чек-лист, чтобы не получить штраф. | «Собираем телефоны через квиз на сайте, что нужно по закону?» |
 | [`/avelune-shield:platform-rules`](plugins/avelune-shield/skills/platform-rules/SKILL.md) | Чтобы не получить бан, страйк или отклонённую рекламу. Правила VK, Telegram, Дзена, Rutube, Директа, маркетплейсов и карт, и что делать при блокировке. | «Заблокировали рекламу в VK, что делать?» |
+
+### Звук и саунд-дизайн · `avelune-sound`
+
+Звук для бизнеса, контента, игр и продуктов, сведение и громкость, алгоритмы DAFx и разработка аудиоплагинов.
+
+| Скилл | Зачем нужен | Пример запроса |
+|---|---|---|
+| [`/avelune-sound:audio-ml`](plugins/avelune-sound/skills/audio-ml/SKILL.md) | Нейросети для звука. Моделирование усилителей, DDSP, генерация, разделение на стемы, права на данные. | «Обучить модель своего гитарного усилителя» |
+| [`/avelune-sound:dafx`](plugins/avelune-sound/skills/dafx/SKILL.md) | Найти лучший известный метод в исследованиях. Канон из 68 работ и призёры DAFx 2018–2026 с практическими выводами. | «Что почитать про антиалиасинг дисторшна?» |
+| [`/avelune-sound:dsp-effects`](plugins/avelune-sound/skills/dsp-effects/SKILL.md) | Реализовать или починить эффект. Задержки, фильтры, компрессоры, растяжение времени, спектральная обработка. | «Почему мой фильтр щёлкает при автоматизации?» |
+| [`/avelune-sound:earshot`](plugins/avelune-sound/skills/earshot/SKILL.md) | Чтобы Claude «услышал» звук. Описание, совпадение с запросом, реальная запись или синтез, таймлайн ролика, громкость, банк из 252 эффектов. Из проекта earshot. | «Какой из этих пяти вжухов лучше подходит к логотипу?» |
+| [`/avelune-sound:game-audio`](plugins/avelune-sound/skills/game-audio/SKILL.md) | Звук для игры любого размера. Вариации без повторов, адаптивная музыка, микс и громкость консолей и мобильных. | «Звук для мобильного раннера на Unity и FMOD» |
+| [`/avelune-sound:mastering`](plugins/avelune-sound/skills/mastering/SKILL.md) | Перед выпуском. Нормы громкости площадок с источниками, цепочка мастеринга, форматы сдачи. | «Под какую громкость мастерить для Spotify и YouTube?» |
+| [`/avelune-sound:mixing`](plugins/avelune-sound/skills/mixing/SKILL.md) | Свести трек или ролик. Порядок работы, частотная карта, компрессия, диагностика «мутно, тихо, плоско». | «Микс мутный по сравнению с референсом» |
+| [`/avelune-sound:openverse`](plugins/avelune-sound/skills/openverse/SKILL.md) | Найти реальный звук с открытой лицензией. Поиск по ~5 млн аудио, фильтр «можно в рекламу», файл с авторами и лицензиями. | «Найди звук скрипа двери, который можно использовать в рекламе» |
+| [`/avelune-sound:plugin-dev`](plugins/avelune-sound/skills/plugin-dev/SKILL.md) | Написать аудиоплагин. Выбор стека, правила реального времени, параметры, тестирование и выпуск. | «Плагин на JUCE падает в Ableton при смене буфера» |
+| [`/avelune-sound:real-sfx`](plugins/avelune-sound/skills/real-sfx/SKILL.md) | Озвучить моушн-ролик реальными звуками из своей библиотеки точно по кадрам, сохранив музыку и голос. Из Clipwing. | «Добавь звуки в промо-ролик из моей библиотеки» |
+| [`/avelune-sound:real-sound`](plugins/avelune-sound/skills/real-sound/SKILL.md) | Полный саундтрек ролика из лицензированных записей: музыка по тактам, эффекты, проверка, мастеринг, титры. Из проекта earshot. | «Собери саундтрек для лонч-видео продукта» |
+| [`/avelune-sound:reverb`](plugins/avelune-sound/skills/reverb/SKILL.md) | Пространство в миксе или свой ревербератор. Настройки по источникам, FDN, Dattorro, шиммер. | «Реверберация мутит вокал» |
+| [`/avelune-sound:sfx-design`](plugins/avelune-sound/skills/sfx-design/SKILL.md) | Когда нужного звука нет в библиотеках. Метод слоёв, обработка исходников, рецепты ударов, вжухов, магии, существ. | «Собери звук удара для файтинга» |
+| [`/avelune-sound:sfx-toolkit`](plugins/avelune-sound/skills/sfx-toolkit/SKILL.md) | Связка Openverse, earshot и Real SFX в один конвейер: установка, что когда брать, от списка моментов до готового MP4. | «Озвучь анимацию интерфейса, своей библиотеки нет» |
+| [`/avelune-sound:sonic-branding`](plugins/avelune-sound/skills/sonic-branding/SKILL.md) | Чтобы бренд узнавали по звуку. Звуковой логотип, мотив, палитра, адаптации и тесты узнаваемости. | «Звуковой логотип для сети пекарен» |
+| [`/avelune-sound:sound-director`](plugins/avelune-sound/skills/sound-director/SKILL.md) | Когда непонятно, с чего начать со звуком. Составляет звуковой бриф и цепочку скиллов, проверяет стыки. | «Нужен звук для запуска приложения и рекламных роликов» |
+| [`/avelune-sound:sound-review`](plugins/avelune-sound/skills/sound-review/SKILL.md) | Перед сдачей клиенту. 12 критериев с баллами, главные проблемы и конкретные исправления. | «Проверь звук рекламного ролика перед отправкой» |
+| [`/avelune-sound:spatial-audio`](plugins/avelune-sound/skills/spatial-audio/SKILL.md) | Когда микс узкий или нужен звук вокруг головы. Стерео и моно, бинаурал, Ambisonics, Atmos. | «Сделать бинауральную версию аудиоспектакля» |
+| [`/avelune-sound:synthesis`](plugins/avelune-sound/skills/synthesis/SKILL.md) | Собрать звук на синтезаторе или в коде. Выбор вида синтеза, рецепты барабанов, басов, колоколов, струн. | «Как сделать FM-колокол в Vital?» |
+| [`/avelune-sound:ui-sounds`](plugins/avelune-sound/skills/ui-sounds/SKILL.md) | Чтобы звуки приложения помогали, а не раздражали. Набор звуков событий, вибрация, громкость, доступность. | «Звуки для банковского приложения» |
+| [`/avelune-sound:video-sound`](plugins/avelune-sound/skills/video-sound/SKILL.md) | Когда ролик звучит дёшево или голос тонет в музыке. Звук по секундам, музыка с правами, микс под телефон. | «Озвучь 15-секундный ролик для VK Клипов» |
+| [`/avelune-sound:virtual-analog`](plugins/avelune-sound/skills/virtual-analog/SKILL.md) | Эмулировать аналоговую схему. ADAA, лестничные фильтры, WDF, метод DK, лента и лампы. | «Эмулировать педаль овердрайва по схеме» |
+| [`/avelune-sound:voice`](plugins/avelune-sound/skills/voice/SKILL.md) | Чтобы голос звучал чисто и разборчиво. Запись дома, цепочка обработки, подкаст, ТЗ диктору, ИИ-голоса и права. | «Голос в подкасте глухой и шумный, что сделать?» |

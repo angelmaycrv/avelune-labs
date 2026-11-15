@@ -14,7 +14,7 @@ CMD = "/plugin install avelune-ceo@avelune-labs"
 T = {
     "ru": dict(
         h1=["Опишите задачу.", "Получите план."],
-        sub=(f"<b>Маркетинговое агентство внутри{NB}Claude.</b><br>Шесть плагинов, 101{NB}скилл<br>"
+        sub=(f"<b>Маркетинговое агентство внутри{NB}Claude.</b><br>Семь плагинов, 124{NB}скиллов<br>"
              f"и{NB}совет{NB}директоров из{NB}12{NB}агентов."),
         cta_label="Установка в Claude Code",
         ask=f"Нет заявок с{NB}сайта. Что делать?",
@@ -29,7 +29,7 @@ T = {
     ),
     "en": dict(
         h1=["Describe the task.", "Get the plan."],
-        sub=(f"<b>A marketing agency inside{NB}Claude.</b><br>Six plugins, 101{NB}skills<br>"
+        sub=(f"<b>A marketing agency inside{NB}Claude.</b><br>Seven plugins, 124{NB}skills<br>"
              f"and a{NB}board{NB}of{NB}12{NB}agents."),
         cta_label="Install in Claude Code",
         ask=f"No leads from the{NB}site. What now?",
