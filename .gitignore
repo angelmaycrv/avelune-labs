@@ -1,3 +1,6 @@
 .DS_Store
 *.zip
 node_modules/
+
+# Real SFX ships the uisfx sound pack inside its vendor folder
+!plugins/avelune-sound/skills/real-sfx/vendor/node_modules/

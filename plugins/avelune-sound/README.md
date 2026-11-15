@@ -1,11 +1,21 @@
 <p align="center"><img src=".claude-plugin/icon.png" width="128" alt=""></p>
 
 <h1 align="center">Avelune Sound</h1>
-<p align="center"><b>Звук и саунд-дизайн</b> · 18 скиллов · часть набора <a href="../../README.md">Avelune Labs</a></p>
+<p align="center"><b>Звук и саунд-дизайн</b> · 23 скилла · часть набора <a href="../../README.md">Avelune Labs</a></p>
 
 Звуковая студия внутри Claude: от звукового логотипа и звука для Reels до сведения, мастеринга по нормам площадок, звука для игр и разработки собственных аудиоплагинов. Технические скиллы опираются на архив конференции DAFx (Digital Audio Effects) и классические статьи JAES, IEEE и ICMC: в базе 68 ключевых работ, включая всех найденных призёров DAFx 2018–2026, у каждой записан практический вывод.
 
 **Как работает сильный саунд-дизайнер.** Во всех скиллах одинаковые правила: сначала слушатель и место прослушивания, сравнение только на равной громкости, референс рядом, у каждого слоя есть роль, проверка на телефоне, наушниках и в моно, цифры как стартовая точка, честно об источниках и правах.
+
+## Встроенные инструменты: Openverse, earshot, Real SFX
+
+В плагин встроены три бесплатных инструмента для звука роликов, связанных скиллом [`sfx-toolkit`](skills/sfx-toolkit/SKILL.md):
+
+- **Openverse:** поиск реальных звуков с открытыми лицензиями, скрипт без зависимостей [`openverse.py`](skills/openverse/scripts/openverse.py) пишет файл с авторами и лицензиями.
+- **earshot** (Leon Lin, MIT): Claude не слышит, earshot измеряет и описывает звук за него, а ещё рендерит эффекты из кода. Скиллы `earshot` и `real-sound` взяты из репозитория проекта; сам earshot ставится одной командой `uv tool install` (см. `sfx-toolkit`).
+- **Real SFX** (Clipwing, MIT): раскладывает реальные звуки из вашей библиотеки по кадрам и сводит с музыкой и голосом. Скилл со скриптами и 78 UI-звуками uisfx в 12 стилях (CC0) лежит в плагине целиком; нужны Python и ffmpeg.
+
+Лицензии и источники: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## Установка
 
@@ -47,6 +57,11 @@
 | [`virtual-analog`](skills/virtual-analog/SKILL.md) | Эмуляция аналога: ADAA и передискретизация, лестничные фильтры, WDF, метод DK, лента и лампы. |
 | [`audio-ml`](skills/audio-ml/SKILL.md) | Нейросети в звуке: моделирование усилителей, DDSP, перенос тембра, генерация, разделение, права на данные. |
 | [`plugin-dev`](skills/plugin-dev/SKILL.md) | Разработка аудиоплагинов: стек, правила реального времени, параметры, задержка, тесты, выпуск. |
+| [`sfx-toolkit`](skills/sfx-toolkit/SKILL.md) | Связка Openverse, earshot и Real SFX: установка, что когда брать, конвейер от списка моментов до готового MP4. |
+| [`openverse`](skills/openverse/SKILL.md) | Поиск и скачивание звуков с открытыми лицензиями, фильтр «можно в рекламу», CREDITS.md. |
+| [`earshot`](skills/earshot/SKILL.md) | «Уши» для Claude: описание, совпадение, реальность, таймлайн, громкость, критика, банк эффектов. Из проекта earshot, на английском. |
+| [`real-sound`](skills/real-sound/SKILL.md) | Полный саундтрек из лицензированных записей с микшером, проверкой, мастерингом и титрами. Из проекта earshot, на английском. |
+| [`real-sfx`](skills/real-sfx/SKILL.md) | Реальные звуки из своей библиотеки точно по кадрам моушн-ролика, с сохранением музыки и голоса. Из Clipwing, на английском. |
 
 ## Типовые цепочки
 
@@ -58,6 +73,7 @@
 | Звук для игры | game-audio → sfx-design + synthesis → spatial-audio → mixing → mastering → sound-review |
 | Свой эффект или синтезатор | dafx → dsp-effects или virtual-analog → plugin-dev → sound-review |
 | Эмуляция педали или усилителя | dafx → virtual-analog или audio-ml → plugin-dev |
+| Озвучка моушн-ролика или UI-анимации | sfx-toolkit → openverse → earshot → real-sfx → mastering → sound-review |
 
 ---
 

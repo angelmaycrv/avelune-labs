@@ -7,13 +7,13 @@ def flow(lang):
                 s4='Проверки', checks=['creative-review: качество','ad-law и ad-marking: закон','supervisor: агенты по брифу','board: 12 мнений для больших решений'],
                 s5='Результат и отчёт', s5d='тексты, планы, кампании, report через 2 недели',
                 names=['Руководитель','Креатив','SMM','Рост и продажи','Аналитика и SEO','Защита','Звук и саунд-дизайн'],
-                counts=['22 скилла','20 скиллов','20 скиллов','20 скиллов','12 скиллов','7 скиллов','18 скиллов']),
+                counts=['22 скилла','20 скиллов','20 скиллов','20 скиллов','12 скиллов','7 скиллов','23 скилла']),
      'en': dict(title='How it works', s1='One-line task', s1d='“Run the clinic’s promotion for November”',
                 s2='avelune conductor', s2d='splits it into steps and picks the skills',
                 s4='Checks', checks=['creative-review: quality','ad-law, ad-marking: legal','supervisor: agents on brief','board: 12 views for big calls'],
                 s5='Result and report', s5d='copy, plans, campaigns, a report two weeks later',
                 names=['CEO','Creative','SMM','Growth & Sales','Insight & SEO','Shield','Sound & sound design'],
-                counts=['22 skills','20 skills','20 skills','20 skills','12 skills','7 skills','18 skills']),
+                counts=['22 skills','20 skills','20 skills','20 skills','12 skills','7 skills','23 skills']),
     }[lang]
     keys=['avelune-ceo','avelune-creative','avelune-smm','avelune-growth','avelune-insight','avelune-shield','avelune-sound']
     plug=''.join(f'<div class="pl"><img src="out/{k}.png"><div><b>{n}</b><span>{c}</span></div></div>' for k,n,c in zip(keys,T['names'],T['counts']))

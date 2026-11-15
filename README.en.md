@@ -1,8 +1,8 @@
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/banner-en-dark.png"><img src="assets/banner-en.png" alt="Avelune Labs: a marketing agency inside Claude. Seven plugins, 119 skills and a board of 12 agents" width="100%"></picture></p>
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/banner-en-dark.png"><img src="assets/banner-en.png" alt="Avelune Labs: a marketing agency inside Claude. Seven plugins, 124 skills and a board of 12 agents" width="100%"></picture></p>
 
 <p align="center">
 <img src="https://img.shields.io/badge/plugins-7-EDEFF3?style=for-the-badge&labelColor=14161B" alt="plugins: 7">
-<img src="https://img.shields.io/badge/skills-119-1D3FD8?style=for-the-badge&labelColor=14161B" alt="skills: 119">
+<img src="https://img.shields.io/badge/skills-124-1D3FD8?style=for-the-badge&labelColor=14161B" alt="skills: 124">
 <img src="https://img.shields.io/badge/board%20agents-12-EDEFF3?style=for-the-badge&labelColor=14161B" alt="board agents: 12">
 <img src="https://img.shields.io/badge/Claude%20Code-plugin-EDEFF3?style=for-the-badge&labelColor=14161B" alt="Claude Code: plugin">
 <img src="https://img.shields.io/badge/license-MIT-EDEFF3?style=for-the-badge&labelColor=14161B" alt="license: MIT">
@@ -16,7 +16,7 @@
 
 ## What it is
 
-**Avelune Labs** is a set of seven Claude Code plugins that work as one team: a CEO, a creative director, an SMM lead, a growth marketer, an analyst, an advertising lawyer and a sound designer. Inside are 119 skills, a 12-agent board of directors and supervision of every agent the coordinator launches.
+**Avelune Labs** is a set of seven Claude Code plugins that work as one team: a CEO, a creative director, an SMM lead, a growth marketer, an analyst, an advertising lawyer and a sound designer. Inside are 124 skills, a 12-agent board of directors and supervision of every agent the coordinator launches.
 
 Describe the task in plain words, such as “run our promotion for November” or “we get leads but no sales”. Claude picks the skills, runs the steps in order and checks the result.
 
@@ -37,7 +37,7 @@ Describe the task in plain words, such as “run our promotion for November” o
 
 ## Plugins
 
-<table><tr><td width="50%" valign="top"><img src="plugins/avelune-ceo/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-ceo/README.md"><b>CEO</b></a><br>&nbsp;<code>avelune-ceo</code> · 22 skills<br clear="left"><sub>Strategy, unit economics, pricing, hiring, negotiation. A 12-agent board, agent supervision and a conductor for all plugins.</sub></td><td width="50%" valign="top"><img src="plugins/avelune-creative/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-creative/README.md"><b>Creative</b></a><br>&nbsp;<code>avelune-creative</code> · 20 skills<br clear="left"><sub>Big ideas, offers, hooks, headlines, landing pages, scripts, naming, slogans, brand voice, cliché-free editing.</sub></td></tr><tr><td width="50%" valign="top"><img src="plugins/avelune-smm/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-smm/README.md"><b>SMM</b></a><br>&nbsp;<code>avelune-smm</code> · 20 skills<br clear="left"><sub>Content plans, newsjacking calendar, audits, community, negativity, influencers, Telegram, VK, Dzen, video, live.</sub></td><td width="50%" valign="top"><img src="plugins/avelune-growth/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-growth/README.md"><b>Growth & Sales</b></a><br>&nbsp;<code>avelune-growth</code> · 20 skills<br clear="left"><sub>Market research, positioning, VK Ads, Yandex Direct, funnels, bots, launches, sales scripts, objections, retention, reviews, promos.</sub></td></tr><tr><td width="50%" valign="top"><img src="plugins/avelune-insight/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-insight/README.md"><b>Insight & SEO</b></a><br>&nbsp;<code>avelune-insight</code> · 12 skills<br clear="left"><sub>Metrics, reports, forecasts, surveys, trends, mentions, SEO for AI answers, keyword research, maps.</sub></td><td width="50%" valign="top"><img src="plugins/avelune-shield/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-shield/README.md"><b>Shield</b></a><br>&nbsp;<code>avelune-shield</code> · 7 skills<br clear="left"><sub>Russian ad marking, advertising and language law, platform rules, contracts, personal data, crisis, knowledge base.</sub></td></tr><tr><td width="50%" valign="top"><img src="plugins/avelune-sound/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-sound/README.md"><b>Sound</b></a><br>&nbsp;<code>avelune-sound</code> · 18 skills<br clear="left"><sub>Sonic branding, sound for video and games, voice, effects, synthesis, mixing, mastering, DAFx algorithms, audio plugins.</sub></td><td width="50%" valign="top"></td></tr></table>
+<table><tr><td width="50%" valign="top"><img src="plugins/avelune-ceo/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-ceo/README.md"><b>CEO</b></a><br>&nbsp;<code>avelune-ceo</code> · 22 skills<br clear="left"><sub>Strategy, unit economics, pricing, hiring, negotiation. A 12-agent board, agent supervision and a conductor for all plugins.</sub></td><td width="50%" valign="top"><img src="plugins/avelune-creative/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-creative/README.md"><b>Creative</b></a><br>&nbsp;<code>avelune-creative</code> · 20 skills<br clear="left"><sub>Big ideas, offers, hooks, headlines, landing pages, scripts, naming, slogans, brand voice, cliché-free editing.</sub></td></tr><tr><td width="50%" valign="top"><img src="plugins/avelune-smm/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-smm/README.md"><b>SMM</b></a><br>&nbsp;<code>avelune-smm</code> · 20 skills<br clear="left"><sub>Content plans, newsjacking calendar, audits, community, negativity, influencers, Telegram, VK, Dzen, video, live.</sub></td><td width="50%" valign="top"><img src="plugins/avelune-growth/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-growth/README.md"><b>Growth & Sales</b></a><br>&nbsp;<code>avelune-growth</code> · 20 skills<br clear="left"><sub>Market research, positioning, VK Ads, Yandex Direct, funnels, bots, launches, sales scripts, objections, retention, reviews, promos.</sub></td></tr><tr><td width="50%" valign="top"><img src="plugins/avelune-insight/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-insight/README.md"><b>Insight & SEO</b></a><br>&nbsp;<code>avelune-insight</code> · 12 skills<br clear="left"><sub>Metrics, reports, forecasts, surveys, trends, mentions, SEO for AI answers, keyword research, maps.</sub></td><td width="50%" valign="top"><img src="plugins/avelune-shield/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-shield/README.md"><b>Shield</b></a><br>&nbsp;<code>avelune-shield</code> · 7 skills<br clear="left"><sub>Russian ad marking, advertising and language law, platform rules, contracts, personal data, crisis, knowledge base.</sub></td></tr><tr><td width="50%" valign="top"><img src="plugins/avelune-sound/.claude-plugin/icon.png" width="56" align="left" alt="">&nbsp;<a href="plugins/avelune-sound/README.md"><b>Sound</b></a><br>&nbsp;<code>avelune-sound</code> · 23 skills<br clear="left"><sub>Sonic branding, sound for video and games, voice, effects, synthesis, mixing, mastering, DAFx algorithms, audio plugins, Openverse, earshot and Real SFX.</sub></td><td width="50%" valign="top"></td></tr></table>
 
 ## Quick start
 
@@ -88,7 +88,7 @@ The `avelune-ceo:avelune` conductor splits it into steps: metrics, maps, reviews
 
 ## Full skill catalog
 
-All 119 skills, with what each one is for and an example request, are in the [skill guide at the very bottom](#skill-guide).
+All 124 skills, with what each one is for and an example request, are in the [skill guide at the very bottom](#skill-guide).
 
 ## Limits
 
@@ -101,7 +101,7 @@ All 119 skills, with what each one is for and an example request, are in the [sk
 
 ## Skill guide
 
-All 119 skills: what each one is for and an example request. The skills themselves are written in Russian, but you can talk to them in English.
+All 124 skills: what each one is for and an example request. The skills themselves are written in Russian, but you can talk to them in English.
 
 **How to call a skill.** There are three ways.
 
@@ -263,12 +263,17 @@ Sound for business, content, games and products, mixing and loudness, DAFx algor
 | [`/avelune-sound:audio-ml`](plugins/avelune-sound/skills/audio-ml/SKILL.md) | Neural networks for audio. Amp modelling, DDSP, generation, stem separation, data rights. | "Train a model of my guitar amp" |
 | [`/avelune-sound:dafx`](plugins/avelune-sound/skills/dafx/SKILL.md) | Find the best known method in the research. A canon of 68 works and DAFx award winners 2018–2026 with practical takeaways. | "What should I read on distortion antialiasing?" |
 | [`/avelune-sound:dsp-effects`](plugins/avelune-sound/skills/dsp-effects/SKILL.md) | Build or fix an effect. Delays, filters, compressors, time stretching, spectral processing. | "Why does my filter click under automation?" |
+| [`/avelune-sound:earshot`](plugins/avelune-sound/skills/earshot/SKILL.md) | So Claude can "hear" a sound. Description, text match, real recording or synthesis, a film's timeline, loudness, a bank of 252 effects. From the earshot project. | "Which of these five whooshes fits the logo best?" |
 | [`/avelune-sound:game-audio`](plugins/avelune-sound/skills/game-audio/SKILL.md) | Game audio of any size. Variation without repeats, adaptive music, mixing and loudness for console and mobile. | "Sound for a mobile runner in Unity and FMOD" |
 | [`/avelune-sound:mastering`](plugins/avelune-sound/skills/mastering/SKILL.md) | Before release. Platform loudness targets with sources, a mastering chain, delivery formats. | "What loudness should I master to for Spotify and YouTube?" |
 | [`/avelune-sound:mixing`](plugins/avelune-sound/skills/mixing/SKILL.md) | Mix a track or a video. Workflow, frequency map, compression, diagnosing "muddy, quiet, flat". | "The mix is muddy next to the reference" |
+| [`/avelune-sound:openverse`](plugins/avelune-sound/skills/openverse/SKILL.md) | Find a real sound with an open licence. Search ~5 million audio files, an "OK for ads" filter, a credits file. | "Find a door creak I can use in an ad" |
 | [`/avelune-sound:plugin-dev`](plugins/avelune-sound/skills/plugin-dev/SKILL.md) | Write an audio plugin. Stack choice, real-time rules, parameters, testing and release. | "My JUCE plugin crashes in Ableton when the buffer size changes" |
+| [`/avelune-sound:real-sfx`](plugins/avelune-sound/skills/real-sfx/SKILL.md) | Sound-design a motion video with real sounds from your own library, frame-accurate, keeping music and voice. From Clipwing. | "Add sound effects to the promo from my library" |
+| [`/avelune-sound:real-sound`](plugins/avelune-sound/skills/real-sound/SKILL.md) | A full soundtrack from licensed recordings: music cut to bars, effects, QA, mastering, credits. From the earshot project. | "Build a soundtrack for the product launch video" |
 | [`/avelune-sound:reverb`](plugins/avelune-sound/skills/reverb/SKILL.md) | Space in a mix or your own reverb. Settings by source, FDN, Dattorro, shimmer. | "The reverb is muddying the vocal" |
 | [`/avelune-sound:sfx-design`](plugins/avelune-sound/skills/sfx-design/SKILL.md) | When the sound you need isn't in any library. Layering, source processing, recipes for hits, whooshes, magic, creatures. | "Build a punch sound for a fighting game" |
+| [`/avelune-sound:sfx-toolkit`](plugins/avelune-sound/skills/sfx-toolkit/SKILL.md) | Openverse, earshot and Real SFX as one pipeline: setup, which tool when, from a cue list to a finished MP4. | "Sound the UI animation, I have no library" |
 | [`/avelune-sound:sonic-branding`](plugins/avelune-sound/skills/sonic-branding/SKILL.md) | So people recognise the brand by ear. Sonic logo, motif, palette, adaptations and recognition tests. | "A sonic logo for a bakery chain" |
 | [`/avelune-sound:sound-director`](plugins/avelune-sound/skills/sound-director/SKILL.md) | When you don't know where to start with sound. Writes a sound brief and a chain of skills, checks the seams. | "We need sound for an app launch and ad videos" |
 | [`/avelune-sound:sound-review`](plugins/avelune-sound/skills/sound-review/SKILL.md) | Before delivery. 12 scored criteria, the main problems and concrete fixes. | "Check the ad's sound before we send it" |

@@ -36,6 +36,8 @@ argument-hint: "[что звучит, где, для кого, сроки и и�
 
 **Сведение и сдача:** mixing (сведение), mastering (мастеринг и нормы громкости), reverb (реверберация и пространство в миксе и в коде), sound-review (проверка звука перед сдачей).
 
+**Инструменты для роликов:** sfx-toolkit (связка Openverse, earshot и Real SFX), openverse (звуки с открытыми лицензиями), earshot («уши» для Claude и банк эффектов), real-sfx (реальные звуки по кадрам из своей библиотеки), real-sound (полный саундтрек из лицензированных записей).
+
 **Алгоритмы и разработка:** dafx (библиотека DAFx: статьи и алгоритмы под задачу), dsp-effects (задержки, модуляция, фильтры, динамика, питч и время, спектральные эффекты), virtual-analog (эмуляция аналога, сглаживание алиасинга, WDF), audio-ml (нейросети в звуке), plugin-dev (разработка аудиоплагинов).
 
 ## Типовые цепочки
@@ -50,6 +52,7 @@ argument-hint: "[что звучит, где, для кого, сроки и и�
 | «Микс мутный / тихий / плоский» | sound-review (диагноз) → mixing → reverb → mastering |
 | Свой эффект или синтезатор | dafx → dsp-effects или virtual-analog → plugin-dev → sound-review |
 | Эмуляция педали или усилителя | dafx → virtual-analog (белый ящик) или audio-ml (чёрный ящик) → plugin-dev |
+| Озвучка моушн-ролика, UI-анимации, скринкаста | sfx-toolkit → openverse (если нет библиотеки) → real-sfx → earshot (проверка) → mastering → sound-review |
 | Генерация звука нейросетью | audio-ml → sfx-design (доводка) → mastering → проверка прав |
 
 Связи с другими плагинами Avelune Labs: идея ролика и раскадровка в `avelune-creative:director` и `avelune-creative:reels-script`, большая идея кампании в `avelune-creative:creative-director`, права и реклама в `avelune-shield:ad-law` и `avelune-shield:contracts`.
