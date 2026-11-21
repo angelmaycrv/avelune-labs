@@ -19,7 +19,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from common import AUDIO_EXT, SKILL_DIR, config_path, is_sound_file
+from common import AUDIO_EXT, SKILL_DIR, DATA_DIR, config_path, data_path, is_sound_file
 
 EXAMPLE = {
     "libraries": [],
@@ -51,7 +51,7 @@ def check():
         ok &= bool(p) or not need
     print(f"  python   ok       {sys.version.split()[0]}")
     cfgp = config_path()
-    print("config")
+    print(f"config   (user data, kept across plugin updates: {DATA_DIR})")
     if not cfgp.exists():
         print(f"  {cfgp}: not found -> python setup.py init --library name=PATH --index")
         return False
@@ -71,7 +71,7 @@ def check():
     if not cfg.get("libraries"):
         print("  no libraries configured: only uisfx UI cues will be available")
     idx = Path(cfg.get("index_path", "library_index.json"))
-    idx = idx if idx.is_absolute() else SKILL_DIR / idx
+    idx = idx if idx.is_absolute() else data_path(str(idx))
     if idx.exists():
         d = json.loads(idx.read_text(encoding="utf-8"))
         print(f"  index    {d['count']} sounds  ({idx.name})")
@@ -81,8 +81,8 @@ def check():
     ui = Path(cfg["uisfx"]["path"])
     ui = ui if ui.is_absolute() else SKILL_DIR / ui
     print(f"  uisfx    {'ok' if (ui / 'manifest.json').exists() else 'not installed -> setup.py init --uisfx'}")
-    print(f"  taste    {'yes' if (SKILL_DIR / 'taste.json').exists() else 'empty'}")
-    print(f"  styles   {', '.join(p.stem for p in (SKILL_DIR / 'styles').glob('*.json')) or 'none'}")
+    print(f"  taste    {'yes' if data_path('taste.json').exists() else 'empty'}")
+    print(f"  styles   {', '.join(p.stem for p in data_path('styles').glob('*.json')) or 'none'}")
     return ok
 
 
@@ -133,6 +133,9 @@ def write_config(libs, force, tier="main"):
 
 def install_uisfx():
     vendor = SKILL_DIR / "vendor"
+    if (vendor / "node_modules" / "uisfx" / "manifest.json").exists():
+        print("uisfx: already shipped with the plugin (78 CC0 UI cues), nothing to install")
+        return
     vendor.mkdir(exist_ok=True)
     if not (vendor / "package.json").exists():
         (vendor / "package.json").write_text('{"name":"real-sfx-vendor","private":true,"version":"1.0.0"}', encoding="utf-8")

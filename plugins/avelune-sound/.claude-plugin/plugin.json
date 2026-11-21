@@ -1,7 +1,7 @@
 {
   "name": "avelune-sound",
-  "version": "1.0.0",
-  "description": "Звук и саунд-дизайн: звуковой бренд, звук для роликов и рекламы, голос, эффекты, синтез, игры, сведение, мастеринг и громкость, реверберация, пространство, алгоритмы DAFx, виртуальный аналог, нейросети, аудиоплагины, а также встроенные Openverse, earshot и Real SFX.",
+  "version": "2.0.0",
+  "description": "Озвучка видео реальными звуками с проверкой цифрами: проверка установки, библиотеки пользователя и автодокачка с Openverse, раскладка по кадрам (Real SFX), сведение голоса и музыки, мастеринг под площадки, замер с вердиктом, звуковые эффекты из слоёв записей, звуки интерфейса и звуковой логотип.",
   "author": {
     "name": "Avelune Labs"
   },
@@ -9,14 +9,13 @@
   "keywords": [
     "sound-design",
     "audio",
-    "dsp",
-    "dafx",
+    "sfx",
+    "video",
     "mixing",
-    "game-audio",
-    "sonic-branding",
+    "loudness",
     "openverse",
     "earshot",
-    "sfx",
+    "real-sfx",
     "russian"
   ],
   "homepage": "https://github.com/angelmaycrv/avelune-labs",

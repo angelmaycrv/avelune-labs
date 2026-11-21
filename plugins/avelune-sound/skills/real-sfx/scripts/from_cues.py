@@ -43,14 +43,14 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from common import (SKILL_DIR, decode_mono, effective_dur, family_key, load_config, measure_loudness, onsets,
+from common import (SKILL_DIR, data_path, decode_mono, effective_dur, family_key, load_config, measure_loudness, onsets,
                     voice_share)
 from common import load_json, read_stdin_text
 from picker import load_index, load_taste, rank
 from search import taste_pack, taste_ui_source, uisfx_file
 from unbake import fit_stems, scan_audio, unbake as unbake_audio
 
-KIND_MAP = SKILL_DIR / "kind_map.json"          # the user's own kinds, remembered with --remember
+KIND_MAP = data_path("kind_map.json")          # the user's own kinds, remembered with --remember
 SKIP_DIRS = {"node_modules", ".git", ".hyperframes", "renders", "assets", "dist", "snapshots", ".thumbnails",
              ".waveform-cache", "export", "__pycache__", "vendor"}      # (projects keep timing.js under src/)
 IFACE_KINDS = {"click", "key", "tick", "tock", "chime", "success", "error"}   # events only an interface produces

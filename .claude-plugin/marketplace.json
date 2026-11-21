@@ -4,15 +4,15 @@
     "name": "Avelune Labs"
   },
   "metadata": {
-    "description": "Avelune Labs: семь плагинов Claude для маркетинга, управления бизнесом и звука в любой нише. 124 скиллов, совет из 12 агентов, надзор за агентами.",
-    "version": "1.1.0"
+    "description": "Avelune Labs: восемь плагинов Claude для маркетинга, управления бизнесом и звука в любой нише. 120 скиллов, совет из 12 агентов, надзор за агентами.",
+    "version": "1.2.0"
   },
   "plugins": [
     {
       "name": "avelune-ceo",
       "source": "./plugins/avelune-ceo",
       "description": "Руководитель: стратегия, деньги, цены, найм, переговоры, совет директоров из 12 агентов, надзор за агентами и дирижёр всех плагинов Avelune Labs.",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "category": "productivity",
       "keywords": [
         "strategy",
@@ -102,20 +102,35 @@
     {
       "name": "avelune-sound",
       "source": "./plugins/avelune-sound",
-      "description": "Звук и саунд-дизайн: звуковой бренд, звук для роликов и рекламы, голос, эффекты, синтез, игры, сведение, мастеринг и громкость, реверберация, пространство, алгоритмы DAFx, виртуальный аналог, нейросети, аудиоплагины, а также встроенные Openverse, earshot и Real SFX.",
-      "version": "1.0.0",
+      "description": "Озвучка видео реальными звуками с проверкой цифрами: библиотеки пользователя и Openverse, раскладка по кадрам, сведение голоса и музыки, мастеринг под площадки, замер с вердиктом, эффекты из слоёв записей, звуки интерфейса.",
+      "version": "2.0.0",
       "category": "productivity",
       "keywords": [
         "sound-design",
         "audio",
-        "dsp",
-        "dafx",
+        "sfx",
+        "video",
         "mixing",
-        "game-audio",
-        "sonic-branding",
+        "loudness",
         "openverse",
         "earshot",
-        "sfx",
+        "russian"
+      ]
+    },
+    {
+      "name": "avelune-sound-lab",
+      "source": "./plugins/avelune-sound-lab",
+      "description": "Звуковая лаборатория для разработки: библиотека DAFx, алгоритмы эффектов, виртуальный аналог, нейросети в звуке, аудиоплагины, синтез, ревербераторы, пространственный звук, звук для игр.",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": [
+        "dsp",
+        "dafx",
+        "plugin-dev",
+        "synthesis",
+        "virtual-analog",
+        "audio-ml",
+        "game-audio",
         "russian"
       ]
     }

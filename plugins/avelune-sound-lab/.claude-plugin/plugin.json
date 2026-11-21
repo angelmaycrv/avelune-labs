@@ -1,0 +1,22 @@
+{
+  "name": "avelune-sound-lab",
+  "version": "1.0.0",
+  "description": "Звуковая лаборатория для разработки и исследований: библиотека DAFx, алгоритмы эффектов, виртуальный аналог, нейросети в звуке, аудиоплагины, синтез, ревербераторы, пространственный звук, звук для игр и саундтрек по методу earshot (real-sound, только вручную).",
+  "author": {
+    "name": "Avelune Labs"
+  },
+  "license": "MIT",
+  "keywords": [
+    "dsp",
+    "dafx",
+    "plugin-dev",
+    "synthesis",
+    "virtual-analog",
+    "audio-ml",
+    "game-audio",
+    "spatial-audio",
+    "russian"
+  ],
+  "homepage": "https://github.com/angelmaycrv/avelune-labs",
+  "repository": "https://github.com/angelmaycrv/avelune-labs"
+}

@@ -209,7 +209,7 @@ def main():
         # love / ban / ui_source must not change what the fixture checks
         env = dict(os.environ, REAL_SFX_CONFIG=str(root / "config.json"), REAL_SFX_INDEX=str(root / "index.json"),
                    REAL_SFX_TASTE=str(root / "no_taste.json"), REAL_SFX_RATINGS=str(root / "no_ratings.json"),
-                   REAL_SFX_STEADY=str(root / "no_steady.json"), PYTHONUTF8="1")
+                   REAL_SFX_STEADY=str(root / "no_steady.json"), REAL_SFX_HOME=str(root / "home"), PYTHONUTF8="1")
 
         # 1-3 index and search
         r, ok = sh([PY, S / "build_index.py"], env)

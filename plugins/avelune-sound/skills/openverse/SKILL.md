@@ -1,6 +1,6 @@
 ---
 name: openverse
-description: Поиск и скачивание звуков с открытыми лицензиями через Openverse (около 5 млн аудиофайлов из Freesound, Wikimedia, Jamendo и других источников) с фильтром лицензии, категории и длительности, автоматическим файлом CREDITS.md и проверкой, можно ли использовать звук в рекламе и редактировать его. Использовать, когда нужен реальный записанный звук (вжух, удар, дверь, город, дождь), а своей библиотеки нет, или нужно законно найти звук для коммерческого ролика.
+description: "Найти и скачать реальную запись с открытой лицензией через Openverse (Freesound, Wikimedia, Jamendo и др., около 5 млн аудио), только то, что можно в рекламу и монтаж, с CREDITS.md. Использовать, когда нужен конкретный звук или музыка с понятной лицензией."
 argument-hint: "[какой звук, для чего: реклама, личный проект, игра]"
 ---
 
@@ -27,18 +27,18 @@ argument-hint: "[какой звук, для чего: реклама, личн�
 
 ## Как пользоваться
 
-Скрипт `scripts/openverse.py` (Python 3.9+, без зависимостей):
+Скрипт `${CLAUDE_SKILL_DIR}/scripts/openverse.py` (Python 3.9+, без зависимостей). Для озвучки ролика удобнее `sound-setup/scripts/starter_library.py --for-cues work/events.json --register`: он сам качает недостающие роли и подключает их к real-sfx.
 
 ```bash
 # поиск: только то, что можно продавать и редактировать, звуковые эффекты до 3 секунд
-python scripts/openverse.py search "whoosh" --commercial --category sound_effect --max-dur 3
-python scripts/openverse.py search "wooden door creak" --license cc0 --source freesound --json > hits.json
+python "${CLAUDE_SKILL_DIR}/scripts/openverse.py" search "whoosh" --commercial --category sound_effect --max-dur 3
+python "${CLAUDE_SKILL_DIR}/scripts/openverse.py" search "wooden door creak" --license cc0 --source freesound --json > hits.json
 
 # скачать выбранные id в папку проекта; рядом появятся CREDITS.md и credits.json
-python scripts/openverse.py get 4bc5…e1 9f02…7a --out sfx/
+python "${CLAUDE_SKILL_DIR}/scripts/openverse.py" get 4bc5…e1 9f02…7a --out sfx/
 
 # текст для описания ролика (только звуки, где автор обязателен)
-python scripts/openverse.py credits sfx/
+python "${CLAUDE_SKILL_DIR}/scripts/openverse.py" credits sfx/
 ```
 
 Если запросов много, получите токен по разделу «Register and Authenticate» на api.openverse.org/v1/ и передайте его в переменной окружения `OPENVERSE_TOKEN`.
@@ -48,13 +48,13 @@ python scripts/openverse.py credits sfx/
 1. **Запрос на английском** и словами звукорежиссёра: `whoosh`, `swish`, `impact`, `thud`, `riser`, `foley cloth`, `footsteps gravel`, `room tone`, `ambience city night`. Русские запросы находят мало.
 2. **Описывай материал и действие,** а не эмоцию: `metal hit`, `paper tear`, а не `scary sound`.
 3. **Фильтр длительности:** эффекты обычно до 3–5 секунд, атмосферы от 30 секунд.
-4. **3–5 кандидатов на момент,** затем выбор ушами или через `avelune-sound:earshot` (`earshot rank`, `earshot match`), если слушать некому.
+4. **3–5 кандидатов на момент,** затем выбор по замеру (`sound-check/scripts/sound_check.py --clip`) или через `avelune-sound:earshot` (`earshot rank`, `earshot match`), если слушать некому.
 5. **Качество:** у звуков Freesound файл по ссылке может быть сжатым превью. Для финального микса скачай оригинал WAV на странице источника (ссылка в CREDITS.md, на Freesound нужен бесплатный аккаунт).
-6. **Нет подходящего звука:** собери его из слоёв (`avelune-sound:sfx-design`) или сгенерируй в коде через earshot (`earshot sfx`, `earshot forge`).
+6. **Нет подходящего звука:** попробуй 2–3 других запроса (материал + действие), затем собери из слоёв записей (`avelune-sound:sfx-design`). Генерацию кодом предлагай, только если пользователь сам о ней попросил.
 
 ## Правила
 
 - Сохраняй CREDITS.md вместе с проектом и отдавай заказчику. Для BY укажи автора, название, лицензию и ссылку в описании ролика или титрах.
 - Лицензию проверяй на странице источника перед публикацией: в Openverse бывают устаревшие сведения.
 - Узнаваемые звуки брендов, фрагменты чужой музыки и речь известных людей не брать даже под CC: права на товарный знак, музыку и голос лицензия звука не покрывает.
-- Готовые звуки дальше раскладываются по кадрам скиллами `avelune-sound:real-sfx` или `avelune-sound:real-sound`; общий порядок в `avelune-sound:sfx-toolkit`.
+- Готовые звуки дальше раскладываются по кадрам через `avelune-sound:video-sound` (движок real-sfx). Папку со скачанным подключи: `python "${CLAUDE_SKILL_DIR}/../real-sfx/scripts/setup.py" add-library openverse ПАПКА --tier extra --index`.

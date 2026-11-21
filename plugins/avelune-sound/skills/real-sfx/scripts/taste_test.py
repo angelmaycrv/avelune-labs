@@ -47,10 +47,10 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from common import SKILL_DIR, effective_dur, family_key
+from common import SKILL_DIR, data_path, effective_dur, family_key
 import picker
 
-RATINGS = Path(os.environ.get("REAL_SFX_RATINGS") or SKILL_DIR / "taste_ratings.json")    # (the env: the selftest)
+RATINGS = Path(os.environ.get("REAL_SFX_RATINGS") or data_path("taste_ratings.json"))    # (the env: the selftest)
 SCORE_ORDER = {"love": 2, "ok": 1, "notfit": 0, "never": -1}
 HERE = Path(__file__).parent
 

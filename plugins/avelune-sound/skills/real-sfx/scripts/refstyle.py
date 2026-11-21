@@ -25,7 +25,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from common import SKILL_DIR, measure_loudness
+from common import SKILL_DIR, data_path, measure_loudness
 
 GESTURE_GAP = 0.25            # events closer than this are one gesture (the critique's own pacing gap)
 RATE = 16000
@@ -221,7 +221,7 @@ def find_style(name):
     returned only when nothing better exists."""
     import os
     fallback = (None, None)
-    where = [SKILL_DIR / "styles" / f"{name}.json", SKILL_DIR / "references" / "profiles" / f"{name}.json"]
+    where = [data_path("styles") / f"{name}.json", SKILL_DIR / "styles" / f"{name}.json", SKILL_DIR / "references" / "profiles" / f"{name}.json"]
     if os.environ.get("REAL_SFX_STYLES"):
         where.insert(0, Path(os.environ["REAL_SFX_STYLES"]) / f"{name}.json")
     for p in where:

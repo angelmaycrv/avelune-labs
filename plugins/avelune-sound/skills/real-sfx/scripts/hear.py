@@ -41,9 +41,9 @@ import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from common import SKILL_DIR
+from common import SKILL_DIR, data_path
 
-HOME = Path(os.environ.get("REAL_SFX_AUDIOLM_HOME") or (SKILL_DIR / "vendor"))
+HOME = Path(os.environ.get("REAL_SFX_AUDIOLM_HOME") or data_path("vendor"))
 VENV = HOME / "venv-audiolm"
 MODEL_DIR = HOME / "models" / "midashenglm-0.6b"
 REPO = "mispeech/midashenglm-0.6b-fp32"
