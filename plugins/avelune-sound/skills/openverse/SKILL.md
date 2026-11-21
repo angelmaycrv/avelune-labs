@@ -11,7 +11,7 @@ argument-hint: "[какой звук, для чего: реклама, личн�
 ## Опора
 
 - **Openverse** (openverse.org, бывший CC Search, сейчас проект WordPress): поисковик по медиа с открытыми лицензиями, API https://api.openverse.org/v1/. Аудио приходит в основном из Freesound, Wikimedia и Jamendo. Ключ не нужен; без авторизации до 20 результатов на страницу, с токеном больше. Код платформы под MIT, у каждого звука своя лицензия.
-- **Параметры API** (проверено по исходному коду Openverse, ноябрь 2026): `q`, `license` (cc0, pdm, by, by-sa, by-nd, by-nc, by-nc-sa, by-nc-nd, sampling+, nc-sampling+), `license_type` (commercial, modification), `category` (sound_effect, music, podcast, audiobook, news, pronunciation), `source`, `length` (shortest, short, medium, long), `extension`, `page`, `page_size`. Длительность в ответе в миллисекундах.
+- **Параметры API** (проверено по исходному коду Openverse, ноябрь 2026): `q`, `license` (cc0, pdm, by, by-sa, by-nd, by-nc, by-nc-sa, by-nc-nd, sampling+, nc-sampling+), `license_type` (commercial, modification), `category` (sound_effect, music, podcast, audiobook, news, pronunciation), `source`, `length` (shortest, short, medium, long), `extension`, `page`, `page_size`. Длительность в ответе в миллисекундах. У звуков с Freesound поле `category` пустое, поэтому `--category sound_effect` отсекает почти все эффекты: не ставь его.
 - **Лицензии Creative Commons**: NC запрещает коммерческое использование, ND запрещает изменения (обрезка и обработка звука уже изменение), SA требует ту же лицензию для производного, Sampling+ запрещает рекламу.
 
 ## Какие лицензии брать
@@ -31,7 +31,7 @@ argument-hint: "[какой звук, для чего: реклама, личн�
 
 ```bash
 # поиск: только то, что можно продавать и редактировать, звуковые эффекты до 3 секунд
-python "${CLAUDE_SKILL_DIR}/scripts/openverse.py" search "whoosh" --commercial --category sound_effect --max-dur 3
+python "${CLAUDE_SKILL_DIR}/scripts/openverse.py" search "whoosh" --commercial --max-dur 3
 python "${CLAUDE_SKILL_DIR}/scripts/openverse.py" search "wooden door creak" --license cc0 --source freesound --json > hits.json
 
 # скачать выбранные id в папку проекта; рядом появятся CREDITS.md и credits.json
