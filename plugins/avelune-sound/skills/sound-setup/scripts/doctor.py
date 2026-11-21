@@ -140,7 +140,12 @@ def main():
 
     if net:
         try:
-            with urllib.request.urlopen("https://api.openverse.org/v1/audio/?q=whoosh&page_size=1", timeout=20) as u:
+            # Cloudflare blocks the default Python-urllib agent (error 1010), so send the one openverse.py uses
+            req = urllib.request.Request("https://api.openverse.org/v1/audio/?q=whoosh&page_size=1",
+                                         headers={"User-Agent": "avelune-sound-openverse/1.0 "
+                                                  "(+https://github.com/angelmaycrv/avelune-labs)",
+                                                  "Accept": "application/json"})
+            with urllib.request.urlopen(req, timeout=20) as u:
                 ok = u.status == 200
         except Exception as e:
             ok, err = False, str(e)

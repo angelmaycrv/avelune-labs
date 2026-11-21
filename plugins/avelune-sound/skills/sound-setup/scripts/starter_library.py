@@ -34,17 +34,18 @@ sys.path.insert(0, str(SKILLS / "openverse" / "scripts"))
 import openverse as ov  # noqa: E402
 
 # role (the real-sfx catalog type) -> search words, duration window (s), category
+# category stays None: Openverse leaves it empty for Freesound, so category=sound_effect finds nothing there
 ROLES = {
-    "whoosh":   (["whoosh", "swoosh", "swish fast"], 0.2, 2.5, "sound_effect"),
-    "impact":   (["impact hit", "thud", "punch impact", "wood hit"], 0.1, 2.5, "sound_effect"),
-    "riser":    (["riser", "rising whoosh", "tension rise"], 1.5, 8.0, "sound_effect"),
-    "pop":      (["pop", "bubble pop", "cork pop"], 0.03, 1.0, "sound_effect"),
-    "click":    (["mouse click", "button click", "switch click"], 0.02, 1.0, "sound_effect"),
-    "typing":   (["keyboard typing", "typing keys"], 1.0, 20.0, "sound_effect"),
-    "paper":    (["paper rustle", "page turn", "paper crumple"], 0.2, 4.0, "sound_effect"),
-    "chime":    (["chime", "bell ding", "glass ding"], 0.2, 4.0, "sound_effect"),
-    "glitch":   (["glitch", "static burst"], 0.1, 2.0, "sound_effect"),
-    "foley":    (["cloth movement", "footstep", "object drop"], 0.1, 3.0, "sound_effect"),
+    "whoosh":   (["whoosh", "swoosh", "swish fast"], 0.2, 2.5, None),
+    "impact":   (["impact hit", "thud", "punch impact", "wood hit"], 0.1, 2.5, None),
+    "riser":    (["riser", "rising whoosh", "tension rise"], 1.5, 8.0, None),
+    "pop":      (["pop", "bubble pop", "cork pop"], 0.03, 1.0, None),
+    "click":    (["mouse click", "button click", "switch click"], 0.02, 1.0, None),
+    "typing":   (["keyboard typing", "typing keys"], 1.0, 20.0, None),
+    "paper":    (["paper rustle", "page turn", "paper crumple"], 0.2, 4.0, None),
+    "chime":    (["chime", "bell ding", "glass ding"], 0.2, 4.0, None),
+    "glitch":   (["glitch", "static burst"], 0.1, 2.0, None),
+    "foley":    (["cloth movement", "footstep", "object drop"], 0.1, 3.0, None),
     "ambience": (["room tone", "ambience wind", "city ambience distant"], 20.0, 180.0, None),
 }
 
@@ -105,6 +106,8 @@ def pick(role, per_role, quiet, queries=None):
                 print(f"  {role}: search '{w}' failed: {e}")
             continue
         res = json.loads(buf.getvalue() or "{}").get("results", [])
+        if not res and not quiet:
+            print(f"  {role}: Openverse answered, but nothing for '{w}' in {lo}-{hi} s (CC0/PDM/BY)")
         for h in res:
             if h["id"] in seen or h.get("license") not in ov.SAFE:
                 continue
