@@ -32,7 +32,7 @@ import array
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from common import SKILL_DIR, avg_power, character_from_power
+from common import data_path, SKILL_DIR, avg_power, character_from_power
 from find_moments import probe, visual_moments
 
 RATE = 16000
@@ -328,8 +328,8 @@ def main():
     if stems:
         # references that came with an SFX-only stem give clean numbers: keep them apart from the music-masked ones
         style["profile_stems"] = aggregate(stems)
-    out_dir = SKILL_DIR / "styles"
-    out_dir.mkdir(exist_ok=True)
+    out_dir = data_path("styles")
+    out_dir.mkdir(parents=True, exist_ok=True)
     out = out_dir / f"{a.name}.json"
     out.write_text(json.dumps(style, ensure_ascii=False, indent=1), encoding="utf-8")
 

@@ -1,16 +1,22 @@
 # Сторонние компоненты
 
-Плагин `avelune-sound` включает скиллы из сторонних открытых проектов без изменений. Их авторские права и лицензии сохраняются. Обновлять из источника: скопировать папку скилла заново и сверить этот файл.
+Плагин `avelune-sound` включает скиллы из сторонних открытых проектов. Их авторские права и лицензии сохраняются. Изменения перечислены ниже, в разделе «Что изменено в avelune-sound». Обновлять из источника: скопировать папку скилла заново, повторить изменения и сверить этот файл.
 
 | Скилл в плагине | Источник | Версия (коммит) | Лицензия |
 |-----------------|----------|-----------------|----------|
 | `skills/real-sfx` | [Clipwing/skills](https://github.com/Clipwing/skills/tree/main/skills/real-sfx), автор Alexander Korbanov (Clipwing) | `edbefcb` (21.10.2026) | Скрипты MIT (по README скилла, раздел «Licences»); uisfx: код MIT (Yuki Capital), звуки CC0 1.0 |
 | `skills/earshot` | [Leonxlnx/earshot](https://github.com/Leonxlnx/earshot/tree/main/skills/earshot), автор Leon Lin | `4ac3d2a` (06.11.2026, earshot 0.4.1) | MIT |
-| `skills/real-sound` | [Leonxlnx/earshot](https://github.com/Leonxlnx/earshot/tree/main/skills/real-sound), автор Leon Lin | `4ac3d2a` (06.11.2026) | MIT |
+| `avelune-sound-lab/skills/real-sound` (перенесён в плагин `avelune-sound-lab`) | [Leonxlnx/earshot](https://github.com/Leonxlnx/earshot/tree/main/skills/real-sound), автор Leon Lin | `4ac3d2a` (06.11.2026) | MIT |
 
 Openverse (openverse.org) используется через публичный API скриптом `skills/openverse/scripts/openverse.py`, написанным для этого плагина; код Openverse в плагин не входит. У каждого звука из Openverse своя лицензия, скрипт записывает её в CREDITS.md.
 
 Модели earshot (CLAP `laion/larger_clap_general`, Apache-2.0; AST `MIT/ast-finetuned-audioset-10-10-0.4593`, BSD-3-Clause) в плагин не входят и скачиваются самим earshot при установке.
+
+## Что изменено в avelune-sound (2.0.0)
+
+- **real-sfx:** настройки и данные пользователя (config.json, индекс библиотеки, taste.json, стили, kind_map, кэши, venv и модели) хранятся в `~/.avelune-sound/real-sfx/` (переменная `REAL_SFX_HOME`), а не в папке скилла, потому что Claude Code заменяет папку плагина при каждом обновлении. Старый `config.json` из папки скилла копируется туда при первом запуске. Пустой `config.json` из поставки убран, `setup.py init --uisfx` не ставит uisfx заново, если он уже лежит в плагине. Описание скилла сокращено, в начало добавлена врезка о входе через `video-sound`. В `tests/selftest.py` добавлен `REAL_SFX_HOME` для временной папки. Остальной код без изменений.
+- **earshot:** описание скилла сокращено и переведено, добавлена врезка: Loop 4 и Loop 5 (синтез) только по прямой просьбе пользователя; команда установки через `uv tool install`.
+- Новые скрипты плагина (`sound-setup`, `sound-check`, `mix-master`, `sfx-design`, `ui-sounds`) написаны для avelune-sound, лицензия MIT.
 
 ## Real SFX: условия из README источника
 

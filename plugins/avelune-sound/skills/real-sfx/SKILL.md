@@ -1,9 +1,16 @@
 ---
 name: real-sfx
-description: Sound design for motion videos with REAL recorded sounds from the user's own libraries (a sorted main pack of whooshes, hits, risers, pops, chimes, keystrokes, foley, ambiences plus fallback libraries) and UI cues from uisfx, never synthesized. Finds the moments from the project's own cue list or from the synthesizer script that makes its sound, from a HyperFrames composition, from a screen recording (regions: typing, toasts, scrolls, clicks) or from the picture itself, picks and processes the sounds, places them on the exact frame at the level the author's own sounds had, keeps the music and voice, takes a synthesized layer baked into the render OUT instead of doubling it, and returns a new MP4, a separate SFX WAV track, a cue report and a self-critique scoreboard. Use whenever the user asks to add sound effects or SFX, sound-design, "озвучь", "добавь звуки", "сфх", whoosh/hit/riser/click/typing sounds, UI sounds, to replace synthesized or generated sounds with real ones, or to make a motion graphic, promo, explainer, UI animation, screencast, HyperFrames render, After Effects or Premiere project sound better, or complains the sound is synthetic, generic or out of sync, even if they do not say "skill" or name a library.
+description: "Движок озвучки видео реальными записями (Clipwing Real SFX): моменты из кадров, списка событий, HyperFrames или записи экрана, подбор из библиотек пользователя, раскладка по кадрам с музыкой и голосом, самопроверка verify и critique. Обычно вызывается из video-sound; напрямую, когда пользователь назвал real-sfx."
 ---
 
 # real-sfx: real sounds for a motion video
+
+> **avelune-sound.** The entry point for scoring a film is the `video-sound` skill: it runs the preflight
+> (`sound-setup/scripts/doctor.py`), fetches missing roles from Openverse (`sound-setup/scripts/starter_library.py
+> --for-cues`), drives the steps below and gates the result with `sound-check/scripts/sound_check.py`. The user's
+> config, index, taste, styles, venv and models live in `~/.avelune-sound/real-sfx/` (`REAL_SFX_HOME`), not in this
+> folder, so they survive plugin updates. Default to `--ui library`: uisfx cues are synthesized and go in only when
+> the user agreed to them. Run the scripts by their full path: `python "${CLAUDE_SKILL_DIR}/scripts/NAME.py"`.
 
 The goal: the film sounds as if a person with a good library had cut it. So:
 
@@ -67,8 +74,11 @@ with non-Latin paths on Windows: `PYTHONUTF8=1`. In PowerShell, quotes break JSO
 | Typing | always the library's real keyboard, even with `--ui auto`; a run of 8+ `click` events 35–170 ms apart is recognized as typing by `from_cues` itself (`--no-typing-detect`) |
 | Physical contact: ball, step, bead, object | always the library: a ball on the floor is a dull thud, not `select` (recipe below) |
 
-No library yet: `setup.py init --uisfx` alone gives 78 CC0 UI cues. Free real-recording sources worth checking (read each
-licence): Freesound (CC0 filter), Sonniss GDC bundles, Mixkit, Pixabay sound effects.
+No library yet: `python "${CLAUDE_SKILL_DIR}/../sound-setup/scripts/starter_library.py" --register` fetches about 70
+real recordings by role from Openverse (CC0/PDM/BY, CREDITS.md); a role the libraries lack for one film:
+`starter_library.py --for-cues work/events.json --register`. uisfx alone (78 CC0 UI cues) is synthesized: only with
+the user's OK. Big free packs worth a one-time download (read each licence): Sonniss GDC bundles, Freesound (CC0
+filter), Mixkit, Pixabay sound effects.
 
 "From my library", "no synthesis" or "sounds synthetic": **`--ui library`**. An accent on the logo or a "cha-ching" in a
 project with uisfx interface sounds: `--from-library pop,bell` (**kind names from the list**); for one sound:

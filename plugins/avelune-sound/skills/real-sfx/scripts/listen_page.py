@@ -42,11 +42,11 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from common import SKILL_DIR
+from common import SKILL_DIR, data_path
 
 VIDEO = (".mp4", ".mov", ".m4v", ".webm", ".mkv")
 AUDIO = (".wav", ".mp3", ".m4a", ".flac", ".ogg", ".aac")
-LOG = SKILL_DIR / "listening_log.json"
+LOG = data_path("listening_log.json")
 MOMENT_VERDICTS = ["ok", "loud", "masked", "harsh", "extra", "missing"]
 TAGS = ["offtheme", "quiet", "masked", "loud", "heavy", "voice", "empty", "harsh", "distracting", "synthetic", "hum",
         "noise", "early", "late", "good"]

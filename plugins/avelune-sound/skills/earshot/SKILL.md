@@ -1,6 +1,6 @@
 ---
 name: earshot
-description: Listen with earshot whenever you must judge, choose, trim, verify or compare sound you cannot hear - picking a sound effect, music or ambience from candidates, finding the cleanest moment in a recording, checking whether audio reads as a real recording or as code-synthesized, reviewing a soundtrack or a video's audio (what happens when, sync to picture, loudness, mix), A/B-ing a mix change, making a sound in code and improving it by listening (earshot forge), or giving a code-made film its sound effects from the shipped bank (earshot sfx / kit). Use it before telling anyone how audio sounds.
+description: "«Уши» агента (earshot): описать звук, выбрать лучший из кандидатов, найти чистый кусок, отличить запись от синтеза, построить таймлайн ролика с синхроном, сравнить A/B, оценить ролик. Нужен установленный earshot (см. sound-setup). Использовать, когда надо судить о звуке, который не слышишь."
 ---
 
 # earshot: ears for an agent
@@ -14,7 +14,7 @@ handful of calls, use MCP or a short script (`from earshot import api; api.find(
 
 ## Setup (once)
 ```
-pip install -e "/path/to/earshot[mcp,llm]"   # or the repo venv: /path/to/earshot/.venv/bin/python -m earshot ...
+uv tool install "earshot[mcp] @ git+https://github.com/Leonxlnx/earshot"   # or: pip install -e "/path/to/earshot[mcp,llm]"
 earshot doctor                           # packages, ffmpeg, models (pinned revision, cache state); --load times them
 ```
 Two ways in, same functions:
@@ -92,6 +92,11 @@ including the audio of an mp4 (a video with no audio track says so). Errors are 
   (`--a-start 1.217 --a-end 1.615 --b-start 7.881 --b-end 8.285`): a whole-file A/B of multi-take files compares every
   take plus the silence between them. Then `earshot timeline after.wav` and compare the event lines and sync stats
   with the old run. Change one thing at a time.
+
+> **avelune-sound: Loops 4 and 5 make sounds in code (synthesis).** Use them only when the user asked in their own
+> words for a generated or synthesized sound. Never as a silent fallback for a recording that was not found: then the
+> moment stays quiet and goes in the report (`video-sound`, rule 2), or a real recording is fetched
+> (`sound-setup/scripts/starter_library.py`). Everything earshot renders is labelled as synthesized in the report.
 
 ## Loop 4: make a sound in code (earshot forge)
 Use this when the user wants a sound **made**, not chosen: an AI that hears can write synthesis code, listen, and

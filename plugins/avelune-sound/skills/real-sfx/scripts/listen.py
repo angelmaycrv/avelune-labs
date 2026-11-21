@@ -28,17 +28,17 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from common import SKILL_DIR, analyse_sound, index_path, load_config, words
+from common import SKILL_DIR, analyse_sound, data_path, index_path, load_config, words
 
-VENV = SKILL_DIR / "vendor" / "venv"
-MODEL_DIR = SKILL_DIR / "vendor" / "models"
+VENV = data_path("vendor") / "venv"
+MODEL_DIR = data_path("vendor") / "models"
 MODEL = MODEL_DIR / "yamnet.onnx"
 CLASSES = MODEL_DIR / "yamnet_class_map.csv"
 MODEL_URL = "https://huggingface.co/audiomagic/yamnet-onnx/resolve/main/yamnet.onnx"
 CLASSES_URL = "https://huggingface.co/audiomagic/yamnet-onnx/resolve/main/yamnet_class_map.csv"
 MODEL_BYTES = 16_093_355
-EMB_BIN = SKILL_DIR / "library_embeddings.bin"
-EMB_JSON = SKILL_DIR / "library_embeddings.json"
+EMB_BIN = data_path("library_embeddings.bin")
+EMB_JSON = data_path("library_embeddings.json")
 
 
 def venv_python():

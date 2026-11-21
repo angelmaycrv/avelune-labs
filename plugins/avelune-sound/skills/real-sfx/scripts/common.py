@@ -15,6 +15,18 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8")
 
 SKILL_DIR = Path(__file__).resolve().parent.parent
+# avelune-sound: everything the user builds (config, index, taste, styles, venv, models, caches) lives OUTSIDE the
+# plugin folder, because Claude Code replaces the plugin folder on every update. REAL_SFX_HOME names another place.
+DATA_DIR = Path(os.environ.get("REAL_SFX_HOME") or (Path.home() / ".avelune-sound" / "real-sfx"))
+
+
+def data_path(name):
+    """A file or folder of the user's own state, in DATA_DIR (created on first use)."""
+    try:
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
+    except OSError:
+        pass
+    return DATA_DIR / name
 AUDIO_EXT = {".wav", ".mp3", ".flac", ".aif", ".aiff", ".ogg", ".m4a", ".aac", ".opus"}
 SKIP_DIRS = {"__macosx", ".git", "node_modules"}      # archive leftovers, never sound libraries
 
@@ -205,11 +217,28 @@ def roles_for_catalog(pack_type, text):
 def config_path():
     """REAL_SFX_CONFIG lets tests and other setups point at their own config without touching the skill."""
     env = os.environ.get("REAL_SFX_CONFIG")
-    return Path(env) if env else SKILL_DIR / "config.json"
+    if env:
+        return Path(env)
+    p = data_path("config.json")
+    legacy = SKILL_DIR / "config.json"
+    if not p.exists() and legacy.exists():      # a config made inside an older copy of the plugin: carry it over
+        try:
+            shutil.copyfile(legacy, p)
+        except OSError:
+            return legacy
+    return p
 
 
 def load_config():
     p = config_path()
+    if not p.exists() and not os.environ.get("REAL_SFX_CONFIG"):
+        ex = SKILL_DIR / "config.example.json"      # first run: a config with no libraries yet (uisfx only)
+        try:
+            cfg = json.loads(read_text_any(ex))
+            cfg["libraries"] = []
+            p.write_text(json.dumps(cfg, ensure_ascii=False, indent=2), encoding="utf-8")
+        except Exception:
+            pass
     if not p.exists():
         sys.exit(f"config not found: {p}  (run: python scripts/setup.py --help)")
     return json.loads(read_text_any(p))
@@ -221,7 +250,7 @@ def index_path(cfg=None):
         return Path(env)
     cfg = cfg or load_config()
     p = Path(cfg.get("index_path", "library_index.json"))
-    return p if p.is_absolute() else SKILL_DIR / p
+    return p if p.is_absolute() else data_path(str(p))
 
 
 def require_tools(*names):
@@ -239,7 +268,7 @@ def venv_python():
     env = os.environ.get("REAL_SFX_VENV_PYTHON")
     if env and Path(env).exists():
         return Path(env)
-    p = SKILL_DIR / "vendor" / "venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
+    p = data_path("vendor") / "venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
     return p if p.exists() else None
 
 
@@ -925,7 +954,7 @@ def window_levels(path, ms=250, rate=16000):
 
 
 # personal cache {path: steadiness}, never packaged (REAL_SFX_STEADY names another file: the selftest)
-STEADY_PATH = Path(os.environ.get("REAL_SFX_STEADY") or SKILL_DIR / "ambience_steady.json")
+STEADY_PATH = Path(os.environ.get("REAL_SFX_STEADY") or data_path("ambience_steady.json"))
 
 
 def steadiness(path, max_s=30.0, rate=16000):

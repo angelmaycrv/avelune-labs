@@ -31,7 +31,9 @@ argument-hint: "[цель одной фразой, бизнес, сроки, б�
 
 **avelune-shield, Защита:** ad-marking (маркировка), ad-law (закон о рекламе и русский язык), platform-rules (правила площадок), contracts (оферта и договоры), personal-data (персональные данные), crisis (антикризис), knowledge-base (база знаний).
 
-**avelune-sound, Звук и саунд-дизайн:** sound-director (звуковой бриф и цепочка), sonic-branding (звуковой логотип), video-sound (звук для роликов и рекламы), voice (голос и речь), ui-sounds (звуки приложения), sfx-design (звуковые эффекты), synthesis (синтез), game-audio (звук для игр), spatial-audio (пространство и бинаурал), mixing (сведение), mastering (мастеринг и громкость), reverb (реверберация), sound-review (проверка звука), dafx (библиотека исследований DAFx), dsp-effects (алгоритмы эффектов), virtual-analog (эмуляция аналога), audio-ml (нейросети в звуке), plugin-dev (аудиоплагины), sfx-toolkit (связка Openverse, earshot и Real SFX), openverse (звуки с открытыми лицензиями), earshot (прослушивание звука за Claude), real-sfx (звуки по кадрам из своей библиотеки), real-sound (саундтрек из лицензированных записей).
+**avelune-sound, Звук:** video-sound (единственный вход для озвучки любого видео: проверка установки, звуки, раскладка, сведение, замер), sound-setup (установка и библиотека звуков), sound-check (замер с вердиктом перед сдачей), mix-master (голос, музыка, мастер под площадку), sfx-design (эффект из слоёв реальных записей), ui-sounds (звуки приложения и звуковой логотип), real-sfx, earshot, openverse (инструменты, обычно их вызывает video-sound).
+
+**avelune-sound-lab, Звуковая лаборатория:** dafx (исследования DAFx), dsp-effects (алгоритмы эффектов), virtual-analog (эмуляция аналога), audio-ml (нейросети в звуке), plugin-dev (аудиоплагины), synthesis (синтез), reverb (ревербераторы), spatial-audio (пространство), game-audio (звук для игр), real-sound (только вручную).
 
 ## Типовые цепочки
 
@@ -50,9 +52,9 @@ argument-hint: "[цель одной фразой, бизнес, сроки, б�
 | Найм маркетолога или подрядчика | delegation → hiring → contracts → onboarding → playbooks → supervisor |
 | Большое решение (цена, канал, инвестиция) | brainstorm → risk-map → finmodel → board |
 | Еженедельный ритм руководителя | report → weekly-brief → focus-week → meeting-notes |
-| Рекламный ролик со звуком | creative-director → director → reels-script → video-sound → voice → mixing → mastering → sound-review → ad-law |
-| Звуковой бренд | brand-voice → sonic-branding → ui-sounds → contracts (права на музыку) |
-| Подкаст бренда | rubrics → voice → mixing → mastering → repurpose → video-seo |
+| Рекламный ролик со звуком | creative-director → director → reels-script → video-sound (озвучка, сведение и замер внутри) → ad-law |
+| Звуковой бренд | brand-voice → ui-sounds (звуковой логотип и звуки приложения) → contracts (права на музыку) |
+| Подкаст бренда | rubrics → mix-master (голос, музыка, −16 LUFS) → sound-check → repurpose → video-seo |
 
 ## Правила дирижёра
 

@@ -22,9 +22,9 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from common import ROLE_TARGET_PEAK_DB, SKILL_DIR, effective_dur, family_key, index_path, load_config
+from common import ROLE_TARGET_PEAK_DB, SKILL_DIR, data_path, effective_dur, family_key, index_path, load_config
 
-TASTE_PATH = Path(os.environ.get("REAL_SFX_TASTE") or SKILL_DIR / "taste.json")    # (the env: the selftest)
+TASTE_PATH = Path(os.environ.get("REAL_SFX_TASTE") or data_path("taste.json"))    # (the env: the selftest)
 _FEATS = ("centroid", "rolloff", "low", "high", "flat", "attack_ms", "decay_ms", "duration")
 
 
@@ -44,7 +44,7 @@ def embeddings():
     if _EMB is not None:
         return _EMB
     _EMB = {}
-    jp, bp = SKILL_DIR / "library_embeddings.json", SKILL_DIR / "library_embeddings.bin"
+    jp, bp = data_path("library_embeddings.json"), data_path("library_embeddings.bin")
     if jp.exists() and bp.exists():
         import array
         meta = json.loads(jp.read_text(encoding="utf-8"))
