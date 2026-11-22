@@ -27,7 +27,7 @@ argument-hint: "[какой звук, для чего: реклама, личн�
 
 ## Как пользоваться
 
-Скрипт `${CLAUDE_SKILL_DIR}/scripts/openverse.py` (Python 3.9+, без зависимостей). Для озвучки ролика удобнее `sound-setup/scripts/starter_library.py --for-cues work/events.json --register`: он сам качает недостающие роли и подключает их к real-sfx.
+Скрипт `${CLAUDE_SKILL_DIR}/scripts/openverse.py` (Python 3.9+, без зависимостей). Для озвучки ролика бери не этот скилл, а план звуков: `sound-setup/scripts/fetch.py plan work/sound_plan.json --register` качает по одному файлу из Sonniss GDC, Freesound с рейтингом и Kenney. Openverse отдаёт записи Freesound как превью mp3 128 кбит/с без рейтинга (оценка C в `real-sfx/scripts/quality.py`): годится для конкретного редкого звука или музыки, но не для главного звука ролика.
 
 ```bash
 # поиск: только то, что можно продавать и редактировать, звуковые эффекты до 3 секунд

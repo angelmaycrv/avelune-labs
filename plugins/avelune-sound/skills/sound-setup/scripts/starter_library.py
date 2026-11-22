@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""starter_library: a small library of REAL recordings from Openverse, sorted by role, ready for real-sfx.
+"""starter_library: REAL recordings fetched per role for the film at hand, sorted by role, ready for real-sfx.
+
+Sources in order (sources.py): Kenney CC0 packs (clean, small), Freesound rated 3.5+ and most downloaded (free API key;
+originals after a one-time login), then Openverse. Every download is graded (real-sfx quality.py) and grade D is
+deleted; a role counts as covered only by grade A/B sounds, so a library of previews gets better ones fetched.
 
 For when the user has no sound folder, or theirs lacks a role (no risers, no paper, no room tone).
 Only licences that allow commercial use and editing (CC0, PDM, CC BY); CREDITS.md is written beside the sounds.
@@ -16,8 +20,8 @@ Only licences that allow commercial use and editing (CC0, PDM, CC BY); CREDITS.m
 
 After the download, if earshot is installed, drop what reads as code-synthesized:
   earshot realness "<out>/whoosh"     (keep 'likely real', read the evidence of 'uncertain')
-Openverse files from Freesound may be compressed previews: for a final master take the original from the landing page
-listed in CREDITS.md.
+Openverse files from Freesound are 128 kbps previews (grade C): for a hero sound take the original from the landing
+page listed in CREDITS.md, or set up the Freesound key.
 """
 import argparse
 import csv
@@ -31,6 +35,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 SKILLS = HERE.parent.parent
 sys.path.insert(0, str(SKILLS / "openverse" / "scripts"))
+sys.path.insert(0, str(HERE))
 import openverse as ov  # noqa: E402
 
 # role (the real-sfx catalog type) -> search words, duration window (s), category
@@ -82,6 +87,8 @@ def needed_roles(cues_path, min_have=3):
     try:
         idx = json.loads(common.index_path().read_text(encoding="utf-8"))
         for snd in idx.get("sounds", []):
+            if (snd.get("q") or {}).get("grade") in ("C", "D"):
+                continue                       # preview-grade or broken: does not count as having the role
             for r in snd.get("roles") or [snd.get("role")]:
                 t = CUE_ROLE_TYPE.get(r)
                 if t:
@@ -89,7 +96,7 @@ def needed_roles(cues_path, min_have=3):
     except Exception:
         pass
     for t, n in sorted(want.items()):
-        print(f"  {t}: {n} cue(s), {have.get(t, 0)} sound(s) in the libraries")
+        print(f"  {t}: {n} cue(s), {have.get(t, 0)} good sound(s) (grade A/B) in the libraries")
     if unknown:
         print(f"  not checked (no catalog type for these kinds): {', '.join(sorted(unknown))}: fetch them by hand "
               f"with --role TYPE --query WORDS if the libraries lack them")
@@ -146,6 +153,8 @@ def main():
     ap.add_argument("--role", help="with --query: the catalog type the sounds are filed under")
     ap.add_argument("--query", action="append", help="own search words (English), with --role")
     ap.add_argument("--name", help="library name in real-sfx (default starter, or openverse for gaps)")
+    ap.add_argument("--source", choices=["auto", "kenney", "freesound", "openverse"], default="auto",
+                    help="auto (default): Kenney, then rated Freesound, then Openverse for the rest")
     a = ap.parse_args()
     gap_mode = bool(a.for_cues or a.query)
     name = a.name or ("openverse" if gap_mode else "starter")
@@ -169,23 +178,57 @@ def main():
     bad = [r for r in roles if r not in ROLES]
     if bad:
         sys.exit(f"unknown roles: {bad}; known: {', '.join(ROLES)}")
+    import sources as src
     rows, total = [], 0
     for role in roles:
-        picks = pick(role, a.per_role, False, a.query if a.query else None)
-        print(f"{role}: {len(picks)} found")
-        for h in picks:
-            print(f"   {h['id'][:8]}  {h.get('duration_s', 0):>6.2f}s  {h['license']:<4} {h.get('source') or '':<12} "
-                  f"{(h.get('title') or '')[:50]}")
-        if a.dry or not picks:
-            continue
         d = out / role
-        g = argparse.Namespace(ids=[h["id"] for h in picks], out=str(d), allow_any=False)
-        try:
-            ov.get(g)
-        except SystemExit as e:
-            print(f"  {role}: download stopped: {e}")
+        got = []                                         # credit rows of this run for this role
+        words, lo, hi, _ = ROLES[role]
+        if a.query:
+            words = a.query
+        # 1. Kenney (clean CC0 game/app packs, a few MB, only the packs this role needs)
+        if a.source in ("auto", "kenney") and role in src.KENNEY and not a.dry:
+            got += src.kenney(role, out)
+        # 2. Freesound, rated and most downloaded first (needs the free key)
+        if a.source in ("auto", "freesound") and len(got) < a.per_role and not a.dry:
+            got += src.freesound(role, words, lo, min(hi, 30.0), a.per_role - len(got) if a.source == "auto"
+                                 else a.per_role, out)
+        # 3. Openverse for what is still missing (128 kbps previews: grade C, minor sounds only)
+        need = a.per_role - len(got) if a.source == "auto" else (a.per_role if a.source == "openverse" else 0)
+        if need > 0:
+            picks = pick(role, need, False, a.query if a.query else None)
+            print(f"{role}: openverse {len(picks)} found")
+            for h in picks:
+                print(f"   {h['id'][:8]}  {h.get('duration_s', 0):>6.2f}s  {h['license']:<4} {h.get('source') or '':<12} "
+                      f"{(h.get('title') or '')[:50]}")
+            if picks and not a.dry:
+                g = argparse.Namespace(ids=[h["id"] for h in picks], out=str(d), allow_any=False)
+                try:
+                    ov.get(g)
+                except SystemExit as e:
+                    print(f"  {role}: download stopped: {e}")
+                ids = {h["id"] for h in picks}
+                cj = d / "credits.json"
+                for c in (json.loads(cj.read_text("utf-8")) if cj.exists() else []):
+                    if c.get("id") in ids and (d / c["file"]).exists():
+                        q = src.keep_or_drop(d / c["file"], role, print)
+                        if q is not None:
+                            c["grade"] = q.get("grade")
+                            got.append(c)
+        if a.dry:
+            continue
         cj = d / "credits.json"
-        for c in (json.loads(cj.read_text("utf-8")) if cj.exists() else []):
+        old_c = json.loads(cj.read_text("utf-8")) if cj.exists() else []
+        mine = {c["file"] for c in got}
+        merged = [c for c in old_c if c["file"] not in mine and (d / c["file"]).exists()] + got
+        if merged:
+            d.mkdir(parents=True, exist_ok=True)
+            cj.write_text(json.dumps(merged, ensure_ascii=False, indent=1), "utf-8")
+        grades = {}
+        for c in got:
+            grades[c.get("grade", "?")] = grades.get(c.get("grade", "?"), 0) + 1
+        print(f"{role}: {len(got)} kept " + " ".join(f"{k}:{v}" for k, v in sorted(grades.items())))
+        for c in got:
             rows.append({"file": f"{role}/{c['file']}", "type": role, "source": c.get("title") or c["file"],
                          "hit": "", "hits_in_source": ""})
             total += 1
@@ -193,8 +236,8 @@ def main():
         print("dry run: nothing downloaded")
         return
     if not rows:
-        sys.exit("nothing downloaded (no internet to api.openverse.org, or no results). Use your own folder: "
-                 "real-sfx setup.py scan PATH")
+        sys.exit("nothing downloaded (no internet to kenney.nl / freesound.org / api.openverse.org, no results, or "
+                 "every file failed the quality grade). Use your own folder: real-sfx setup.py scan PATH")
     cat = out / "catalog.csv"
     if cat.exists():                                  # keep what earlier runs filed
         with open(cat, newline="", encoding="utf-8") as f:

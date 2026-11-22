@@ -164,7 +164,7 @@ def main():
         print(json.dumps([dict(s, score=sc) for sc, s in ranked], ensure_ascii=False, indent=1))
         return
     for sc, s in ranked:
-        print(f"[{s['id']:>4}]{'+' if s['path'] in loved else ' '}{s['library'][:9]:9s}{'' if s.get('tier', 'main') == 'main' else '~'} {s['role']:8s} "
+        print(f"[{s['id']:>4}]{'+' if s['path'] in loved else ' '}{(s.get('q') or {}).get('grade', '-')} {s['library'][:9]:9s}{'' if s.get('tier', 'main') == 'main' else '~'} {s['role']:8s} "
               f"{effective_dur(s):6.2f}{'*' if effective_dur(s) < s['duration'] - 0.15 else 's'} pk{s['peak_db']:>6.1f}  c{s.get('centroid', 0):>5} a{s.get('attack_ms', 0):>4} "
               f"lo{s.get('low', 0):.2f}  {s['folder'][-24:]}/{s['name'][-42:]}  [{' '.join(s.get('words', []))}]")
         if a.paths:
@@ -173,7 +173,8 @@ def main():
             print(f"        {s['path']}" + (f"   tags: {tg}" if tg else "")
                   + (f"   source: {s['source']}" + (f" hit {s['hit']}/{s['hits_in_source']}" if s.get('hit') else "")
                      if s.get("source") else ""))
-    print(f"-- {len(ranked)} shown   (a '*' after the length: the file is longer, the rest is silence)")
+    print(f"-- {len(ranked)} shown   (a '*' after the length: the file is longer, the rest is silence; the letter "
+          f"after the id is the recording grade A-D of quality.py, '-' not graded)")
 
 
 if __name__ == "__main__":

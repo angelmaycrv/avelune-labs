@@ -3,7 +3,8 @@
 
 Skips preview PNGs, HTML ads, readmes, macOS '._' stubs and the "_Mister Horse Previews" folders. Every sound gets
 a primary role (whoosh, hit, riser, click ...), all matching roles, duration and levels, so the picker can search
-by role/duration instead of guessing from folder names.
+by role/duration instead of guessing from folder names. Every sound also gets a recording grade A-D (quality.py:
+compression, sample rate, clipping, hiss), so a crushed preview never wins over a clean file.
 
   python build_index.py            # all libraries in config.json
   python build_index.py --quick    # skip level analysis (fast, but no peak/anchor data cached)
@@ -30,6 +31,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from common import (SKIP_DIRS, SKILL_DIR, aliases_for, analyse_sound, fix_mojibake, index_path, is_sound_file,
                     load_config, nfc, onsets, roles_for_catalog, tag_roles, words)
+import quality  # noqa: E402
 
 # sounds that are meant to be ONE click/tick/pop: how many separate sounds are inside is worth knowing
 CLICKISH = {"click", "ui", "data", "glitch", "foley", "camera", "paper", "coin", "glass", "cartoon",
@@ -171,6 +173,13 @@ def describe(item, quick, known=None, carry=None, catalogs=None):
                 rec[k] = keep_[k]
     if rec.get("onset_count") is None and rec["role"] in CLICKISH and 0 < rec.get("duration", 99) <= 3.5 and not quick:
         rec["onset_count"] = len(onsets(p)[0])
+    oq = (old or {}).get("q")
+    if isinstance(oq, dict) and oq.get("v") == quality.VERSION and oq.get("mtime") == quality._mtime(str(p)):
+        rec["q"] = oq                             # graded before and the file is the same
+    elif not quick:
+        q = quality.grade(p, rec["role"])          # recording quality A-D (quality.py): the picker sinks C and D
+        q["mtime"] = quality._mtime(str(p))
+        rec["q"] = q
     rec["words"] = words(rec)
     al = aliases_for(f"{rec['folder']} {rec['name']}")
     if al:
@@ -269,6 +278,12 @@ def main():
     print(f"indexed {len(recs)} sounds ({dropped} duplicate re-exports dropped) -> {out}")
     print("by library:", ", ".join(f"{k}={v}" for k, v in by_lib.items()))
     print("by primary role:", ", ".join(f"{k}={v}" for k, v in sorted(by_role.items(), key=lambda kv: -kv[1])))
+    qs = {}
+    for r in recs:
+        g = (r.get("q") or {}).get("grade", "-")
+        qs[g] = qs.get(g, 0) + 1
+    print("recording grade:", ", ".join(f"{k}={qs[k]}" for k in sorted(qs)),
+          "(A studio, B fine, C preview-grade: minor sounds only, D broken: last resort; - not graded with --quick)")
 
 
 if __name__ == "__main__":

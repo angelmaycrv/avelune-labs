@@ -8,7 +8,7 @@
 STATUS (last line, and the exit code):
   READY       0  ffmpeg, Python and a library of REAL recordings; earshot or the real-sfx tags are there
   LIMITED     1  works, but the agent picks sounds without "ears" (no earshot, no tags): say so in the report
-  NO_LIBRARY  3  tools work, but there are no real recordings: connect a folder or build the starter library;
+  NO_LIBRARY  3  tools work, but there are no real recordings: connect a folder or fetch by the sound plan;
                  never fall back to synthesis on your own
   BLOCKED     2  no ffmpeg/ffprobe or Python too old: nothing can be measured or mixed
 """
@@ -107,8 +107,9 @@ def main():
         add("library of real recordings", lib_files > 0,
             f"{lib_files} files in {len(libs_detail)} libraries" if libs_detail else "no libraries connected",
             "connect your sound folder: python \"" + str(RSFX / "scripts" / "setup.py") + "\" scan \"D:/Sounds\", then "
-            "setup.py add-library NAME PATH --index; or build a starter one: python \"" +
-            str(HERE / "starter_library.py") + "\" --register", level="lib")
+            "setup.py add-library NAME PATH --index; or work without one: the film's sounds are downloaded file by "
+            "file from its sound plan: python \"" + str(HERE / "fetch.py") + "\" plan work/sound_plan.json --register",
+            level="lib")
         if lib_files:
             add("library index", idx.exists(), str(idx),
                 f'python "{RSFX / "scripts" / "build_index.py"}"')
@@ -137,6 +138,27 @@ def main():
         add("earshot (ears: rank, match, realness, timeline)", False, "not installed (~1.1 GB of models)",
             (f"{install_hint('uv')}  then  {install_hint('earshot')}" if not shutil.which("uv") else
              install_hint("earshot")), level="ears")
+
+    # sources for fetch.py plan (sounds downloaded one by one for each film)
+    home = Path.home() / ".avelune-sound"
+    try:
+        cat = json.loads((home / "catalog" / "sonniss.json").read_text("utf-8"))
+        n_s = sum(len(a.get("files", [])) for a in cat.get("archives", []))
+    except Exception:
+        n_s = 0
+    add("Sonniss GDC catalog (studio WAV, fetched file by file)", n_s > 0,
+        f"{n_s} sounds listed" if n_s else "not read yet (first fetch.py plan reads it, a few MB)",
+        f'python "{HERE / "fetch.py"}" catalog', level="nice")
+    try:
+        fs = json.loads((home / "freesound.json").read_text("utf-8"))
+    except Exception:
+        fs = {}
+    has_key = bool(fs.get("api_key") or os.environ.get("FREESOUND_API_KEY"))
+    add("Freesound key (rated sounds, CC0/CC BY)", has_key,
+        ("originals (logged in)" if fs.get("refresh_token") else "HQ previews; originals after freesound-login")
+        if has_key else "no key: Freesound is skipped",
+        f'free key at https://freesound.org/apiv2/apply, then python "{HERE / "sources.py"}" freesound-key KEY',
+        level="nice")
 
     if net:
         try:
@@ -172,8 +194,8 @@ def main():
             print(f"  - {n}")
     meaning = {"READY": "everything for scoring a film with real sounds and measuring it",
                "LIMITED": "works; sounds are picked by numbers and pictures, not by meaning or realness: say so",
-               "NO_LIBRARY": "no real recordings: ask the user for a folder or build the starter library; do NOT "
-                             "synthesize instead",
+               "NO_LIBRARY": "no real recordings yet: ask the user for a folder, or fetch the film's sounds by its "
+                             "sound plan (fetch.py plan); do NOT synthesize instead",
                "BLOCKED": "install ffmpeg / Python first; nothing can be measured or mixed"}[status]
     print(f"STATUS: {status}  ({meaning})")
     sys.exit(code)

@@ -265,6 +265,13 @@ def rank(index, spec, used=None, taste=None, include_banned=False):
             crest = s["peak_db"] - (s["mean_db"] + 10 * math.log10(max(s["duration"], 0.05) / act_))
             if crest > 28.0:
                 score += min(0.8, 0.07 * (crest - 28.0))        # a thin swipe: all peak, no body (a crest of 35 dB)
+        q_ = (s.get("q") or {}).get("grade")
+        if q_ == "D":
+            score += 4.0                                        # clipped, hissy or crushed: last resort only
+        elif q_ == "C":
+            score += 1.2 if not spec.get("hero") else 2.5       # preview-grade: fine for a quiet tick, not the hero
+        elif q_ == "B":
+            score += 0.2
         score += 1.5 * used.get(s["path"], 0)
         if s.get("dup_key") in used_dups and s["path"] not in used:
             score += 1.5                                        # a copy of a sound that is already used

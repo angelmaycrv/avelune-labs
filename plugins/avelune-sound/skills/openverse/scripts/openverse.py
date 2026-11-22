@@ -18,7 +18,7 @@ UA = "avelune-sound-openverse/1.0 (+https://github.com/angelmaycrv/avelune-labs)
 SAFE = {"cc0", "pdm", "by"}
 # Allowed with care: BY-SA makes the derived sound share-alike too.
 CAREFUL = {"by-sa": "share-alike: the edited sound must carry BY-SA as well"}
-ATTRIBUTION_FREE = {"cc0", "pdm"}
+ATTRIBUTION_FREE = {"cc0", "pdm", "sonniss-gdc"}  # Sonniss GDC: royalty-free, no attribution
 
 
 def _req(url, binary=False, tries=3):
@@ -109,7 +109,7 @@ def get(a):
 
 
 def credits_md(credits):
-    lines = ["# Sound credits", "", "Sounds found via Openverse (openverse.org). Each keeps its own licence.", ""]
+    lines = ["# Sound credits", "", "Sounds from Kenney, Freesound and Openverse. Each keeps its own licence.", ""]
     for c in credits:
         lic = f"{(c.get('license') or '').upper()} {c.get('license_version') or ''}".strip()
         need = "" if c.get("license") in ATTRIBUTION_FREE else " (attribution required)"

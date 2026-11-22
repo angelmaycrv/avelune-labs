@@ -18,6 +18,7 @@ Why these rules (sources in ../references/craft.md):
 """
 import argparse
 import json
+import os
 import statistics
 import sys
 from pathlib import Path
@@ -102,6 +103,57 @@ def src_path(c):
 
 def fmt(t):
     return f"{int(t // 60)}:{t % 60:05.2f}"
+
+
+def check_quality(concept, fx, rep):
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "real-sfx" / "scripts"))
+        import quality
+    except Exception as e:
+        rep.add("WARN", "качество записей", f"не проверено: {e}")
+        return
+    ht = (concept.get("hero") or {}).get("t")
+    obj = [(float(o["times"][0]), float(o["times"][1])) for o in concept.get("objects") or []
+           if len(o.get("times") or []) == 2]
+    graded, bad_hero, bad_key, broken, prev = {}, [], [], [], []
+    for c in fx:
+        f = str(c.get("source_file") or c.get("file") or "")
+        if not f or not Path(f).exists():
+            continue
+        if f not in graded:
+            graded[f] = quality.grade(f, c.get("role"))
+        q = graded[f]
+        t = float(c["t"])
+        is_hero = ht is not None and abs(t - float(ht)) <= 0.12
+        is_obj = any(a - 0.05 <= t <= b + 0.05 for a, b in obj)
+        tag = f"{fmt(t)} {c.get('role')} {Path(f.replace(chr(92), '/')).name[:40]} [{q['grade']}: {(q.get('why') or ['-'])[0]}]"
+        if q["grade"] == "D":
+            broken.append(tag)
+        elif q["grade"] == "C" and is_hero:
+            bad_hero.append(tag)
+        elif q["grade"] == "C" and is_obj:
+            bad_key.append(tag)
+        elif q["grade"] == "C":
+            prev.append(tag)
+    counts = {}
+    for q in graded.values():
+        counts[q["grade"]] = counts.get(q["grade"], 0) + 1
+    rep.data["quality"] = {"counts": counts, "files": {k: {"grade": v["grade"], "why": v.get("why")} for k, v in graded.items()}}
+    summary = ", ".join(f"{g} {counts[g]}" for g in sorted(counts)) or "нет файлов"
+    if broken:
+        rep.add("FAIL", "качество записей", "битые записи (клиппинг, шум у самого звука, пережатие): " + "; ".join(broken)[:400],
+                "замени эти звуки: picker уже опускает оценку D, возьми следующий кандидат или докачай роль "
+                "(starter_library.py --for-cues ... --register)")
+    if bad_hero:
+        rep.add("WARN", "качество главного звука", "главная точка на превью-качестве: " + "; ".join(bad_hero)[:300],
+                "главный звук берут студийным (A/B): оригинал со страницы в CREDITS.md, Freesound с входом "
+                "(sources.py freesound-login) или своя библиотека")
+    if bad_key:
+        rep.add("WARN", "качество предметов", "предметы на превью-качестве: " + "; ".join(bad_key)[:300],
+                "предмет звучит долго и близко: возьми запись A/B")
+    if not broken and not bad_hero and not bad_key:
+        rep.add("PASS", "качество записей",
+                summary + (f"; превью-качество только у мелочей ({len(prev)})" if prev else ""))
 
 
 def check(concept, res, rep):
@@ -269,6 +321,9 @@ def check(concept, res, rep):
         elif inside:
             rep.add("PASS", "один предмет — один источник", f"«{ob.get('name')}»: {len(inside)} звук(а) из "
                     f"{len(fams)} записи(ей)")
+    # 8. recording quality (real-sfx quality.py): a deaf picker cannot hear hiss or a crushed preview
+    if not os.environ.get("AVELUNE_NO_QUALITY"):
+        check_quality(concept, fx, rep)
     # 7. arc: something at the hook
     first = min((float(c["t"]) for c in fx), default=99)
     if first > 0.5:
