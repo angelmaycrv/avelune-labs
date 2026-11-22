@@ -64,7 +64,7 @@ THRESHOLDS = {
     # 250 ms windows quieter than -70 dBFS in a film whose sound is only effects (finished SFX reels: 0 % in 7 of 9)
     "silence_warn_frac": 0.05,
     # effects over music where effects sound: under -6 LU the music covers them, under 0 they fight for the ear
-    "sfx_under_music_fail": -6.0, "sfx_under_music_warn": 0.0,
+    "sfx_under_music_fail": -6.0, "sfx_under_music_warn": 0.0, "sfx_buried_share_fail": 0.25,
     # the loudest second over the film's median momentary loudness (a beat or drop slammed on top of quiet effects)
     "jump_warn_lu": 6.0,
     # the first second should sound (part of the hook)
@@ -319,15 +319,16 @@ def check_mix(a, rep):
     # one part of the film much louder than the rest (a beat or a drop coming in on top of quiet effects)
     Ms = [m for _, m in L["M"] if m > -70]
     if len(Ms) >= 20:
-        med_ = statistics.median(Ms)
         win_ = 10                                    # 10 x 100 ms
-        best_ = max(((sum(m for _, m in L["M"][i:i + win_]) / win_, L["M"][i][0])
+        best_ = max(((sum(m for _, m in L["M"][i:i + win_]) / win_, L["M"][i][0], i)
                      for i in range(0, len(L["M"]) - win_ + 1)), default=None)
-        if best_:
-            jump = best_[0] - med_
+        # compared with what came before it (a loud ending lifts the whole-film median and hides itself)
+        before_ = [m for _, m in L["M"][:best_[2]] if m > -70] if best_ else []
+        if best_ and len(before_) >= 10:
+            jump = best_[0] - statistics.median(before_)
             rep.data["loudest_second_over_median_lu"] = round(jump, 1)
             if jump > THRESHOLDS["jump_warn_lu"]:
-                rep.add("WARN", "скачок громкости", f"секунда с {fmt_t(best_[1])} громче остального ролика на "
+                rep.add("WARN", "скачок громкости", f"секунда с {fmt_t(best_[1])} громче всего, что было до неё, на "
                         f"{jump:.0f} LU", "что-то вошло сверху и давит всё остальное (бит, дроп, музыка): "
                         "опусти именно эту часть или убери её; эффекты должны оставаться слышны")
 
@@ -356,10 +357,14 @@ def check_music_sfx(a, rep):
     med = statistics.median(m for m, _ in margins)
     rep.data["sfx_over_music_lu"] = round(med, 1)
     buried = [t for m, t in margins if m < THRESHOLDS["sfx_under_music_fail"]]
-    st = ("FAIL" if med < THRESHOLDS["sfx_under_music_fail"] else
-          "WARN" if med < THRESHOLDS["sfx_under_music_warn"] else "PASS")
-    rep.add(st, "эффекты над музыкой", f"медиана {med:+.1f} LU там, где звучат эффекты"
-            + (f"; тонут с {fmt_t(buried[0])}" if buried else ""),
+    share = len(buried) / len(margins)
+    rep.data["sfx_buried_share"] = round(share, 2)
+    # the median alone hides a film whose last third is drowned: a third of the effect moments buried is a FAIL too
+    st = ("FAIL" if med < THRESHOLDS["sfx_under_music_fail"] or share > THRESHOLDS["sfx_buried_share_fail"] else
+          "WARN" if med < THRESHOLDS["sfx_under_music_warn"] or buried else "PASS")
+    rep.add(st, "эффекты над музыкой", f"медиана {med:+.1f} LU там, где звучат эффекты, "
+            f"{100 * share:.0f}% моментов эффектов тонут (ниже {THRESHOLDS['sfx_under_music_fail']:g} LU)"
+            + (f", первый на {fmt_t(buried[0])}" if buried else ""),
             "музыка заглушает эффекты: опусти музыку (обычно на 8-12 дБ под эффектами), mix.py --duck, "
             "или убери музыку, если её не просили")
 
