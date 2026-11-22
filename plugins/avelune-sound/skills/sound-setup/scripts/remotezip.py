@@ -14,6 +14,8 @@ import argparse
 import re
 import struct
 import sys
+import time
+import urllib.error
 import urllib.request
 import zlib
 from pathlib import Path
@@ -50,10 +52,24 @@ def http_range(url, start, end=None):
         end = remote_size(url) - 1
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Range": f"bytes={start}-{end}",
                                                "Accept-Encoding": "identity"})
-    with urllib.request.urlopen(req, timeout=180) as r:
-        if r.status != 206:
-            raise RangeError(f"server ignored the Range request (HTTP {r.status}): {url}")
-        return r.read()
+    # the CDN now and then answers a Range request with 200 and the whole file (seen on 74 of 78 Sonniss archives in
+    # one run, none a minute later): close it unread and ask again, a few times, before giving up on the archive
+    status = None
+    for attempt in range(4):
+        if attempt:
+            time.sleep(1.5 * attempt)
+        try:
+            with urllib.request.urlopen(req, timeout=180) as r:
+                status = r.status
+                if r.status == 206:
+                    return r.read()
+        except urllib.error.HTTPError as e:
+            status = e.code
+            if e.code not in (429, 500, 502, 503, 504, 520, 522, 524):
+                break
+        except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
+            status = f"{type(e).__name__}: {e}"
+    raise RangeError(f"server ignored the Range request (HTTP {status}) four times: {url}")
 
 
 def _eocd(tail):

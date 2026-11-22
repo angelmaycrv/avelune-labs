@@ -179,6 +179,9 @@ PACK_TYPE_ROLES = {
     # --role NAME and never picked for a cue that asks for another role (granular textures are not whooshes)
     "atmosphere": ["atmosphere"], "granular": ["granular"], "music_transition": ["music_transition"],
     "power": ["power"], "scifi": ["scifi"], "voice": ["voice"],
+    # roles a sound plan (sound-setup fetch.py) may give: the plan's role comes first
+    "coin": ["coin", "chime"], "data": ["data", "ui"],
+    "vehicle": ["vehicle"], "design": ["design"], "meme": ["meme"], "sub_drop": ["sub_drop", "hit"],
 }
 # The sorter's coarse type is wrong for some sources (a white-noise loop filed under "impact", broom sweeps under
 # "nature"). The words of the source path decide first: (pattern, roles that replace the pack type's roles, the pack

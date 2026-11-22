@@ -536,6 +536,12 @@ def main():
             print(f"{len(ch)} sound(s) swapped" + (f" -> {a.out}" if a.out else ""))
         return
     if a.cmd == "freeze":
+        if not Path(a.resolved).exists():
+            sys.exit(f"resolved cue list not found: {a.resolved}\n"
+                     "usage: sheet.py freeze SHEET.json RESOLVED.json (the sheet first, then the *_resolved_cues.json "
+                     "the render wrote)")
+        if "resolved" in Path(a.sheet).name.lower() and "resolved" not in Path(a.resolved).name.lower():
+            sys.exit("the arguments look swapped: sheet.py freeze SHEET.json RESOLVED.json (the sheet first)")
         done, skipped = freeze(d, a.resolved)
         save(a.sheet, d, a.backup)
         print(f"pinned {done} cue(s)" + (f", {skipped} not found in the render (left as they were)" if skipped else ""))

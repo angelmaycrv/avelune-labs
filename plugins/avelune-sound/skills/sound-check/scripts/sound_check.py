@@ -319,18 +319,23 @@ def check_mix(a, rep):
     # one part of the film much louder than the rest (a beat or a drop coming in on top of quiet effects)
     Ms = [m for _, m in L["M"] if m > -70]
     if len(Ms) >= 20:
-        win_ = 15                                    # 15 x 100 ms: a part that stays loud, not one hero hit
-        best_ = max(((sum(m for _, m in L["M"][i:i + win_]) / win_, L["M"][i][0], i)
-                     for i in range(0, len(L["M"]) - win_ + 1)), default=None)
+        win_ = 20                                    # 20 x 100 ms: a part that stays loud for two seconds
+        # the level a part HOLDS: the quietest quarter of its two seconds. A beat or a drop stays up; one hero hit
+        # and its tail fall away inside the window, so a short accent (the point of a film) is not a jump
+        def held_(i):
+            v_ = sorted(m for _, m in L["M"][i:i + win_])
+            return v_[len(v_) // 4]
+        best_ = max(((held_(i), L["M"][i][0], i) for i in range(0, len(L["M"]) - win_ + 1)), default=None)
         # compared with what came before it (a loud ending lifts the whole-film median and hides itself)
         before_ = [m for _, m in L["M"][:best_[2]] if m > -70] if best_ else []
         if best_ and len(before_) >= 10:
             jump = best_[0] - statistics.median(before_)
             rep.data["loudest_second_over_median_lu"] = round(jump, 1)
             if jump > THRESHOLDS["jump_warn_lu"]:
-                rep.add("WARN", "скачок громкости", f"полторы секунды с {fmt_t(best_[1])} громче всего, что было до них, на "
-                        f"{jump:.0f} LU", "что-то вошло сверху и держится (бит, дроп, музыка): опусти эту часть "
-                        "или убери её. Короткий удар главной точки сюда не попадает: он короче полутора секунд")
+                rep.add("WARN", "скачок громкости", f"две секунды с {fmt_t(best_[1])} держатся громче всего, что было "
+                        f"до них, на {jump:.0f} LU", "что-то вошло сверху и держится (бит, дроп, музыка): опусти эту "
+                        "часть или убери её. Короткий удар главной точки с хвостом сюда не попадает: он не держится "
+                        "две секунды")
 
     # stems
     if a.music and a.sfx:

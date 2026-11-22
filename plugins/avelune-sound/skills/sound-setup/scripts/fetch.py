@@ -43,6 +43,12 @@ HOME = Path.home() / ".avelune-sound"
 CAT_DIR = HOME / "catalog"
 OUT = HOME / "library" / "online"
 AUDIO = re.compile(r"\.(wav|flac|aif|aiff|ogg|mp3)$", re.I)
+# macOS zips carry a resource fork for every file (__MACOSX/._Name.wav, a few hundred bytes, no audio)
+JUNK = re.compile(r"(^|/)__MACOSX/|(^|/)\._", re.I)
+
+
+def is_audio(name):
+    return bool(AUDIO.search(name)) and not JUNK.search(name)
 SONNISS_PAGE = "https://gdc.sonniss.com/"
 # the current year on the first page, 2015-2024 on the archive page; files on downloads.sonniss.com
 SONNISS_PAGES = ["https://gdc.sonniss.com/", "https://sonniss.com/gameaudiogdc/"]
@@ -66,8 +72,8 @@ TEMPLATE = {
 # role -> extra words a matching file name may carry (UCS category ids included: WHSH, IMPT, UI ...)
 ROLE_WORDS = {
     "whoosh": ["whoosh", "swoosh", "swish", "whsh", "swsh", "pass", "swipe", "woosh"],
-    "hit": ["impact", "hit", "punch", "thud", "slam", "impt", "boom", "stinger"],
-    "impact": ["impact", "hit", "punch", "thud", "slam", "impt"],
+    "hit": ["impact", "hit", "thud", "impt", "stinger"],
+    "impact": ["impact", "hit", "thud", "impt"],
     "riser": ["riser", "rise", "rising", "build", "tension", "swell", "uplifter"],
     "click": ["click", "button", "tap", "ui", "switch", "toggle", "select"],
     "ui": ["ui", "interface", "notification", "button", "click", "confirm", "beep"],
@@ -80,6 +86,29 @@ ROLE_WORDS = {
     "paper": ["paper", "page", "book", "rustle"],
     "typing": ["typing", "keyboard", "keys", "type"],
 }
+
+
+# Words that make a file wrong for a role unless the search words ask for them: a "soft impact" search must not
+# bring fist punches, a quiet room tone must not bring an engine room or a forest. (role -> (only when the search
+# has one of these words, or None = always), words)
+IMPLIED_AVOID = {
+    "hit": (None, ["punch", "punches", "combat", "fight", "kick", "slap", "body", "bodyfall", "gore", "blood", "gun",
+                   "gunshot", "weapon", "bullet", "flesh", "bone", "melee"]),
+    "impact": (None, ["punch", "punches", "combat", "fight", "kick", "slap", "gore", "blood", "gun", "gunshot",
+                      "weapon", "bullet", "flesh", "bone", "melee"]),
+    "ambience": (["room", "roomtone", "indoor", "interior", "office", "studio", "quiet"],
+                 ["engine", "traffic", "birds", "bird", "forest", "rain", "storm", "crowd", "street", "car", "train",
+                  "ship", "boat", "wind", "jungle", "river", "sea", "ocean"]),
+    "chime": (None, ["railroad", "railway", "crossing", "alarm", "church", "doorbell", "siren", "phone"]),
+}
+
+
+def implied_avoid(role, query_words):
+    trig, words = IMPLIED_AVOID.get(role, (None, []))
+    qw = {w for phrase in query_words for w in tokens(phrase)}
+    if trig is not None and not (qw & set(trig)):
+        return []
+    return [w for w in words if w not in qw]
 
 
 def tokens(text):
@@ -137,7 +166,7 @@ def build_catalog(log=print):
             log(f"  sonniss {_label(url)}: not listed ({e})")
             continue
         files = [{"p": m["name"], "s": m["size"], "c": m["csize"], "o": m["offset"], "m": m["method"],
-                  "crc": m["crc"], "f": m["flags"]} for m in ms if AUDIO.search(m["name"])]
+                  "crc": m["crc"], "f": m["flags"]} for m in ms if is_audio(m["name"])]
         cat["archives"].append({"label": _label(url), "url": url, "files": files, "listed": time.strftime("%Y-%m-%d")})
         log(f"  sonniss {_label(url)}: {len(files)} sounds")
         _cat_path("sonniss").write_text(json.dumps(cat, ensure_ascii=False), "utf-8")
@@ -162,15 +191,20 @@ def _score(want, rw, path, avoid=()):
     found = [w for w in set(want) if _has(w, pt)]
     if not found or not ((want and _has(want[0], pt)) or rw & pt):
         return 0.0
+    # the words side by side, as in the search ("room tone" in RoomTone_Fan, not Engine Room ... Tone Generator)
+    seq = tokens(Path(path).stem)
+    pair = any(want[i] in seq[j:j + 1] and want[i + 1] in seq[j + 1:j + 2]
+               for i in range(len(want) - 1) for j in range(len(seq) - 1))
     return 2.0 * len(found) / max(1, len(set(want))) + 0.5 * sum(1 for w in found if w in name_t) + \
-        (0.8 if rw & pt else 0.0)
+        (0.8 if rw & pt else 0.0) + (1.0 if pair else 0.0)
 
 
 def search_catalog(source, query_words, role, n=10, max_mb=40.0, avoid=()):
     """Best files for ONE line of the plan. Every search phrase is scored on its own and a file keeps its best."""
     best = {}
+    avoid_w = [w for x in avoid for w in tokens(x)] + implied_avoid(role, query_words)
     for phrase in query_words:
-        for sc, a, f in _search_one(source, phrase, role, max_mb, [w for x in avoid for w in tokens(x)]):
+        for sc, a, f in _search_one(source, phrase, role, max_mb, avoid_w):
             k = (a["label"], f["p"])
             if k not in best or sc > best[k][0]:
                 best[k] = (sc, a, f)
@@ -191,6 +225,8 @@ def _search_one(source, phrase, role, max_mb, avoid):
     hits = []
     for a in load_catalog(source)["archives"]:
         for f in a["files"]:
+            if JUNK.search(f["p"]) or f["s"] < 2000:     # resource forks in catalogs read before they were filtered
+                continue
             if f["s"] > max_mb * 1e6:                 # 100-200 MB ambience takes: too big to fetch for one cue
                 continue
             score = _score(want, rw, f["p"], avoid)
@@ -204,8 +240,17 @@ def _safe(name):
     return re.sub(r"[^\w\-. ]+", "_", name).strip()[:90]
 
 
+def _dst_name(source, a, f):
+    """One name per recording: two archives can carry different takes under one file name (punch_impact_05.wav in
+    GDC 2017 and 2018), so the archive and path pick a short tag. The same file always gets the same name."""
+    import hashlib
+    tag = hashlib.sha1(f"{a.get('label')}|{f['p']}".encode("utf-8")).hexdigest()[:6]
+    p = Path(f["p"])
+    return f"{source}_{_safe(p.stem)[:80]}_{tag}{p.suffix.lower()}"
+
+
 def take_archive_file(source, a, f, dst_dir, role, log):
-    dst = dst_dir / f"{source}_{_safe(Path(f['p']).name)}"
+    dst = dst_dir / _dst_name(source, a, f)
     if source == "kenney":
         try:
             r = src.kenney_take(a["repo"], f["p"], dst, role, log)
@@ -286,7 +331,7 @@ def run_plan(plan_path, out=OUT, register=False, tier="main", log=print):
             r2 = dict(r)
             r2["file"] = f"{d.name}/{r['file']}"
             credits_all.append((role, r2))
-        report.append((item, kept))
+        report.append((item, kept, d))
     # catalog.csv + CREDITS.md for real-sfx and for the video description
     import csv
     sys.path.insert(0, str(SKILLS / "openverse" / "scripts"))
@@ -313,16 +358,25 @@ def run_plan(plan_path, out=OUT, register=False, tier="main", log=print):
                 allc.append(c)
     (out / "CREDITS.md").write_text(ov.credits_md(allc), "utf-8")
     log("\nPLAN RESULT")
-    missing = []
-    for item, kept in report:
+    missing, total_b, n_files = [], 0, 0
+    for _, kept, d in report:
+        for r in kept:
+            try:
+                total_b += (d / r["file"]).stat().st_size
+                n_files += 1
+            except OSError:
+                pass
+    for item, kept, _ in report:
         g = "".join(sorted(r.get("grade") or "?" for r in kept))
         srcs = ",".join(sorted({r["source"] for r in kept}))
         log(f"  {item.get('id', ''):<16} {len(kept)}/{item.get('n', 3)}  grades {g or '-':<6} {srcs}")
         if not kept:
             missing.append(item.get("id"))
+    log(f"  {n_files} file(s), {total_b / 1e6:.1f} MB on disk in {out}")
     if missing:
         log("  NOTHING FOUND for: " + ", ".join(missing) + " -> other search words (fetch.py search ...), "
             "your own library, or silence there and a line in the report")
+    sys.stdout.flush()                               # our lines first, then what setup.py prints
     if register:
         setup = SKILLS / "real-sfx" / "scripts" / "setup.py"
         subprocess.call([sys.executable, str(setup), "add-library", "online", str(out), "--tier", tier, "--index"],
@@ -332,10 +386,13 @@ def run_plan(plan_path, out=OUT, register=False, tier="main", log=print):
 
 
 def _type(role):
-    # real-sfx catalog types (build_index.PACK_TYPE_ROLES)
-    return {"hit": "impact", "impact": "impact", "thump": "impact", "click": "click", "ui": "ui", "pop": "pop",
-            "chime": "chime", "coin": "chime", "whoosh": "whoosh", "riser": "riser", "foley": "foley",
-            "glitch": "glitch", "ambience": "ambience", "paper": "paper", "typing": "typing"}.get(role, "other")
+    """real-sfx catalog type for a plan role (build_index.PACK_TYPE_ROLES): the plan's role becomes the sound's
+    first role in the index, so from_cues and search find it under the role the plan gave it."""
+    import common
+    role = str(role or "").lower()
+    alias = {"hit": "impact", "thump": "impact", "sub_drop": "impact"}
+    t = alias.get(role, role)
+    return t if t in common.PACK_TYPE_ROLES else "other"
 
 
 def main():

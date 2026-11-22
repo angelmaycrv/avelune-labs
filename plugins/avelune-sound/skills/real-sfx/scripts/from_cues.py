@@ -1779,6 +1779,12 @@ def main():
                 else:
                     cue["id"] = one
                 cue.pop("pick", None)
+                # slices of one recording, or one id for every event, are one physical object (the spin, the stops
+                # and the case of one slot machine): a variety critique must not count them as repeats
+                ids_ = {(x.get("id") if isinstance(x, dict) else x) for x in m["ids"]}
+                if m.get("same_source") or len(ids_) == 1 or any(isinstance(x, dict) and x.get("slice")
+                                                                for x in m["ids"]):
+                    cue["same_source"] = True
             if one_src and (ck in one_src or "all" in one_src):  # a mapped kind is still one physical object
                 cue["same_source"] = True
                 spec_ = cue.get("pick")
