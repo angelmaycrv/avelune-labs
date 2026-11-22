@@ -63,6 +63,10 @@ THRESHOLDS = {
     "sync_ok_ms": 45, "sync_warn_ms": 100,
     # 250 ms windows quieter than -70 dBFS in a film whose sound is only effects (finished SFX reels: 0 % in 7 of 9)
     "silence_warn_frac": 0.05,
+    # effects over music where effects sound: under -6 LU the music covers them, under 0 they fight for the ear
+    "sfx_under_music_fail": -6.0, "sfx_under_music_warn": 0.0,
+    # the loudest second over the film's median momentary loudness (a beat or drop slammed on top of quiet effects)
+    "jump_warn_lu": 6.0,
     # the first second should sound (part of the hook)
     "first_second_min_dbfs": -40.0,
 }
@@ -87,7 +91,7 @@ def run(args):
 
 
 def probe(path):
-    r = run(["ffprobe", "-v", "error", "-show_entries", "stream=codec_type,channels,sample_rate:format=duration",
+    r = run(["ffprobe", "-v", "error", "-show_entries", "stream=codec_type,channels,sample_rate,duration:format=duration",
              "-of", "json", str(path)])
     if r.returncode != 0:
         sys.exit(f"cannot read {path}: {r.stderr.strip()[:300]}")
@@ -95,7 +99,9 @@ def probe(path):
     aud = [s for s in d.get("streams", []) if s.get("codec_type") == "audio"]
     vid = [s for s in d.get("streams", []) if s.get("codec_type") == "video"]
     return {"duration": float(d.get("format", {}).get("duration") or 0), "audio": bool(aud),
-            "channels": int(aud[0].get("channels") or 0) if aud else 0, "video": bool(vid)}
+            "channels": int(aud[0].get("channels") or 0) if aud else 0, "video": bool(vid),
+            "audio_dur": float(aud[0].get("duration") or 0) if aud else 0.0,
+            "video_dur": float(vid[0].get("duration") or 0) if vid else 0.0}
 
 
 def loudness(path, pre=None, series=False):
@@ -220,6 +226,17 @@ def check_mix(a, rep):
     if not info["audio"]:
         rep.add("FAIL", "audio", "в файле нет звуковой дорожки", "собери файл со звуком (mix.py / mixdown.py)")
         return
+    # the sound must run as long as the picture: a short audio track means the sound stops before the end
+    if info["video"] and info["audio_dur"] and info["video_dur"]:
+        gap = info["video_dur"] - info["audio_dur"]
+        rep.data["audio_short_by_s"] = round(gap, 3)
+        if gap > 0.05:
+            rep.add("FAIL", "длина звука", f"звук {info['audio_dur']:.2f} с, картинка {info['video_dur']:.2f} с: "
+                    f"последние {gap:.2f} с без звука",
+                    f"добей звук тишиной до длины ролика перед мастером (ffmpeg -af apad=whole_dur="
+                    f"{info['video_dur']:.3f}) и смуксь заново; ffprobe после мукса")
+        else:
+            rep.add("PASS", "длина звука", f"звук и картинка по {info['video_dur']:.2f} с")
     plat = PLATFORMS.get(a.platform)
     L = loudness(a.file, series=True)
     rep.data.update({"duration_s": round(info["duration"], 2), "integrated_lufs": L["I"], "lra_lu": L["LRA"],
@@ -299,11 +316,52 @@ def check_mix(a, rep):
             rep.add(st, "цифровая тишина между звуками", f"{100 * sil:.0f}% окон по 250 мс тише -70 dBFS",
                     "плёнка звучит голо: подложи атмосферу (bed.py real-sfx, уровень -54 dBFS)")
 
+    # one part of the film much louder than the rest (a beat or a drop coming in on top of quiet effects)
+    Ms = [m for _, m in L["M"] if m > -70]
+    if len(Ms) >= 20:
+        med_ = statistics.median(Ms)
+        win_ = 10                                    # 10 x 100 ms
+        best_ = max(((sum(m for _, m in L["M"][i:i + win_]) / win_, L["M"][i][0])
+                     for i in range(0, len(L["M"]) - win_ + 1)), default=None)
+        if best_:
+            jump = best_[0] - med_
+            rep.data["loudest_second_over_median_lu"] = round(jump, 1)
+            if jump > THRESHOLDS["jump_warn_lu"]:
+                rep.add("WARN", "скачок громкости", f"секунда с {fmt_t(best_[1])} громче остального ролика на "
+                        f"{jump:.0f} LU", "что-то вошло сверху и давит всё остальное (бит, дроп, музыка): "
+                        "опусти именно эту часть или убери её; эффекты должны оставаться слышны")
+
     # stems
+    if a.music and a.sfx:
+        check_music_sfx(a, rep)
     if a.voice:
         check_voice(a, rep)
     if a.cues:
         check_cues(a, rep, info["duration"])
+
+
+def check_music_sfx(a, rep):
+    """Effects must stay audible over music: where an effect sounds, it should not sit far under the music."""
+    S = loudness(a.sfx, series=True)
+    Mu = loudness(a.music, series=True)
+    n = min(len(S["M"]), len(Mu["M"]))
+    if not n or S["I"] is None:
+        return
+    loud = max(-50.0, (S["I"] or -30) - 15)
+    margins = [(S["M"][i][1] - Mu["M"][i][1], S["M"][i][0]) for i in range(n)
+               if S["M"][i][1] > loud and Mu["M"][i][1] > -70]
+    if not margins:
+        rep.add("INFO", "эффекты над музыкой", "музыка не звучит там, где звучат эффекты")
+        return
+    med = statistics.median(m for m, _ in margins)
+    rep.data["sfx_over_music_lu"] = round(med, 1)
+    buried = [t for m, t in margins if m < THRESHOLDS["sfx_under_music_fail"]]
+    st = ("FAIL" if med < THRESHOLDS["sfx_under_music_fail"] else
+          "WARN" if med < THRESHOLDS["sfx_under_music_warn"] else "PASS")
+    rep.add(st, "эффекты над музыкой", f"медиана {med:+.1f} LU там, где звучат эффекты"
+            + (f"; тонут с {fmt_t(buried[0])}" if buried else ""),
+            "музыка заглушает эффекты: опусти музыку (обычно на 8-12 дБ под эффектами), mix.py --duck, "
+            "или убери музыку, если её не просили")
 
 
 def speech_frames(vM, vI):

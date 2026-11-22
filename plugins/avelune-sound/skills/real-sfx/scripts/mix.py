@@ -469,6 +469,25 @@ def chain_for(k, p, out_label, with_delay=True):
     return ",".join(parts) + f"[{out_label}]"
 
 
+def pad_to_length(wav, dur, workdir=None):
+    """The rendered mix must be as long as the film: a short file makes a short audio track in the MP4 (sound stops,
+    the picture runs on). Pad with silence in a separate pass (one input, no amix race) and say so."""
+    try:
+        r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(wav)],
+                           capture_output=True, text=True)
+        got = float(r.stdout.strip())
+    except Exception:
+        return
+    if got < dur - 0.010:
+        tmp = Path(wav).with_name(Path(wav).stem + "__pad.wav")
+        subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-nostdin", "-y", "-i", str(wav), "-af",
+                        f"apad=whole_dur={dur:.3f},atrim=end={dur:.3f}", "-c:a", "pcm_s24le", str(tmp)],
+                       capture_output=True)
+        if tmp.exists():
+            tmp.replace(wav)
+            print(f"WARN the mix came out {got:.3f} s for a {dur:.3f} s film: padded with silence to full length")
+
+
 def run_ffmpeg(args, script_text=None, workdir=None):
     """Run ffmpeg; a long filter graph goes through a script file (Windows command lines are short)."""
     base = ["ffmpeg", "-v", "error", "-y", "-nostdin"]
@@ -1170,7 +1189,11 @@ def main():
             g += [f"[{sfx_lbl}]asplit=2[sfx_a][sfx_b]",
                   f"[{orig_lbl}][sfx_b]sidechaincompress=threshold=0.05:ratio=3:attack=10:release=300[origd]"]
             sfx_lbl, orig_lbl = "sfx_a", "origd"
-        g.append(f"[{orig_lbl}][{sfx_lbl}]amix=inputs=2:normalize=0:duration=first[mixraw]")
+        # a silent bed of the full length is a third amix input: with --duck the sidechaincompress output could stop
+        # at the last sound (a 6.6 s film came out 6.40 s long), and amix duration=first followed it
+        g.append(f"anullsrc=r={SR}:cl=stereo,atrim=end={dur:.3f},asetpts=N/SR/TB[silmix]")
+        g.append(f"[silmix][{orig_lbl}][{sfx_lbl}]amix=inputs=3:normalize=0:dropout_transition=0:duration=longest,"
+                 f"atrim=end={dur:.3f}[mixraw]")
         outs = ["-map", "[mixraw]", "-t", f"{dur:.3f}", "-c:a", "pcm_s24le", "-ar", str(SR), str(pre)]
         if a.voice_safe:
             ducked_wav = Path(f"{stem}_sfx_ducked.wav")
@@ -1178,6 +1201,7 @@ def main():
         run_ffmpeg(["-i", str(base_wav or video), "-i", str(sfx_wav)] +
                    (["-i", str(voice_key)] if voice_key is not None else []) + ["@@GRAPH@@"] + outs,
                    ";\n".join(g), work)
+        pad_to_length(pre, dur, work)
         final_mix = pre
         if voice_key is not None:
             voice_key.unlink(missing_ok=True)
