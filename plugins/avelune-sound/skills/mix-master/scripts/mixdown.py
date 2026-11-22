@@ -138,7 +138,7 @@ def master(src, dst, plat, video=None):
         sys.exit("the mix is silent")
     gain, ceiling = plat["I"] - L0["I"], plat["tp"] - 0.3
     info = {"input_i": L0["I"], "input_tp": L0["TP"]}
-    for rnd in range(4):
+    for rnd in range(6):
         render_master(src, dst, gain, ceiling, video)
         L = sc.loudness(dst)
         info.update(gain_db=gain, ceiling_db=ceiling, output_i=L["I"], output_tp=L["TP"], rounds=rnd + 1)
@@ -147,8 +147,14 @@ def master(src, dst, plat, video=None):
             break
         if dtp > 0.05:
             ceiling -= dtp + 0.1
+            if rnd >= 2:                 # the AAC encode overshoots whatever the ceiling: give up some loudness
+                gain -= dtp + 0.1
+                continue
         if abs(di) > 0.3:
             gain += di
+    if info["output_tp"] > plat["tp"] + 0.05:
+        print(f"WARN master: true peak {info['output_tp']:.1f} dBTP is still over the {plat['tp']:g} ceiling after "
+              f"{info['rounds']} rounds: lower the loudest sound in the mix and master again")
     limited = info["gain_db"] + L0["TP"] - info["ceiling_db"]
     info["limited_db"] = round(max(0.0, limited), 1)
     if limited > 6:

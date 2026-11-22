@@ -23,17 +23,19 @@ import sys
 from pathlib import Path
 
 TEMPLATE = {
-    "_help": "Fill BEFORE picking sounds. Times in seconds of the film. See video-sound SKILL.md step 1.5.",
-    "genre": "brand-promo | product-ui | app-ad | meme | edit | tutorial | story | game-trailer",
-    "tone": ["premium", "playful"],
-    "audience_feel": "one sentence: what the viewer should feel at the end",
-    "arc": [{"t": 0.0, "beat": "hook"}, {"t": 2.0, "beat": "build"}, {"t": 4.7, "beat": "payoff"}],
-    "hero": {"t": 4.7, "what": "logo assembles", "treatment": "soft impact + shimmer tail, 0.4 s of air before"},
-    "objects": [{"name": "slot reels", "times": [0.7, 1.7], "material": "mechanical clicks, one source"}],
-    "silent": [{"from": 3.0, "to": 3.5, "why": "breath before the reveal"}],
+    "_help": "Fill BEFORE picking sounds, from THIS film's frames and brief (nothing from earlier tasks). Times in "
+             "seconds. Replace every <...>. See video-sound SKILL.md step 1.5 and references/craft.md.",
+    "genre": "<one of: brand-promo, product-ui, app-ad, meme, edit, tutorial, story, game-trailer>",
+    "tone": ["<1-2 of: premium, luxury, brand, corporate, tech, playful, kids, calm, wellness, energetic, meme, epic, dark>"],
+    "audience_feel": "<one sentence: what the viewer feels at the end>",
+    "arc": [{"t": 0.0, "beat": "hook: <what happens>"}, {"t": None, "beat": "build: <...>"},
+            {"t": None, "beat": "payoff: <...>"}],
+    "hero": {"t": None, "what": "<the one moment that matters most>", "treatment": "<e.g. impact + tail>"},
+    "objects": [{"name": "<an object that sounds several times>", "times": [None, None], "material": "<one source>"}],
+    "silent": [{"from": None, "to": None, "why": "<breath before the hero, a pause after it>"}],
     "music": "none",
-    "palette": ["soft UI clicks", "coins and chimes", "airy shimmer"],
-    "avoid": ["meme sounds", "trailer booms", "beats", "distortion"],
+    "palette": ["<2-3 material families for the whole film>"],
+    "avoid": ["<words of file names that do not fit the tone>"],
 }
 
 # tone -> roles that do not belong (FAIL if used), roles to keep rare (WARN above max count)
@@ -110,9 +112,10 @@ def check(concept, res, rep):
         rep.add("FAIL", "звуки", "в листе нет ни одного звука", "проверь путь к *_resolved_cues.json")
         return
     tones = [t.lower() for t in (concept.get("tone") or [])]
-    if not tones or not concept.get("genre") or "|" in str(concept.get("genre")):
-        rep.add("FAIL", "замысел", "в concept.json не заполнены жанр и тон",
+    if not tones or not concept.get("genre") or "<" in json.dumps(concept, ensure_ascii=False):
+        rep.add("FAIL", "замысел", "в concept.json остались незаполненные поля <...> (или нет жанра и тона)",
                 "заполни concept.json до подбора звуков (шаг 1.5): жанр, тон, герой, тишина, музыка")
+        return
 
     # 1. hero moment
     hero = concept.get("hero") or {}
@@ -124,7 +127,7 @@ def check(concept, res, rep):
         near = [c for c in fx if abs(float(c["t"]) - ht) <= 0.12]
         if not near:
             rep.add("FAIL", "главная точка", f"на {fmt(ht)} ({hero.get('what', '')}) нет звука",
-                    f"поставь главный звук на кадр {fmt(ht)}: удар + хвост (sheet.py add)")
+                    f"поставь главный звук на кадр {fmt(ht)}: удар + хвост, см. рецепт «главная точка» в SKILL.md")
         else:
             hl = max((level(c) for c in near if level(c) is not None), default=None)
             others = [level(c) for c in fx if c not in near and level(c) is not None]
@@ -137,8 +140,8 @@ def check(concept, res, rep):
                     loudest = max((c for c in fx if c not in near and level(c) is not None), key=level)
                     rep.add("FAIL", "главная точка", f"на {fmt(ht)} тише, чем звук на {fmt(float(loudest['t']))} "
                             f"({loudest.get('role')}, на {top - hl:.1f} дБ громче)",
-                            "главная точка должна быть самой громкой: опусти остальные (sheet.py gain --db -3 "
-                            "--between ...) или добавь главной слой удара")
+                            "главная точка должна быть самой громкой: опусти остальные (sheet.py gain work/cues.json "
+                            "--db -3 --at T) или подними главную (sheet.py set work/cues.json --at T gain_db=+2)")
                 elif hl - top < 2.0:
                     loudest = max((c for c in fx if c not in near and level(c) is not None), key=level)
                     rep.add("WARN", "главная точка", f"{fmt(ht)} почти не громче звука на {fmt(float(loudest['t']))} "
@@ -160,12 +163,18 @@ def check(concept, res, rep):
                         "убери или опусти их на 6+ дБ")
 
     # 2. silent zones
-    for z in concept.get("silent") or []:
-        a, b = float(z.get("from", 0)), float(z.get("to", 0))
+    zones = [z for z in (concept.get("silent") or []) if z.get("from") is not None and z.get("to") is not None]
+    clean = 0
+    for z in zones:
+        a, b = float(z["from"]), float(z["to"])
         inside = [c for c in fx if a <= float(c["t"]) < b]
         if inside:
             rep.add("FAIL", "тишина по замыслу", f"{fmt(a)}-{fmt(b)} ({z.get('why', '')}): {len(inside)} звук(а)",
-                    "убери звуки из зоны тишины (sheet.py rm) или поправь замысел")
+                    "убери звуки из зоны тишины (sheet.py drop work/cues.json --at T) или поправь замысел")
+        else:
+            clean += 1
+    if zones and clean == len(zones):
+        rep.add("PASS", "тишина по замыслу", f"{clean} зон(ы) тишины пустые")
 
     # 3. tone: roles that do not belong
     roles = [c.get("role") for c in fx]
@@ -244,7 +253,9 @@ def check(concept, res, rep):
         if len(ts) != 2:
             continue
         a, b = float(ts[0]), float(ts[1])
-        inside = [c for c in fx if a - 0.05 <= float(c["t"]) <= b + 0.05 and c.get("role") not in ("whoosh", "riser")]
+        # the object's own sounds: mechanical/contact roles; a win chime or a whoosh next to it is another object
+        inside = [c for c in fx if a - 0.05 <= float(c["t"]) <= b + 0.05
+                  and c.get("role") in ("foley", "click", "hit", "thump", "pop", "typing", "ui", "glass", "paper")]
         fams = {}
         for c in inside:
             sp = src_path(c)
@@ -255,6 +266,9 @@ def check(concept, res, rep):
                     f"«{ob.get('name')}» ({fmt(a)}-{fmt(b)}) собран из {len(fams)} разных записей: "
                     + ", ".join(src_path(v[0]).name for v in fams.values())[:200],
                     "возьми все звуки этого предмета из одной записи (её разные куски: slice) или одного пака")
+        elif inside:
+            rep.add("PASS", "один предмет — один источник", f"«{ob.get('name')}»: {len(inside)} звук(а) из "
+                    f"{len(fams)} записи(ей)")
     # 7. arc: something at the hook
     first = min((float(c["t"]) for c in fx), default=99)
     if first > 0.5:

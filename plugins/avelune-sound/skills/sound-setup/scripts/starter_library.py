@@ -56,7 +56,11 @@ CUE_ROLE_TYPE = {"hit": "impact", "thump": "impact", "impact": "impact", "whoosh
                  "paper": "paper", "chime": "chime", "bell": "chime", "glass": "chime", "glitch": "glitch",
                  "error": "glitch", "foley": "foley", "ambience": "ambience", "wipe": "whoosh", "swish": "whoosh",
                  "thud": "impact", "boom": "impact", "tick": "click", "step": "foley", "cloth": "foley",
-                 "room": "ambience", "atmosphere": "ambience", "coin": "chime"}
+                 "room": "ambience", "atmosphere": "ambience", "coin": "chime", "coins": "chime", "money": "chime",
+                 "cash": "chime", "win": "chime", "magic": "chime", "sparkle": "chime", "shimmer": "chime",
+                 "reveal": "chime", "spin": "foley", "ratchet": "foley", "slot": "foley", "reel": "foley",
+                 "door": "foley", "drop": "impact", "sub_drop": "impact", "transition": "whoosh", "swoosh": "whoosh",
+                 "notification": "pop", "toggle": "click", "button": "click", "tap": "click"}
 
 
 def needed_roles(cues_path, min_have=3):
@@ -65,13 +69,15 @@ def needed_roles(cues_path, min_have=3):
     import common
     d = json.loads(Path(cues_path).read_text(encoding="utf-8-sig"))
     cues = d.get("cues", d) if isinstance(d, dict) else d
-    want = {}
+    want, unknown = {}, set()
     for c in cues:
         if not isinstance(c, dict) or c.get("uisfx") or c.get("file") or c.get("id") is not None:
             continue
         r = (c.get("pick") or {}).get("role") or c.get("role") or c.get("type") or c.get("kind")
         if r in CUE_ROLE_TYPE:
             want[CUE_ROLE_TYPE[r]] = want.get(CUE_ROLE_TYPE[r], 0) + 1
+        elif r:
+            unknown.add(str(r))
     have = {}
     try:
         idx = json.loads(common.index_path().read_text(encoding="utf-8"))
@@ -84,6 +90,9 @@ def needed_roles(cues_path, min_have=3):
         pass
     for t, n in sorted(want.items()):
         print(f"  {t}: {n} cue(s), {have.get(t, 0)} sound(s) in the libraries")
+    if unknown:
+        print(f"  not checked (no catalog type for these kinds): {', '.join(sorted(unknown))}: fetch them by hand "
+              f"with --role TYPE --query WORDS if the libraries lack them")
     return [t for t in want if have.get(t, 0) < min_have], bool(have)
 
 
